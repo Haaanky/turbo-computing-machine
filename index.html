@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Henrik Norlin Frisemo – Mjukvaruutvecklare</title>
+  <style>
+    :root {
+      --bg: #0d1117;
+      --surface: #161b22;
+      --surface2: #21262d;
+      --accent: #58a6ff;
+      --accent2: #3fb950;
+      --text: #e6edf3;
+      --muted: #8b949e;
+      --border: #30363d;
+      --radius: 12px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background: rgba(13,17,23,.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--accent);
+      letter-spacing: -.5px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: .9rem;
+      transition: color .2s;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 6rem 2rem 4rem;
+      background: radial-gradient(ellipse at 50% 0%, rgba(88,166,255,.12) 0%, transparent 65%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    #hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h60v60H0z' fill='none'/%3E%3Ccircle cx='30' cy='30' r='.5' fill='%2330363d'/%3E%3C/svg%3E");
+      opacity: .6;
+    }
+
+    .hero-inner { position: relative; max-width: 700px; }
+
+    .avatar {
+      width: 120px; height: 120px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: #fff;
+      margin: 0 auto 1.5rem;
+      border: 3px solid var(--border);
+      box-shadow: 0 0 40px rgba(88,166,255,.25);
+    }
+
+    .hero-inner h1 {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 800;
+      letter-spacing: -1px;
+      line-height: 1.1;
+    }
+
+    .hero-inner h1 span { color: var(--accent); }
+
+    .hero-title {
+      margin-top: .75rem;
+      font-size: 1.15rem;
+      color: var(--muted);
+    }
+
+    .hero-sub {
+      margin-top: 1rem;
+      font-size: 1rem;
+      color: var(--muted);
+      max-width: 520px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+      justify-content: center;
+      margin-top: 1.5rem;
+    }
+
+    .badge {
+      padding: .3rem .85rem;
+      border-radius: 99px;
+      font-size: .8rem;
+      font-weight: 600;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--muted);
+    }
+
+    .badge.blue { border-color: var(--accent); color: var(--accent); background: rgba(88,166,255,.08); }
+    .badge.green { border-color: var(--accent2); color: var(--accent2); background: rgba(63,185,80,.08); }
+
+    .hero-cta {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: .65rem 1.5rem;
+      border-radius: var(--radius);
+      font-size: .95rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all .2s;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #0d1117;
+    }
+
+    .btn-primary:hover { background: #79b8ff; transform: translateY(-1px); }
+
+    .btn-ghost {
+      border: 1px solid var(--border);
+      color: var(--text);
+      background: var(--surface);
+    }
+
+    .btn-ghost:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-1px); }
+
+    /* ── SECTIONS ── */
+    section { padding: 5rem 2rem; }
+
+    .container { max-width: 860px; margin: 0 auto; }
+
+    .section-label {
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: .5rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 800;
+      letter-spacing: -.5px;
+      margin-bottom: 2.5rem;
+    }
+
+    /* ── ABOUT ── */
+    #about { background: var(--surface); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    @media (max-width: 600px) { .about-grid { grid-template-columns: 1fr; } }
+
+    .about-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+    }
+
+    .about-card h3 {
+      font-size: .9rem;
+      color: var(--muted);
+      margin-bottom: .5rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 600;
+    }
+
+    .about-card p { color: var(--text); font-size: .95rem; }
+
+    .about-card .icon {
+      font-size: 1.5rem;
+      margin-bottom: .5rem;
+    }
+
+    /* ── TIMELINE (Experience & Education) ── */
+    .timeline { display: flex; flex-direction: column; gap: 1.5rem; }
+
+    .tl-item {
+      display: grid;
+      grid-template-columns: 56px 1fr;
+      gap: 1.25rem;
+      align-items: start;
+    }
+
+    .tl-dot-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: .3rem;
+    }
+
+    .tl-dot {
+      width: 14px; height: 14px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: 2px solid var(--bg);
+      box-shadow: 0 0 0 2px var(--accent);
+      flex-shrink: 0;
+    }
+
+    .tl-dot.green { background: var(--accent2); box-shadow: 0 0 0 2px var(--accent2); }
+
+    .tl-line {
+      flex: 1;
+      width: 2px;
+      background: var(--border);
+      margin-top: .4rem;
+      min-height: 30px;
+    }
+
+    .tl-item:last-child .tl-line { display: none; }
+
+    .tl-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.5rem;
+      transition: border-color .2s, transform .2s;
+    }
+
+    .tl-card:hover { border-color: var(--accent); transform: translateX(4px); }
+
+    .tl-header { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: .5rem; }
+
+    .tl-title { font-weight: 700; font-size: 1rem; }
+
+    .tl-period {
+      font-size: .78rem;
+      color: var(--muted);
+      white-space: nowrap;
+      padding: .2rem .6rem;
+      background: var(--surface2);
+      border-radius: 99px;
+    }
+
+    .tl-org {
+      font-size: .88rem;
+      color: var(--accent);
+      margin-top: .2rem;
+      font-weight: 600;
+    }
+
+    .tl-desc {
+      font-size: .88rem;
+      color: var(--muted);
+      margin-top: .6rem;
+      line-height: 1.6;
+    }
+
+    .tl-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .4rem;
+      margin-top: .8rem;
+    }
+
+    .tag {
+      font-size: .72rem;
+      padding: .2rem .55rem;
+      border-radius: 4px;
+      background: rgba(88,166,255,.1);
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .tag.green { background: rgba(63,185,80,.1); color: var(--accent2); }
+
+    /* ── SKILLS ── */
+    #skills { background: var(--surface); }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .skill-group {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem;
+    }
+
+    .skill-group h3 {
+      font-size: .8rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--muted);
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+
+    .skill-item {
+      display: flex;
+      flex-direction: column;
+      gap: .3rem;
+      margin-bottom: .75rem;
+    }
+
+    .skill-item:last-child { margin-bottom: 0; }
+
+    .skill-name {
+      font-size: .88rem;
+      font-weight: 600;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .skill-pct { color: var(--muted); font-weight: 400; }
+
+    .skill-bar {
+      height: 4px;
+      background: var(--border);
+      border-radius: 99px;
+      overflow: hidden;
+    }
+
+    .skill-fill {
+      height: 100%;
+      border-radius: 99px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      transform-origin: left;
+      transform: scaleX(0);
+      transition: transform .8s ease;
+    }
+
+    .skill-fill.animated { transform: scaleX(1); }
+
+    /* ── CERTIFICATIONS ── */
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .cert-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      transition: border-color .2s;
+    }
+
+    .cert-card:hover { border-color: var(--accent2); }
+
+    .cert-icon {
+      font-size: 1.8rem;
+      flex-shrink: 0;
+    }
+
+    .cert-info h3 { font-size: .95rem; font-weight: 700; }
+    .cert-info p { font-size: .82rem; color: var(--muted); margin-top: .2rem; }
+
+    /* ── LANGUAGES ── */
+    #languages { background: var(--surface); }
+
+    .lang-grid {
+      display: flex;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+    }
+
+    .lang-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem 2rem;
+      text-align: center;
+      min-width: 160px;
+    }
+
+    .lang-flag { font-size: 2rem; margin-bottom: .5rem; }
+    .lang-name { font-weight: 700; font-size: 1rem; }
+    .lang-level { font-size: .82rem; color: var(--muted); margin-top: .2rem; }
+
+    /* ── CONTACT ── */
+    #contact {
+      text-align: center;
+      background: radial-gradient(ellipse at 50% 100%, rgba(63,185,80,.08) 0%, transparent 65%);
+    }
+
+    .contact-card {
+      display: inline-block;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2.5rem 3rem;
+      max-width: 480px;
+      width: 100%;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: .75rem;
+      margin-top: 1.5rem;
+    }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      color: var(--text);
+      text-decoration: none;
+      font-size: .95rem;
+      padding: .65rem 1rem;
+      border-radius: 8px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      transition: all .2s;
+    }
+
+    .contact-link:hover { border-color: var(--accent); color: var(--accent); transform: translateX(4px); }
+
+    .contact-link .icon { font-size: 1.1rem; }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: .82rem;
+    }
+
+    /* ── SCROLL REVEAL ── */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* ── MOBILE NAV ── */
+    @media (max-width: 500px) {
+      .nav-links { display: none; }
+      nav { padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <span class="nav-logo">HNF</span>
+  <ul class="nav-links">
+    <li><a href="#about">Om mig</a></li>
+    <li><a href="#experience">Erfarenhet</a></li>
+    <li><a href="#education">Utbildning</a></li>
+    <li><a href="#skills">Kompetenser</a></li>
+    <li><a href="#contact">Kontakt</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-inner">
+    <div class="avatar">HNF</div>
+    <h1>Henrik <span>Norlin Frisemo</span></h1>
+    <p class="hero-title">Mjukvaruutvecklare · Kiruna, Sverige</p>
+    <p class="hero-sub">
+      Passionerad utvecklare med bakgrund inom biomedicinsk vetenskap.
+      Kombinerar analytiskt tänkande från naturvetenskap med modern
+      mjukvaruutveckling.
+    </p>
+    <div class="hero-badges">
+      <span class="badge blue">C# &amp; .NET</span>
+      <span class="badge blue">SQL Server</span>
+      <span class="badge blue">JavaScript</span>
+      <span class="badge green">PSM I Certified</span>
+      <span class="badge green">Agile / Scrum</span>
+      <span class="badge">Biomedicin</span>
+    </div>
+    <div class="hero-cta">
+      <a href="#contact" class="btn btn-primary">Kontakta mig</a>
+      <a href="#experience" class="btn btn-ghost">Visa erfarenhet</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <p class="section-label reveal">Profil</p>
+    <h2 class="section-title reveal">Om mig</h2>
+    <div class="about-grid">
+      <div class="about-card reveal">
+        <div class="icon">🧬</div>
+        <h3>Vetenskaplig grund</h3>
+        <p>Akademisk utbildning i medicinsk biologi ger ett analytiskt och metodiskt förhållningssätt till problemlösning – en stark bas för mjukvaruutveckling.</p>
+      </div>
+      <div class="about-card reveal">
+        <div class="icon">💻</div>
+        <h3>Teknisk profil</h3>
+        <p>Specialiserad på C# och .NET-ekosystemet. Praktisk erfarenhet av fullstack-webbutveckling, databaser och agila arbetsmetoder.</p>
+      </div>
+      <div class="about-card reveal">
+        <div class="icon">🤝</div>
+        <h3>Personlighet</h3>
+        <p>Social, nyfiken och driven med ett stort IT- och teknikintresse. Trivs i team och bidrar aktivt till en god teamdynamik.</p>
+      </div>
+      <div class="about-card reveal">
+        <div class="icon">📍</div>
+        <h3>Plats &amp; tillgänglighet</h3>
+        <p>Baserad i Kiruna, Norrbotten. Arbetar på Comrod Mission Systems i Linköping. Öppen för nya utmaningar och möjligheter.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container">
+    <p class="section-label reveal">Karriär</p>
+    <h2 class="section-title reveal">Arbetslivserfarenhet</h2>
+    <div class="timeline">
+
+      <div class="tl-item reveal">
+        <div class="tl-dot-col">
+          <div class="tl-dot"></div>
+          <div class="tl-line"></div>
+        </div>
+        <div class="tl-card">
+          <div class="tl-header">
+            <div>
+              <div class="tl-title">Mjukvaruutvecklare</div>
+              <div class="tl-org">Comrod Mission Systems · Linköping</div>
+            </div>
+            <span class="tl-period">2019 – Nuvarande</span>
+          </div>
+          <p class="tl-desc">
+            Systemutveckling inom försvars- och kommunikationsteknik. Arbetar med avancerade mjukvarulösningar i C# och .NET i en agil miljö med höga krav på tillförlitlighet och prestanda.
+          </p>
+          <div class="tl-tags">
+            <span class="tag">C#</span>
+            <span class="tag">.NET</span>
+            <span class="tag">SQL Server</span>
+            <span class="tag">Visual Studio</span>
+            <span class="tag">Agile</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item reveal">
+        <div class="tl-dot-col">
+          <div class="tl-dot"></div>
+          <div class="tl-line"></div>
+        </div>
+        <div class="tl-card">
+          <div class="tl-header">
+            <div>
+              <div class="tl-title">Junior IT-konsult</div>
+              <div class="tl-org">Academic Work</div>
+            </div>
+            <span class="tl-period">2019</span>
+          </div>
+          <p class="tl-desc">
+            Startade karriären som junior IT-konsult efter genomfört intensivt utbildningsprogram i C# .NET. Bidrog till projekt med moderna agila metoder.
+          </p>
+          <div class="tl-tags">
+            <span class="tag">C#</span>
+            <span class="tag">.NET</span>
+            <span class="tag">SCRUM</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item reveal">
+        <div class="tl-dot-col">
+          <div class="tl-dot"></div>
+          <div class="tl-line"></div>
+        </div>
+        <div class="tl-card">
+          <div class="tl-header">
+            <div>
+              <div class="tl-title">Webbutvecklare (Frilans)</div>
+              <div class="tl-org">Eget projekt</div>
+            </div>
+            <span class="tl-period">2017 – 2018</span>
+          </div>
+          <p class="tl-desc">
+            Självstudier och praktisk webbutveckling via Udemy och freeCodeCamp. Byggde WordPress-webbplatser och fördjupade sig i HTML, CSS och JavaScript.
+          </p>
+          <div class="tl-tags">
+            <span class="tag">HTML</span>
+            <span class="tag">CSS</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">WordPress</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item reveal">
+        <div class="tl-dot-col">
+          <div class="tl-dot green"></div>
+          <div class="tl-line"></div>
+        </div>
+        <div class="tl-card">
+          <div class="tl-header">
+            <div>
+              <div class="tl-title">Bartender</div>
+              <div class="tl-org">Diverse arbetsgivare</div>
+            </div>
+            <span class="tl-period">2010 – 2014</span>
+          </div>
+          <p class="tl-desc">
+            Serviceinriktad roll som byggde starka kommunikativa och sociala färdigheter. Erfarenhet av kundkontakt och arbete i högt tempo.
+          </p>
+          <div class="tl-tags">
+            <span class="tag green">Kundservice</span>
+            <span class="tag green">Kommunikation</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education" style="background: var(--surface);">
+  <div class="container">
+    <p class="section-label reveal">Akademisk bakgrund</p>
+    <h2 class="section-title reveal">Utbildning</h2>
+    <div class="timeline">
+
+      <div class="tl-item reveal">
+        <div class="tl-dot-col">
+          <div class="tl-dot"></div>
+          <div class="tl-line"></div>
+        </div>
+        <div class="tl-card">
+          <div class="tl-header">
+            <div>
+              <div class="tl-title">C# .NET – Intensivprogram</div>
+              <div class="tl-org">Academy by Academic Work</div>
+            </div>
+            <span class="tl-period">2019</span>
+          </div>
+          <p class="tl-desc">
+            Intensivt utbildningsprogram med fokus på praktisk inlärning, agilt teamarbete och kontinuerlig feedback. Ledde direkt till anställning som junior IT-konsult.
+          </p>
+          <div class="tl-tags">
+            <span class="tag">OOP</span>
+            <span class="tag">C# .NET</span>
+            <span class="tag">SQL Server</span>
+            <span class="tag">Visual Studio</span>
+            <span class="tag">UX/UI</span>
+            <span class="tag">SCRUM</span>
+            <span class="tag">HTML/CSS/JS</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item reveal">
+        <div class="tl-dot-col">
+          <div class="tl-dot green"></div>
+          <div class="tl-line"></div>
+        </div>
+        <div class="tl-card">
+          <div class="tl-header">
+            <div>
+              <div class="tl-title">Medicinsk Biologi</div>
+              <div class="tl-org">Universitet</div>
+            </div>
+            <span class="tl-period">2010 – 2015</span>
+          </div>
+          <p class="tl-desc">
+            Gedigen universitetsutbildning inom biomedicinsk vetenskap. Tränade analytiskt och vetenskapligt tänkande. Engagerad i studentliv som styrelseledamot i sektionen för Medicinsk Biologi samt ordförande för dryckeskommittén.
+          </p>
+          <div class="tl-tags">
+            <span class="tag green">Biomedicin</span>
+            <span class="tag green">Vetenskap</span>
+            <span class="tag green">Analytisk metodik</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item reveal">
+        <div class="tl-dot-col">
+          <div class="tl-dot"></div>
+          <div class="tl-line"></div>
+        </div>
+        <div class="tl-card">
+          <div class="tl-header">
+            <div>
+              <div class="tl-title">Webbutveckling – Självstudier</div>
+              <div class="tl-org">Udemy &amp; freeCodeCamp</div>
+            </div>
+            <span class="tl-period">2017 – 2018</span>
+          </div>
+          <p class="tl-desc">
+            Fullständigt genomfört "The Complete Web Developer in 2018" samt freeCodeCamp-certifieringar. Lade grunden för webbutvecklingskompetensen.
+          </p>
+          <div class="tl-tags">
+            <span class="tag">HTML</span>
+            <span class="tag">CSS</span>
+            <span class="tag">JavaScript</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <p class="section-label reveal">Teknisk profil</p>
+    <h2 class="section-title reveal">Kompetenser</h2>
+    <div class="skills-grid">
+
+      <div class="skill-group reveal">
+        <h3>Backend</h3>
+        <div class="skill-item">
+          <span class="skill-name">C# <span class="skill-pct">90%</span></span>
+          <div class="skill-bar"><div class="skill-fill" style="--w:.90"></div></div>
+        </div>
+        <div class="skill-item">
+          <span class="skill-name">.NET Framework / Core <span class="skill-pct">88%</span></span>
+          <div class="skill-bar"><div class="skill-fill" style="--w:.88"></div></div>
+        </div>
+        <div class="skill-item">
+          <span class="skill-name">SQL Server <span class="skill-pct">80%</span></span>
+          <div class="skill-bar"><div class="skill-fill" style="--w:.80"></div></div>
+        </div>
+      </div>
+
+      <div class="skill-group reveal">
+        <h3>Frontend</h3>
+        <div class="skill-item">
+          <span class="skill-name">HTML5 <span class="skill-pct">85%</span></span>
+          <div class="skill-bar"><div class="skill-fill" style="--w:.85"></div></div>
+        </div>
+        <div class="skill-item">
+          <span class="skill-name">CSS3 <span class="skill-pct">80%</span></span>
+          <div class="skill-bar"><div class="skill-fill" style="--w:.80"></div></div>
+        </div>
+        <div class="skill-item">
+          <span class="skill-name">JavaScript <span class="skill-pct">75%</span></span>
+          <div class="skill-bar"><div class="skill-fill" style="--w:.75"></div></div>
+        </div>
+      </div>
+
+      <div class="skill-group reveal">
+        <h3>Verktyg &amp; Metodik</h3>
+        <div class="skill-item">
+          <span class="skill-name">Visual Studio <span class="skill-pct">90%</span></span>
+          <div class="skill-bar"><div class="skill-fill" style="--w:.90"></div></div>
+        </div>
+        <div class="skill-item">
+          <span class="skill-name">Agile / Scrum <span class="skill-pct">85%</span></span>
+          <div class="skill-bar"><div class="skill-fill" style="--w:.85"></div></div>
+        </div>
+        <div class="skill-item">
+          <span class="skill-name">WordPress <span class="skill-pct">70%</span></span>
+          <div class="skill-bar"><div class="skill-fill" style="--w:.70"></div></div>
+        </div>
+      </div>
+
+      <div class="skill-group reveal">
+        <h3>Vetenskap &amp; Analys</h3>
+        <div class="skill-item">
+          <span class="skill-name">Biomedicin <span class="skill-pct">80%</span></span>
+          <div class="skill-bar"><div class="skill-fill" style="--w:.80"></div></div>
+        </div>
+        <div class="skill-item">
+          <span class="skill-name">Vetenskaplig metodik <span class="skill-pct">85%</span></span>
+          <div class="skill-bar"><div class="skill-fill" style="--w:.85"></div></div>
+        </div>
+        <div class="skill-item">
+          <span class="skill-name">OOP-design <span class="skill-pct">85%</span></span>
+          <div class="skill-bar"><div class="skill-fill" style="--w:.85"></div></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications" style="background: var(--surface);">
+  <div class="container">
+    <p class="section-label reveal">Meriter</p>
+    <h2 class="section-title reveal">Certifieringar &amp; Volontärarbete</h2>
+    <div class="cert-grid">
+      <div class="cert-card reveal">
+        <div class="cert-icon">🏅</div>
+        <div class="cert-info">
+          <h3>Professional Scrum Master I</h3>
+          <p>Scrum.org · Mars 2019</p>
+          <p>Certifierad inom agila principer och Scrum-ramverket.</p>
+        </div>
+      </div>
+      <div class="cert-card reveal">
+        <div class="cert-icon">🎓</div>
+        <div class="cert-info">
+          <h3>The Complete Web Developer 2018</h3>
+          <p>Udemy · 2017–2018</p>
+          <p>Fullständig webbutvecklingskurs från grunden.</p>
+        </div>
+      </div>
+      <div class="cert-card reveal">
+        <div class="cert-icon">💻</div>
+        <div class="cert-info">
+          <h3>freeCodeCamp</h3>
+          <p>freeCodeCamp.org · 2017–2018</p>
+          <p>Certifieringar inom webbdesign och JavaScript.</p>
+        </div>
+      </div>
+      <div class="cert-card reveal">
+        <div class="cert-icon">🤝</div>
+        <div class="cert-info">
+          <h3>Styrelseledamot – Medicinsk Biologi</h3>
+          <p>Studentsektion · 2011–2013</p>
+          <p>Ledarskapserfarenhet inom studentorganisation.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LANGUAGES -->
+<section id="languages">
+  <div class="container">
+    <p class="section-label reveal">Kommunikation</p>
+    <h2 class="section-title reveal">Språk</h2>
+    <div class="lang-grid">
+      <div class="lang-card reveal">
+        <div class="lang-flag">🇸🇪</div>
+        <div class="lang-name">Svenska</div>
+        <div class="lang-level">Modersmål</div>
+      </div>
+      <div class="lang-card reveal">
+        <div class="lang-flag">🇬🇧</div>
+        <div class="lang-name">Engelska</div>
+        <div class="lang-level">Professionell nivå</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container" style="text-align:center">
+    <p class="section-label reveal">Kom i kontakt</p>
+    <h2 class="section-title reveal">Kontakt</h2>
+    <div class="reveal" style="display:flex;justify-content:center">
+      <div class="contact-card">
+        <p style="color:var(--muted);font-size:.9rem">
+          Intresserad av att samarbeta eller vill du veta mer om min bakgrund? Hör gärna av dig!
+        </p>
+        <div class="contact-links">
+          <a href="https://www.linkedin.com/in/henrik-norlin-frisemo-8826b3180" target="_blank" rel="noopener" class="contact-link">
+            <span class="icon">💼</span>
+            LinkedIn – Henrik Norlin Frisemo
+          </a>
+          <a href="mailto:henrik.norlin.frisemo@example.com" class="contact-link">
+            <span class="icon">✉️</span>
+            E-post
+          </a>
+          <a href="https://www.linkedin.com/in/henrik-norlin-frisemo-8826b3180" target="_blank" rel="noopener" class="contact-link btn-primary" style="justify-content:center;background:var(--accent);color:#0d1117;font-weight:700;border-color:var(--accent)">
+            Visa LinkedIn-profil →
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Henrik Norlin Frisemo · Mjukvaruutvecklare</p>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver(
+    (entries) => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+    { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+  );
+  reveals.forEach(el => observer.observe(el));
+
+  // Skill bars animate on visibility
+  const fills = document.querySelectorAll('.skill-fill');
+  const barObserver = new IntersectionObserver(
+    (entries) => entries.forEach(e => {
+      if (e.isIntersecting) {
+        const el = e.target;
+        el.style.width = (parseFloat(el.style.getPropertyValue('--w')) * 100) + '%';
+        el.classList.add('animated');
+        barObserver.unobserve(el);
+      }
+    }),
+    { threshold: 0.3 }
+  );
+  fills.forEach(f => {
+    f.style.width = '0%';
+    barObserver.observe(f);
+  });
+
+  // Smooth active nav highlight
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 120) current = s.id; });
+    navLinks.forEach(a => {
+      a.style.color = a.getAttribute('href') === '#' + current ? 'var(--text)' : '';
+    });
+  });
+</script>
+</body>
+</html>
