@@ -491,6 +491,9 @@
     .reveal { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
     .reveal.visible { opacity: 1; transform: none; }
 
+    /* ── PRINT SECTIONS (hidden on screen) ── */
+    #cv-print, #cover-print { display: none; }
+
     /* ── MOBILE NAV ── */
     @media (max-width: 500px) {
       .nav-links { display: none; }
@@ -529,143 +532,238 @@
 
     /* ── PRINT / PDF STYLES ── */
     @media print {
-      /* Reset page */
-      * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; box-sizing: border-box; margin: 0; padding: 0; }
 
-      @page {
-        size: A4;
-        margin: 14mm 16mm 14mm 16mm;
-      }
+      @page { size: A4; margin: 12mm 15mm; }
 
-      /* Hide interactive elements */
-      nav, .hero-cta, .pdf-btn { display: none !important; }
+      /* Hide all screen content, show only print sections */
+      body > * { display: none !important; }
+      #cv-print, #cover-print { display: block !important; }
 
       body {
-        background: #fff !important;
-        color: #111 !important;
-        font-size: 10pt;
-        line-height: 1.5;
+        background: #fff;
+        font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
+        font-size: 9pt;
+        color: #1a1a1a;
+        line-height: 1.4;
       }
 
-      /* Variables don't survive print in all browsers – override manually */
-      :root {
-        --bg: #fff;
-        --surface: #f6f8fa;
-        --surface2: #eaeef2;
-        --accent: #0969da;
-        --accent2: #1a7f37;
-        --text: #111;
-        --muted: #555;
-        --border: #d0d7de;
-      }
+      /* ═══════════════════════════════
+         CV – SIDA 1
+      ═══════════════════════════════ */
+      #cv-print { width: 100%; page-break-after: always; }
 
-      /* Hero: compact */
-      #hero {
-        min-height: unset !important;
-        padding: 2rem 1.5rem 1.5rem !important;
-        background: linear-gradient(135deg, #0d1117 0%, #161b22 100%) !important;
-        color: #fff !important;
-        text-align: left;
+      /* Header */
+      .cvp-head {
         display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        border-top: 5px solid #1e3a8a;
+        padding-top: 9pt;
+        padding-bottom: 8pt;
+        margin-bottom: 4pt;
+      }
+
+      .cvp-name {
+        font-size: 21pt;
+        font-weight: 800;
+        color: #0f172a;
+        letter-spacing: -0.5pt;
+        line-height: 1;
+      }
+
+      .cvp-title {
+        font-size: 10.5pt;
+        color: #1e3a8a;
+        font-weight: 600;
+        margin-top: 3pt;
+      }
+
+      .cvp-contacts {
+        text-align: right;
+        font-size: 7.5pt;
+        color: #4b5563;
+        line-height: 1.85;
+      }
+
+      .cvp-divider { height: 1px; background: #cbd5e1; margin-bottom: 8pt; }
+
+      /* Two-column body */
+      .cvp-body { display: flex; gap: 13pt; align-items: flex-start; }
+      .cvp-sidebar { width: 33%; flex-shrink: 0; }
+      .cvp-main { flex: 1; min-width: 0; }
+
+      /* Section titles */
+      .cvp-sec {
+        font-size: 6pt;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1.8pt;
+        color: #1e3a8a;
+        border-bottom: 1.5px solid #1e3a8a;
+        padding-bottom: 2pt;
+        margin-bottom: 5pt;
+        margin-top: 9pt;
+      }
+      .cvp-sidebar .cvp-sec:first-child,
+      .cvp-main .cvp-sec:first-child { margin-top: 0; }
+
+      /* Skills */
+      .cvp-skill { margin-bottom: 4pt; }
+      .cvp-sk-row {
+        display: flex;
+        justify-content: space-between;
+        font-size: 7.5pt;
+        font-weight: 600;
+        color: #1a1a1a;
+        margin-bottom: 1.5pt;
+      }
+      .cvp-sk-pct { color: #6b7280; font-weight: 400; font-size: 7pt; }
+      .cvp-sk-bar { height: 3.5px; background: #e2e8f0; border-radius: 2px; overflow: hidden; }
+      .cvp-sk-fill { height: 3.5px; background: #1e3a8a; border-radius: 2px; }
+
+      /* Skill category label */
+      .cvp-sk-cat {
+        font-size: 6.5pt;
+        font-weight: 700;
+        color: #6b7280;
+        text-transform: uppercase;
+        letter-spacing: 0.8pt;
+        margin-top: 5pt;
+        margin-bottom: 3pt;
+      }
+      .cvp-sk-cat:first-child { margin-top: 0; }
+
+      /* Languages */
+      .cvp-lang { margin-bottom: 5pt; }
+      .cvp-lang-name { font-size: 8pt; font-weight: 700; color: #0f172a; }
+      .cvp-lang-lvl { font-size: 7pt; color: #6b7280; }
+
+      /* Certifications */
+      .cvp-cert { margin-bottom: 5pt; }
+      .cvp-cert-name { font-size: 7.5pt; font-weight: 700; color: #0f172a; line-height: 1.3; }
+      .cvp-cert-org { font-size: 6.5pt; color: #6b7280; }
+
+      /* Profile summary */
+      .cvp-profile {
+        font-size: 8.5pt;
+        color: #374151;
+        line-height: 1.55;
+      }
+
+      /* Experience & Education items */
+      .cvp-item { margin-bottom: 6pt; padding-bottom: 6pt; border-bottom: 0.5px solid #e2e8f0; }
+      .cvp-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+      .cvp-item-hd { display: flex; justify-content: space-between; align-items: baseline; gap: 4pt; }
+      .cvp-item-title { font-size: 9pt; font-weight: 700; color: #0f172a; line-height: 1.2; }
+      .cvp-item-period {
+        font-size: 7pt;
+        color: #6b7280;
+        white-space: nowrap;
+        flex-shrink: 0;
+        background: #f1f5f9;
+        padding: 1pt 4pt;
+        border-radius: 2px;
+      }
+      .cvp-item-org { font-size: 7.5pt; color: #1e3a8a; font-weight: 600; margin-top: 1pt; }
+      .cvp-item-desc { font-size: 7.5pt; color: #4b5563; margin-top: 2pt; line-height: 1.45; }
+      .cvp-item-tags { display: flex; flex-wrap: wrap; gap: 2pt; margin-top: 3pt; }
+      .cvp-tag {
+        font-size: 6pt;
+        padding: 1pt 4pt;
+        background: #eff6ff;
+        color: #1d4ed8;
+        border-radius: 2px;
+        font-weight: 600;
+        border: 0.5px solid #bfdbfe;
+      }
+
+      /* ═══════════════════════════════
+         PERSONLIGT BREV – SIDA 2
+      ═══════════════════════════════ */
+      #cover-print {
+        page-break-before: always;
+        font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
+        font-size: 10pt;
+        color: #1a1a1a;
+        line-height: 1.65;
+        padding-top: 2pt;
+      }
+
+      .cvr-head-bar {
+        height: 5px;
+        background: #1e3a8a;
+        margin-bottom: 14pt;
+      }
+
+      .cvr-top {
+        display: flex;
+        justify-content: space-between;
         align-items: flex-start;
-        page-break-after: avoid;
+        margin-bottom: 22pt;
       }
 
-      .hero-inner { max-width: 100%; text-align: left; }
-
-      .avatar {
-        width: 72px; height: 72px;
-        font-size: 1.6rem;
-        float: left;
-        margin: 0 1.2rem .5rem 0;
-        background: linear-gradient(135deg, #58a6ff, #3fb950) !important;
+      .cvr-sender-name {
+        font-size: 14pt;
+        font-weight: 800;
+        color: #0f172a;
+        letter-spacing: -0.3pt;
+        line-height: 1;
       }
 
-      .hero-inner h1 { font-size: 22pt; color: #fff !important; }
-      .hero-inner h1 span { color: #58a6ff !important; }
-      .hero-title { color: #8b949e !important; font-size: 10pt; margin-top: .4rem; }
-      .hero-sub { color: #ccc !important; font-size: 9pt; margin: .6rem 0 0; max-width: 100%; }
-
-      .hero-badges { justify-content: flex-start; margin-top: .8rem; }
-      .badge { font-size: 7.5pt; padding: .2rem .55rem; }
-      .badge.blue { color: #58a6ff !important; border-color: #58a6ff !important; background: rgba(88,166,255,.12) !important; }
-      .badge.green { color: #3fb950 !important; border-color: #3fb950 !important; background: rgba(63,185,80,.12) !important; }
-
-      /* Reveal: always visible */
-      .reveal { opacity: 1 !important; transform: none !important; }
-
-      /* Sections */
-      section { padding: 1.6rem 1.5rem !important; }
-      #about { background: #f6f8fa !important; }
-      #skills { background: #f6f8fa !important; }
-      #education { background: #f6f8fa !important; }
-      #certifications { background: #f6f8fa !important; }
-      #languages { background: #f6f8fa !important; }
-
-      .section-label { color: #0969da !important; font-size: 7pt; }
-      .section-title { font-size: 15pt; color: #111 !important; margin-bottom: 1rem !important; }
-
-      /* About grid */
-      .about-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
-      .about-card { background: #fff !important; border: 1px solid #d0d7de !important; padding: 1rem !important; }
-      .about-card h3 { color: #555 !important; font-size: 7.5pt; }
-      .about-card p { color: #111 !important; font-size: 9pt; }
-
-      /* Timeline */
-      .tl-card {
-        background: #fff !important;
-        border: 1px solid #d0d7de !important;
-        padding: .9rem 1.1rem !important;
-        break-inside: avoid;
-      }
-      .tl-card:hover { transform: none !important; border-color: #d0d7de !important; }
-
-      .tl-title { font-size: 10pt; color: #111 !important; }
-      .tl-org { color: #0969da !important; font-size: 9pt; }
-      .tl-period { background: #eaeef2 !important; color: #555 !important; font-size: 7.5pt; }
-      .tl-desc { color: #333 !important; font-size: 8.5pt; }
-
-      .tl-dot { background: #0969da !important; box-shadow: 0 0 0 2px #0969da !important; }
-      .tl-dot.green { background: #1a7f37 !important; box-shadow: 0 0 0 2px #1a7f37 !important; }
-      .tl-line { background: #d0d7de !important; }
-
-      /* Tags */
-      .tag { background: rgba(9,105,218,.08) !important; color: #0969da !important; font-size: 7pt; }
-      .tag.green { background: rgba(26,127,55,.08) !important; color: #1a7f37 !important; }
-
-      /* Skill bars */
-      .skill-group { background: #fff !important; border: 1px solid #d0d7de !important; break-inside: avoid; }
-      .skill-group h3 { color: #555 !important; font-size: 7.5pt; }
-      .skill-name { font-size: 8.5pt; color: #111 !important; }
-      .skill-pct { color: #555 !important; }
-      .skill-bar { background: #eaeef2 !important; }
-      .skill-fill {
-        background: linear-gradient(90deg, #0969da, #1a7f37) !important;
-        transform: scaleX(1) !important;
-        width: calc(var(--w) * 100%) !important;
+      .cvr-sender-title {
+        font-size: 9pt;
+        color: #1e3a8a;
+        font-weight: 600;
+        margin-top: 3pt;
       }
 
-      /* Cert cards */
-      .cert-card { background: #fff !important; border: 1px solid #d0d7de !important; break-inside: avoid; }
-      .cert-info h3 { color: #111 !important; font-size: 9.5pt; }
-      .cert-info p { color: #555 !important; font-size: 8pt; }
+      .cvr-sender-info {
+        font-size: 8pt;
+        color: #4b5563;
+        margin-top: 5pt;
+        line-height: 1.8;
+      }
 
-      /* Lang cards */
-      .lang-card { background: #fff !important; border: 1px solid #d0d7de !important; }
-      .lang-name { color: #111 !important; }
-      .lang-level { color: #555 !important; font-size: 8pt; }
+      .cvr-date-loc {
+        text-align: right;
+        font-size: 9pt;
+        color: #6b7280;
+        line-height: 1.7;
+        padding-top: 3pt;
+      }
 
-      /* Contact */
-      .contact-card { background: #fff !important; border: 1px solid #d0d7de !important; }
-      .contact-link { background: #f6f8fa !important; border: 1px solid #d0d7de !important; color: #111 !important; }
-      .contact-link.btn-primary { background: #0969da !important; color: #fff !important; }
+      .cvr-subject {
+        font-size: 13pt;
+        font-weight: 800;
+        color: #0f172a;
+        margin-bottom: 14pt;
+        padding-bottom: 6pt;
+        border-bottom: 2.5px solid #1e3a8a;
+        letter-spacing: -0.2pt;
+      }
 
-      footer { color: #555 !important; font-size: 8pt; }
+      .cvr-recipient {
+        font-size: 9pt;
+        color: #374151;
+        margin-bottom: 14pt;
+        line-height: 1.6;
+      }
 
-      /* Page breaks */
-      #about { page-break-before: always; }
-      #skills { page-break-before: auto; }
-      #certifications { page-break-before: auto; }
+      .cvr-body p {
+        font-size: 10pt;
+        color: #1a1a1a;
+        margin-bottom: 11pt;
+        line-height: 1.65;
+      }
+
+      .cvr-close { margin-top: 18pt; }
+      .cvr-close-line { font-size: 10pt; color: #1a1a1a; margin-bottom: 22pt; }
+
+      .cvr-sig-name { font-size: 12pt; font-weight: 800; color: #0f172a; }
+      .cvr-sig-title { font-size: 9pt; color: #4b5563; margin-top: 2pt; }
+      .cvr-sig-contact { font-size: 9pt; color: #1e3a8a; margin-top: 3pt; line-height: 1.7; }
     }
   </style>
 </head>
@@ -1121,6 +1219,313 @@
     </div>
   </div>
 </section>
+
+<!-- ═══════════════════════════════════════════════════════
+     CV PRINT – SIDA 1  (dold på skärm, visas vid utskrift)
+════════════════════════════════════════════════════════ -->
+<div id="cv-print">
+
+  <!-- Header -->
+  <div class="cvp-head">
+    <div>
+      <div class="cvp-name">Henrik Norlin Frisemo</div>
+      <div class="cvp-title">Mjukvaruutvecklare · C# &amp; .NET</div>
+    </div>
+    <div class="cvp-contacts">
+      <div>Henriknorfri@gmail.com</div>
+      <div>Kiruna, Norrbotten, Sverige</div>
+      <div>linkedin.com/in/henrik-norlin-frisemo-8826b3180</div>
+    </div>
+  </div>
+  <div class="cvp-divider"></div>
+
+  <!-- Two-column body -->
+  <div class="cvp-body">
+
+    <!-- SIDEBAR -->
+    <div class="cvp-sidebar">
+
+      <div class="cvp-sec">Kompetenser</div>
+
+      <div class="cvp-sk-cat">Backend &amp; Desktop</div>
+      <div class="cvp-skill">
+        <div class="cvp-sk-row"><span>C#</span><span class="cvp-sk-pct">99 %</span></div>
+        <div class="cvp-sk-bar"><div class="cvp-sk-fill" style="width:99%"></div></div>
+      </div>
+      <div class="cvp-skill">
+        <div class="cvp-sk-row"><span>.NET Framework / Core</span><span class="cvp-sk-pct">88 %</span></div>
+        <div class="cvp-sk-bar"><div class="cvp-sk-fill" style="width:88%"></div></div>
+      </div>
+      <div class="cvp-skill">
+        <div class="cvp-sk-row"><span>OOP-design</span><span class="cvp-sk-pct">85 %</span></div>
+        <div class="cvp-sk-bar"><div class="cvp-sk-fill" style="width:85%"></div></div>
+      </div>
+      <div class="cvp-skill">
+        <div class="cvp-sk-row"><span>WPF</span><span class="cvp-sk-pct">78 %</span></div>
+        <div class="cvp-sk-bar"><div class="cvp-sk-fill" style="width:78%"></div></div>
+      </div>
+      <div class="cvp-skill">
+        <div class="cvp-sk-row"><span>SQL Server</span><span class="cvp-sk-pct">72 %</span></div>
+        <div class="cvp-sk-bar"><div class="cvp-sk-fill" style="width:72%"></div></div>
+      </div>
+
+      <div class="cvp-sk-cat">Verktyg &amp; Metodik</div>
+      <div class="cvp-skill">
+        <div class="cvp-sk-row"><span>Agile / Scrum</span><span class="cvp-sk-pct">90 %</span></div>
+        <div class="cvp-sk-bar"><div class="cvp-sk-fill" style="width:90%"></div></div>
+      </div>
+      <div class="cvp-skill">
+        <div class="cvp-sk-row"><span>Visual Studio</span><span class="cvp-sk-pct">88 %</span></div>
+        <div class="cvp-sk-bar"><div class="cvp-sk-fill" style="width:88%"></div></div>
+      </div>
+      <div class="cvp-skill">
+        <div class="cvp-sk-row"><span>Git</span><span class="cvp-sk-pct">85 %</span></div>
+        <div class="cvp-sk-bar"><div class="cvp-sk-fill" style="width:85%"></div></div>
+      </div>
+      <div class="cvp-skill">
+        <div class="cvp-sk-row"><span>JetBrains Rider</span><span class="cvp-sk-pct">78 %</span></div>
+        <div class="cvp-sk-bar"><div class="cvp-sk-fill" style="width:78%"></div></div>
+      </div>
+
+      <div class="cvp-sk-cat">Frontend</div>
+      <div class="cvp-skill">
+        <div class="cvp-sk-row"><span>HTML5 / CSS3</span><span class="cvp-sk-pct">80 %</span></div>
+        <div class="cvp-sk-bar"><div class="cvp-sk-fill" style="width:80%"></div></div>
+      </div>
+      <div class="cvp-skill">
+        <div class="cvp-sk-row"><span>JavaScript</span><span class="cvp-sk-pct">65 %</span></div>
+        <div class="cvp-sk-bar"><div class="cvp-sk-fill" style="width:65%"></div></div>
+      </div>
+
+      <div class="cvp-sec">Språk</div>
+      <div class="cvp-lang">
+        <div class="cvp-lang-name">Svenska</div>
+        <div class="cvp-lang-lvl">Modersmål</div>
+      </div>
+      <div class="cvp-lang">
+        <div class="cvp-lang-name">Engelska</div>
+        <div class="cvp-lang-lvl">Professionell nivå</div>
+      </div>
+
+      <div class="cvp-sec">Certifieringar &amp; Meriter</div>
+      <div class="cvp-cert">
+        <div class="cvp-cert-name">Professional Scrum Master I</div>
+        <div class="cvp-cert-org">Scrum.org · Mars 2019</div>
+      </div>
+      <div class="cvp-cert">
+        <div class="cvp-cert-name">The Complete Web Developer 2018</div>
+        <div class="cvp-cert-org">Udemy · 2017–2018</div>
+      </div>
+      <div class="cvp-cert">
+        <div class="cvp-cert-name">Responsive Web Design &amp; JavaScript</div>
+        <div class="cvp-cert-org">freeCodeCamp · 2017–2018</div>
+      </div>
+      <div class="cvp-cert">
+        <div class="cvp-cert-name">Styrelseledamot – Medicinsk Biologi</div>
+        <div class="cvp-cert-org">Studentsektion · 2011–2013</div>
+      </div>
+
+    </div><!-- /sidebar -->
+
+    <!-- MAIN CONTENT -->
+    <div class="cvp-main">
+
+      <div class="cvp-sec">Profil</div>
+      <p class="cvp-profile">
+        Passionerad mjukvaruutvecklare med över sex års erfarenhet av systemutveckling
+        inom försvars- och kommunikationsteknik hos Comrod Mission Systems. Specialiserad
+        på C# och .NET-ekosystemet med bred kompetens inom OOP, WPF och databaser.
+        Akademisk bakgrund i biomedicinsk vetenskap ger ett analytiskt och metodiskt
+        förhållningssätt till problemlösning. Certifierad Professional Scrum Master I
+        med erfarenhet av agila team och kontinuerlig leverans.
+      </p>
+
+      <div class="cvp-sec">Arbetslivserfarenhet</div>
+
+      <div class="cvp-item">
+        <div class="cvp-item-hd">
+          <div class="cvp-item-title">Mjukvaruutvecklare</div>
+          <div class="cvp-item-period">2019 – Nuvarande</div>
+        </div>
+        <div class="cvp-item-org">Comrod Mission Systems · Linköping</div>
+        <div class="cvp-item-desc">
+          Systemutveckling inom försvars- och kommunikationsteknik. Bygger robusta
+          mjukvarulösningar i C# och .NET med höga krav på tillförlitlighet och prestanda.
+          Arbetar i agila team med tät kommunikation och iterativa leveranser.
+        </div>
+        <div class="cvp-item-tags">
+          <span class="cvp-tag">C#</span><span class="cvp-tag">.NET</span><span class="cvp-tag">WPF</span>
+          <span class="cvp-tag">SQL Server</span><span class="cvp-tag">Git</span>
+          <span class="cvp-tag">Visual Studio</span><span class="cvp-tag">Rider</span>
+          <span class="cvp-tag">Agile</span>
+        </div>
+      </div>
+
+      <div class="cvp-item">
+        <div class="cvp-item-hd">
+          <div class="cvp-item-title">Junior IT-konsult</div>
+          <div class="cvp-item-period">2019</div>
+        </div>
+        <div class="cvp-item-org">Academic Work · Stockholm/Linköping</div>
+        <div class="cvp-item-desc">
+          Startade karriären som junior IT-konsult direkt efter intensivt
+          utbildningsprogram. Bidrog till projekt med moderna agila metoder och .NET-utveckling.
+        </div>
+        <div class="cvp-item-tags">
+          <span class="cvp-tag">C#</span><span class="cvp-tag">.NET</span><span class="cvp-tag">Scrum</span>
+        </div>
+      </div>
+
+      <div class="cvp-item">
+        <div class="cvp-item-hd">
+          <div class="cvp-item-title">Webbutvecklare (Frilans)</div>
+          <div class="cvp-item-period">2017 – 2018</div>
+        </div>
+        <div class="cvp-item-org">Eget projekt</div>
+        <div class="cvp-item-desc">
+          Självstudier och praktisk webbutveckling. Bygde webbplatser och
+          fördjupade sig i HTML, CSS och JavaScript via Udemy och freeCodeCamp.
+        </div>
+        <div class="cvp-item-tags">
+          <span class="cvp-tag">HTML</span><span class="cvp-tag">CSS</span><span class="cvp-tag">JavaScript</span>
+        </div>
+      </div>
+
+      <div class="cvp-item">
+        <div class="cvp-item-hd">
+          <div class="cvp-item-title">Bartender</div>
+          <div class="cvp-item-period">2010 – 2014</div>
+        </div>
+        <div class="cvp-item-org">Diverse arbetsgivare</div>
+        <div class="cvp-item-desc">
+          Serviceinriktad roll som stärkte kommunikation, social förmåga och
+          förmågan att arbeta effektivt under högt tempo.
+        </div>
+      </div>
+
+      <div class="cvp-sec">Utbildning</div>
+
+      <div class="cvp-item">
+        <div class="cvp-item-hd">
+          <div class="cvp-item-title">C# .NET – Intensivprogram</div>
+          <div class="cvp-item-period">2019</div>
+        </div>
+        <div class="cvp-item-org">Academy by Academic Work</div>
+        <div class="cvp-item-desc">
+          Praktiskt och intensivt utbildningsprogram med fokus på OOP, C# .NET,
+          SQL Server och agilt teamarbete. Ledde direkt till anställning som IT-konsult.
+        </div>
+        <div class="cvp-item-tags">
+          <span class="cvp-tag">OOP</span><span class="cvp-tag">C# .NET</span>
+          <span class="cvp-tag">SQL Server</span><span class="cvp-tag">Scrum</span>
+          <span class="cvp-tag">UX/UI</span>
+        </div>
+      </div>
+
+      <div class="cvp-item">
+        <div class="cvp-item-hd">
+          <div class="cvp-item-title">Medicinsk Biologi – Kandidatexamen</div>
+          <div class="cvp-item-period">2010 – 2015</div>
+        </div>
+        <div class="cvp-item-org">Linnéuniversitetet</div>
+        <div class="cvp-item-desc">
+          Gedigen universitetsutbildning inom biomedicinsk vetenskap. Tränade analytiskt
+          och vetenskapligt tänkande. Engagerad i studentliv som styrelseledamot i
+          sektionen för Medicinsk Biologi (2011–2013).
+        </div>
+        <div class="cvp-item-tags">
+          <span class="cvp-tag">Biomedicin</span><span class="cvp-tag">Vetenskap</span>
+          <span class="cvp-tag">Analytisk metodik</span>
+        </div>
+      </div>
+
+    </div><!-- /main -->
+  </div><!-- /body -->
+</div><!-- /#cv-print -->
+
+
+<!-- ═══════════════════════════════════════════════════════
+     PERSONLIGT BREV – SIDA 2  (dold på skärm, visas vid utskrift)
+════════════════════════════════════════════════════════ -->
+<div id="cover-print">
+
+  <div class="cvr-head-bar"></div>
+
+  <div class="cvr-top">
+    <div>
+      <div class="cvr-sender-name">Henrik Norlin Frisemo</div>
+      <div class="cvr-sender-title">Mjukvaruutvecklare · C# &amp; .NET</div>
+      <div class="cvr-sender-info">
+        Henriknorfri@gmail.com<br>
+        Kiruna, Norrbotten, Sverige<br>
+        linkedin.com/in/henrik-norlin-frisemo-8826b3180
+      </div>
+    </div>
+    <div class="cvr-date-loc">
+      Kiruna, mars 2026
+    </div>
+  </div>
+
+  <div class="cvr-recipient">
+    Till rekryteringsansvarig
+  </div>
+
+  <div class="cvr-subject">Ansökan – Mjukvaruutvecklare</div>
+
+  <div class="cvr-body">
+    <p>
+      Med stor entusiasm skickar jag in min ansökan till er organisation.
+      Jag är en passionerad mjukvaruutvecklare med över sex års erfarenhet
+      av professionell systemutveckling, och jag ser fram emot möjligheten
+      att bidra med min kompetens och mitt engagemang till ert team.
+    </p>
+
+    <p>
+      Sedan 2019 arbetar jag som mjukvaruutvecklare hos Comrod Mission Systems
+      i Linköping, där jag dagligen arbetar med avancerade lösningar i C# och
+      .NET Framework/Core. Jag har bred erfarenhet av WPF-applikationer, SQL
+      Server-databaser och objektorienterad design – alltid i en agil miljö
+      med höga krav på tillförlitlighet och prestanda. Jag är certifierad
+      Professional Scrum Master I och trivs i täta, tvärfunktionella team
+      där kommunikation och iterativa förbättringar är centrala.
+    </p>
+
+    <p>
+      Min ovanliga bakgrund inom biomedicinsk vetenskap är något jag bär med
+      stolthet. En kandidatexamen i medicinsk biologi har format mitt sätt att
+      tänka: systematiskt, noggrant och med fokus på att förstå problemet på
+      djupet innan jag söker lösningen. Dessa egenskaper är direkt överförbara
+      till mjukvaruutveckling och har gång på gång visat sig värdefulla i
+      komplexa tekniska projekt.
+    </p>
+
+    <p>
+      Jag är nyfiken, initiativrik och motiveras av att lösa utmanande
+      problem tillsammans med kompetenta kollegor. Jag skriver gärna ren,
+      välstrukturerad kod och strävar alltid efter att leverera lösningar
+      som är robusta på lång sikt. Utöver det tekniska bidrar jag gärna med
+      en positiv attityd och ett genuint engagemang för teamets gemensamma mål.
+    </p>
+
+    <p>
+      Jag ser fram emot möjligheten att berätta mer om mig själv och hur jag
+      kan bidra till er verksamhet. Tveka inte att höra av er via e-post
+      eller LinkedIn – jag är alltid öppen för ett samtal.
+    </p>
+  </div>
+
+  <div class="cvr-close">
+    <div class="cvr-close-line">Med vänliga hälsningar,</div>
+    <div class="cvr-sig-name">Henrik Norlin Frisemo</div>
+    <div class="cvr-sig-title">Mjukvaruutvecklare · PSM I Certified</div>
+    <div class="cvr-sig-contact">
+      Henriknorfri@gmail.com<br>
+      linkedin.com/in/henrik-norlin-frisemo-8826b3180
+    </div>
+  </div>
+
+</div><!-- /#cover-print -->
+
 
 <footer>
   <p>© 2026 Henrik Norlin Frisemo · Mjukvaruutvecklare</p>
