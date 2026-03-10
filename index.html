@@ -532,20 +532,22 @@
 
     /* ── PRINT / PDF STYLES ── */
     @media print {
-      * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; box-sizing: border-box; margin: 0; padding: 0; }
+      * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; color-adjust: exact !important; box-sizing: border-box; margin: 0; padding: 0; }
 
-      @page { size: A4; margin: 12mm 15mm; }
+      @page { size: A4; margin: 14mm 16mm; }
 
       /* Hide all screen content, show only print sections */
       body > * { display: none !important; }
+      nav, #hero, #about, #experience, #education, #skills,
+      #certifications, #languages, #contact, footer, .pdf-btn { display: none !important; }
       #cv-print, #cover-print { display: block !important; }
 
       body {
-        background: #fff;
+        background: #ffffff !important;
         font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
-        font-size: 9pt;
+        font-size: 9.5pt;
         color: #1a1a1a;
-        line-height: 1.4;
+        line-height: 1.45;
       }
 
       /* ═══════════════════════════════
@@ -558,24 +560,24 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        border-top: 5px solid #1e3a8a;
-        padding-top: 9pt;
-        padding-bottom: 8pt;
-        margin-bottom: 4pt;
+        border-top: 6px solid #1e3a8a;
+        padding-top: 10pt;
+        padding-bottom: 9pt;
+        margin-bottom: 5pt;
         gap: 10pt;
       }
 
-      .cvp-head-left { display: flex; align-items: center; gap: 10pt; }
+      .cvp-head-left { display: flex; align-items: center; gap: 11pt; }
 
       /* Profile photo */
       .cvp-photo {
         position: relative;
-        width: 64pt;
-        height: 64pt;
+        width: 68pt;
+        height: 68pt;
         border-radius: 50%;
         overflow: hidden;
         flex-shrink: 0;
-        border: 2.5px solid #1e3a8a;
+        border: 3px solid #1e3a8a;
         background: #1e3a8a;
       }
 
@@ -595,14 +597,14 @@
         position: absolute;
         top: 50%; left: 50%;
         transform: translate(-50%, -50%);
-        font-size: 14pt;
+        font-size: 15pt;
         font-weight: 800;
         color: #fff;
         letter-spacing: -0.5pt;
       }
 
       .cvp-name {
-        font-size: 21pt;
+        font-size: 22pt;
         font-weight: 800;
         color: #0f172a;
         letter-spacing: -0.5pt;
@@ -610,7 +612,7 @@
       }
 
       .cvp-title {
-        font-size: 10.5pt;
+        font-size: 11pt;
         color: #1e3a8a;
         font-weight: 600;
         margin-top: 3pt;
@@ -618,83 +620,84 @@
 
       .cvp-contacts {
         text-align: right;
-        font-size: 7.5pt;
+        font-size: 8.5pt;
         color: #4b5563;
-        line-height: 1.85;
+        line-height: 1.9;
         flex-shrink: 0;
       }
 
-      .cvp-divider { height: 1px; background: #cbd5e1; margin-bottom: 8pt; }
+      .cvp-divider { height: 1.5px; background: #cbd5e1; margin-bottom: 9pt; }
 
       /* Two-column body */
-      .cvp-body { display: flex; gap: 13pt; align-items: flex-start; }
-      .cvp-sidebar { width: 33%; flex-shrink: 0; }
+      .cvp-body { display: flex; gap: 14pt; align-items: flex-start; }
+      .cvp-sidebar { width: 32%; flex-shrink: 0; }
       .cvp-main { flex: 1; min-width: 0; }
 
       /* Section titles */
       .cvp-sec {
-        font-size: 6pt;
+        font-size: 7.5pt;
         font-weight: 700;
         text-transform: uppercase;
-        letter-spacing: 1.8pt;
+        letter-spacing: 1.5pt;
         color: #1e3a8a;
         border-bottom: 1.5px solid #1e3a8a;
-        padding-bottom: 2pt;
-        margin-bottom: 5pt;
-        margin-top: 9pt;
+        padding-bottom: 2.5pt;
+        margin-bottom: 6pt;
+        margin-top: 10pt;
       }
       .cvp-sidebar .cvp-sec:first-child,
       .cvp-main .cvp-sec:first-child { margin-top: 0; }
 
       /* Skills */
-      .cvp-skill { margin-bottom: 4pt; }
+      .cvp-skill { margin-bottom: 5pt; }
       .cvp-sk-row {
         display: flex;
         justify-content: space-between;
-        font-size: 7.5pt;
+        font-size: 8.5pt;
         font-weight: 600;
         color: #1a1a1a;
-        margin-bottom: 1.5pt;
+        margin-bottom: 2pt;
       }
-      .cvp-sk-pct { color: #6b7280; font-weight: 400; font-size: 7pt; }
-      .cvp-sk-bar { height: 3.5px; background: #e2e8f0; border-radius: 2px; overflow: hidden; }
-      .cvp-sk-fill { height: 3.5px; background: #1e3a8a; border-radius: 2px; }
+      .cvp-sk-pct { color: #6b7280; font-weight: 400; font-size: 7.5pt; }
+      .cvp-sk-bar { height: 5px; background: #e2e8f0; border-radius: 3px; overflow: hidden; }
+      .cvp-sk-fill { height: 5px; background: #1e3a8a; border-radius: 3px; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
 
       /* Skill category label */
       .cvp-sk-cat {
-        font-size: 6.5pt;
+        font-size: 7.5pt;
         font-weight: 700;
         color: #6b7280;
         text-transform: uppercase;
         letter-spacing: 0.8pt;
-        margin-top: 5pt;
+        margin-top: 6pt;
         margin-bottom: 3pt;
       }
       .cvp-sk-cat:first-child { margin-top: 0; }
 
       /* Languages */
       .cvp-lang { margin-bottom: 5pt; }
-      .cvp-lang-name { font-size: 8pt; font-weight: 700; color: #0f172a; }
-      .cvp-lang-lvl { font-size: 7pt; color: #6b7280; }
+      .cvp-lang-name { font-size: 8.5pt; font-weight: 700; color: #0f172a; }
+      .cvp-lang-lvl { font-size: 7.5pt; color: #6b7280; }
 
       /* Certifications */
       .cvp-cert { margin-bottom: 5pt; }
-      .cvp-cert-name { font-size: 7.5pt; font-weight: 700; color: #0f172a; line-height: 1.3; }
-      .cvp-cert-org { font-size: 6.5pt; color: #6b7280; }
+      .cvp-cert-name { font-size: 8pt; font-weight: 700; color: #0f172a; line-height: 1.35; }
+      .cvp-cert-org { font-size: 7pt; color: #6b7280; }
 
       /* Profile summary */
       .cvp-profile {
-        font-size: 8.5pt;
+        font-size: 9pt;
         color: #374151;
-        line-height: 1.55;
+        line-height: 1.6;
+        margin-bottom: 2pt;
       }
 
       /* Experience & Education items */
-      .cvp-item { margin-bottom: 6pt; padding-bottom: 6pt; border-bottom: 0.5px solid #e2e8f0; page-break-inside: avoid; break-inside: avoid; }
+      .cvp-item { margin-bottom: 7pt; padding-bottom: 7pt; border-bottom: 0.75px solid #e2e8f0; page-break-inside: avoid; break-inside: avoid; }
       .cvp-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
 
       .cvp-item-hd { display: flex; justify-content: space-between; align-items: baseline; gap: 4pt; }
-      .cvp-item-title { font-size: 9pt; font-weight: 700; color: #0f172a; line-height: 1.2; }
+      .cvp-item-title { font-size: 9.5pt; font-weight: 700; color: #0f172a; line-height: 1.2; }
       .cvp-item-period {
         font-size: 7pt;
         color: #6b7280;
@@ -703,18 +706,22 @@
         background: #f1f5f9;
         padding: 1pt 4pt;
         border-radius: 2px;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
       }
-      .cvp-item-org { font-size: 7.5pt; color: #1e3a8a; font-weight: 600; margin-top: 1pt; }
-      .cvp-item-desc { font-size: 7.5pt; color: #4b5563; margin-top: 2pt; line-height: 1.45; }
-      .cvp-item-tags { display: flex; flex-wrap: wrap; gap: 2pt; margin-top: 3pt; }
+      .cvp-item-org { font-size: 8pt; color: #1e3a8a; font-weight: 600; margin-top: 1.5pt; }
+      .cvp-item-desc { font-size: 8pt; color: #4b5563; margin-top: 2.5pt; line-height: 1.5; }
+      .cvp-item-tags { display: flex; flex-wrap: wrap; gap: 2.5pt; margin-top: 3.5pt; }
       .cvp-tag {
-        font-size: 6pt;
-        padding: 1pt 4pt;
+        font-size: 6.5pt;
+        padding: 1pt 4.5pt;
         background: #eff6ff;
         color: #1d4ed8;
         border-radius: 2px;
         font-weight: 600;
         border: 0.5px solid #bfdbfe;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
       }
 
       /* ═══════════════════════════════
@@ -725,24 +732,26 @@
         font-size: 10pt;
         color: #1a1a1a;
         line-height: 1.65;
-        padding-top: 2pt;
+        padding-top: 0;
       }
 
       .cvr-head-bar {
-        height: 5px;
+        height: 8px;
         background: #1e3a8a;
-        margin-bottom: 14pt;
+        margin-bottom: 16pt;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
       }
 
       .cvr-top {
         display: flex;
         justify-content: space-between;
         align-items: flex-start;
-        margin-bottom: 22pt;
+        margin-bottom: 24pt;
       }
 
       .cvr-sender-name {
-        font-size: 14pt;
+        font-size: 15pt;
         font-weight: 800;
         color: #0f172a;
         letter-spacing: -0.3pt;
@@ -750,14 +759,14 @@
       }
 
       .cvr-sender-title {
-        font-size: 9pt;
+        font-size: 9.5pt;
         color: #1e3a8a;
         font-weight: 600;
         margin-top: 3pt;
       }
 
       .cvr-sender-info {
-        font-size: 8pt;
+        font-size: 8.5pt;
         color: #4b5563;
         margin-top: 5pt;
         line-height: 1.8;
@@ -765,49 +774,49 @@
 
       .cvr-date-loc {
         text-align: right;
-        font-size: 9pt;
+        font-size: 9.5pt;
         color: #6b7280;
         line-height: 1.7;
         padding-top: 3pt;
       }
 
       .cvr-subject {
-        font-size: 13pt;
+        font-size: 14pt;
         font-weight: 800;
         color: #0f172a;
         margin-bottom: 14pt;
-        padding-bottom: 6pt;
+        padding-bottom: 7pt;
         border-bottom: 2.5px solid #1e3a8a;
         letter-spacing: -0.2pt;
       }
 
       .cvr-recipient {
-        font-size: 9pt;
+        font-size: 9.5pt;
         color: #374151;
         margin-bottom: 14pt;
         line-height: 1.6;
       }
 
       .cvr-body p {
-        font-size: 10pt;
+        font-size: 10.5pt;
         color: #1a1a1a;
-        margin-bottom: 11pt;
-        line-height: 1.65;
+        margin-bottom: 12pt;
+        line-height: 1.7;
       }
 
-      .cvr-close { margin-top: 18pt; }
-      .cvr-close-line { font-size: 10pt; color: #1a1a1a; margin-bottom: 22pt; }
+      .cvr-close { margin-top: 20pt; }
+      .cvr-close-line { font-size: 10.5pt; color: #1a1a1a; margin-bottom: 24pt; }
 
-      .cvr-sig-name { font-size: 12pt; font-weight: 800; color: #0f172a; }
-      .cvr-sig-title { font-size: 9pt; color: #4b5563; margin-top: 2pt; }
-      .cvr-sig-contact { font-size: 9pt; color: #1e3a8a; margin-top: 3pt; line-height: 1.7; }
+      .cvr-sig-name { font-size: 12.5pt; font-weight: 800; color: #0f172a; }
+      .cvr-sig-title { font-size: 9.5pt; color: #4b5563; margin-top: 2pt; }
+      .cvr-sig-contact { font-size: 9.5pt; color: #1e3a8a; margin-top: 3pt; line-height: 1.7; }
     }
   </style>
 </head>
 <body>
 
 <!-- PDF BUTTON -->
-<button class="pdf-btn" onclick="window.print()" title="Ladda ner som PDF">
+<button class="pdf-btn" onclick="printCV()" title="Ladda ner som PDF">
   <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M2.5 1A1.5 1.5 0 0 0 1 2.5v11A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-8L10 1H2.5z" stroke="currentColor" stroke-width="1.25" fill="none"/>
     <path d="M9.5 1v4H14" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/>
@@ -1614,6 +1623,42 @@
     sections.forEach(s => { if (window.scrollY >= s.offsetTop - 120) current = s.id; });
     navLinks.forEach(a => {
       a.style.color = a.getAttribute('href') === '#' + current ? 'var(--text)' : '';
+    });
+  });
+
+  // ── PDF PRINT ──────────────────────────────────────────
+  function printCV() {
+    // Ensure profile photo is decoded before printing
+    const img = document.querySelector('.cvp-photo img');
+    if (img) {
+      if (!img.complete || img.naturalWidth === 0) {
+        // Image not ready – show initials instead so layout is stable
+        img.style.display = 'none';
+        const initials = img.parentNode.querySelector('.cvp-photo-initials');
+        if (initials) initials.style.cssText = 'display:flex;width:100%;height:100%;align-items:center;justify-content:center;';
+      }
+    }
+
+    // Force all skill bar fills to be explicitly styled for print
+    document.querySelectorAll('.cvp-sk-fill').forEach(fill => {
+      fill.style.backgroundColor = '#1e3a8a';
+    });
+
+    // Force tag backgrounds
+    document.querySelectorAll('.cvp-tag').forEach(tag => {
+      tag.style.backgroundColor = '#eff6ff';
+    });
+
+    window.print();
+  }
+
+  // Restore dynamic styles after printing
+  window.addEventListener('afterprint', () => {
+    document.querySelectorAll('.cvp-sk-fill').forEach(fill => {
+      fill.style.backgroundColor = '';
+    });
+    document.querySelectorAll('.cvp-tag').forEach(tag => {
+      tag.style.backgroundColor = '';
     });
   });
 </script>
