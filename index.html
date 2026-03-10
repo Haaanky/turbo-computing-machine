@@ -557,11 +557,42 @@
       .cvp-head {
         display: flex;
         justify-content: space-between;
-        align-items: flex-end;
+        align-items: center;
         border-top: 5px solid #1e3a8a;
         padding-top: 9pt;
         padding-bottom: 8pt;
         margin-bottom: 4pt;
+        gap: 10pt;
+      }
+
+      .cvp-head-left { display: flex; align-items: center; gap: 10pt; }
+
+      /* Profile photo */
+      .cvp-photo {
+        width: 56pt;
+        height: 56pt;
+        border-radius: 50%;
+        overflow: hidden;
+        flex-shrink: 0;
+        border: 2px solid #1e3a8a;
+        background: #1e3a8a;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .cvp-photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      .cvp-photo-initials {
+        font-size: 14pt;
+        font-weight: 800;
+        color: #fff;
+        letter-spacing: -0.5pt;
       }
 
       .cvp-name {
@@ -584,6 +615,7 @@
         font-size: 7.5pt;
         color: #4b5563;
         line-height: 1.85;
+        flex-shrink: 0;
       }
 
       .cvp-divider { height: 1px; background: #cbd5e1; margin-bottom: 8pt; }
@@ -1227,9 +1259,20 @@
 
   <!-- Header -->
   <div class="cvp-head">
-    <div>
-      <div class="cvp-name">Henrik Norlin Frisemo</div>
-      <div class="cvp-title">Mjukvaruutvecklare · C# &amp; .NET</div>
+    <div class="cvp-head-left">
+      <!-- Profilbild: byt ut src mot din egna bild-URL eller base64 för att visa riktigt foto -->
+      <div class="cvp-photo">
+        <img
+          src="PHOTO_URL_HERE"
+          alt="Henrik Norlin Frisemo"
+          onerror="this.style.display='none';this.parentNode.querySelector('.cvp-photo-initials').style.display='flex'"
+        >
+        <span class="cvp-photo-initials" style="display:flex;width:100%;height:100%;align-items:center;justify-content:center">HNF</span>
+      </div>
+      <div>
+        <div class="cvp-name">Henrik Norlin Frisemo</div>
+        <div class="cvp-title">Mjukvaruutvecklare · C# &amp; .NET</div>
+      </div>
     </div>
     <div class="cvp-contacts">
       <div>Henriknorfri@gmail.com</div>
