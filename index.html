@@ -534,7 +534,7 @@
     @media print {
       * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; color-adjust: exact !important; box-sizing: border-box; margin: 0; padding: 0; }
 
-      @page { size: A4; margin: 14mm 16mm; }
+      @page { size: A4; margin: 10mm 14mm; }
 
       /* Hide all screen content, show only print sections */
       body > * { display: none !important; }
@@ -545,9 +545,9 @@
       body {
         background: #ffffff !important;
         font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
-        font-size: 9.5pt;
+        font-size: 9pt;
         color: #1a1a1a;
-        line-height: 1.45;
+        line-height: 1.4;
       }
 
       /* ═══════════════════════════════
@@ -561,9 +561,9 @@
         justify-content: space-between;
         align-items: center;
         border-top: 6px solid #1e3a8a;
-        padding-top: 10pt;
-        padding-bottom: 9pt;
-        margin-bottom: 5pt;
+        padding-top: 8pt;
+        padding-bottom: 7pt;
+        margin-bottom: 4pt;
         gap: 10pt;
       }
 
@@ -641,15 +641,15 @@
         letter-spacing: 1.5pt;
         color: #1e3a8a;
         border-bottom: 1.5px solid #1e3a8a;
-        padding-bottom: 2.5pt;
-        margin-bottom: 6pt;
-        margin-top: 10pt;
+        padding-bottom: 2pt;
+        margin-bottom: 5pt;
+        margin-top: 7pt;
       }
       .cvp-sidebar .cvp-sec:first-child,
       .cvp-main .cvp-sec:first-child { margin-top: 0; }
 
       /* Skills */
-      .cvp-skill { margin-bottom: 5pt; }
+      .cvp-skill { margin-bottom: 3.5pt; }
       .cvp-sk-row {
         display: flex;
         justify-content: space-between;
@@ -669,8 +669,8 @@
         color: #6b7280;
         text-transform: uppercase;
         letter-spacing: 0.8pt;
-        margin-top: 6pt;
-        margin-bottom: 3pt;
+        margin-top: 4pt;
+        margin-bottom: 2pt;
       }
       .cvp-sk-cat:first-child { margin-top: 0; }
 
@@ -693,11 +693,11 @@
       }
 
       /* Experience & Education items */
-      .cvp-item { margin-bottom: 7pt; padding-bottom: 7pt; border-bottom: 0.75px solid #e2e8f0; page-break-inside: avoid; break-inside: avoid; }
+      .cvp-item { margin-bottom: 5pt; padding-bottom: 5pt; border-bottom: 0.75px solid #e2e8f0; page-break-inside: avoid; break-inside: avoid; }
       .cvp-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
 
       .cvp-item-hd { display: flex; justify-content: space-between; align-items: baseline; gap: 4pt; }
-      .cvp-item-title { font-size: 9.5pt; font-weight: 700; color: #0f172a; line-height: 1.2; }
+      .cvp-item-title { font-size: 8.5pt; font-weight: 700; color: #0f172a; line-height: 1.2; }
       .cvp-item-period {
         font-size: 7pt;
         color: #6b7280;
@@ -709,9 +709,8 @@
         -webkit-print-color-adjust: exact !important;
         print-color-adjust: exact !important;
       }
-      .cvp-item-org { font-size: 8pt; color: #1e3a8a; font-weight: 600; margin-top: 1.5pt; }
-      .cvp-item-desc { font-size: 8pt; color: #4b5563; margin-top: 2.5pt; line-height: 1.5; }
-      .cvp-item-tags { display: flex; flex-wrap: wrap; gap: 2.5pt; margin-top: 3.5pt; }
+      .cvp-item-org { font-size: 7.5pt; color: #1e3a8a; font-weight: 600; margin-top: 1pt; }
+      .cvp-item-desc { font-size: 7.5pt; color: #4b5563; margin-top: 2pt; line-height: 1.4; }
       .cvp-tag {
         font-size: 6.5pt;
         padding: 1pt 4.5pt;
@@ -1050,7 +1049,7 @@
           <div class="tl-header">
             <div>
               <div class="tl-title">Medicinsk Biologi</div>
-              <div class="tl-org">Universitet</div>
+              <div class="tl-org">Linköpings universitet</div>
             </div>
             <span class="tl-period">2010 – 2015</span>
           </div>
@@ -1147,16 +1146,16 @@
           <div class="skill-bar"><div class="skill-fill" style="--w:.90"></div></div>
         </div>
         <div class="skill-item">
-          <span class="skill-name">JetBrains Rider <span class="skill-pct">78%</span></span>
-          <div class="skill-bar"><div class="skill-fill" style="--w:.78"></div></div>
+          <span class="skill-name">JetBrains Rider <span class="skill-pct">92%</span></span>
+          <div class="skill-bar"><div class="skill-fill" style="--w:.92"></div></div>
         </div>
         <div class="skill-item">
-          <span class="skill-name">Git <span class="skill-pct">85%</span></span>
-          <div class="skill-bar"><div class="skill-fill" style="--w:.85"></div></div>
+          <span class="skill-name">Git <span class="skill-pct">90%</span></span>
+          <div class="skill-bar"><div class="skill-fill" style="--w:.90"></div></div>
         </div>
         <div class="skill-item">
-          <span class="skill-name">Visual Studio <span class="skill-pct">88%</span></span>
-          <div class="skill-bar"><div class="skill-fill" style="--w:.88"></div></div>
+          <span class="skill-name">Visual Studio <span class="skill-pct">72%</span></span>
+          <div class="skill-bar"><div class="skill-fill" style="--w:.72"></div></div>
         </div>
       </div>
 
@@ -1169,6 +1168,22 @@
         <div class="skill-item">
           <span class="skill-name">Vetenskaplig metodik <span class="skill-pct">85%</span></span>
           <div class="skill-bar"><div class="skill-fill" style="--w:.85"></div></div>
+        </div>
+      </div>
+
+      <div class="skill-group reveal">
+        <h3>AI &amp; Vibekodning</h3>
+        <div class="skill-item">
+          <span class="skill-name">AI-promptning <span class="skill-pct">88%</span></span>
+          <div class="skill-bar"><div class="skill-fill" style="--w:.88"></div></div>
+        </div>
+        <div class="skill-item">
+          <span class="skill-name">Vibekodning <span class="skill-pct">85%</span></span>
+          <div class="skill-bar"><div class="skill-fill" style="--w:.85"></div></div>
+        </div>
+        <div class="skill-item">
+          <span class="skill-name">Claude / ChatGPT <span class="skill-pct">90%</span></span>
+          <div class="skill-bar"><div class="skill-fill" style="--w:.90"></div></div>
         </div>
       </div>
 
@@ -1332,16 +1347,16 @@
         <div class="cvp-sk-bar"><div class="cvp-sk-fill" style="width:90%"></div></div>
       </div>
       <div class="cvp-skill">
-        <div class="cvp-sk-row"><span>Visual Studio</span><span class="cvp-sk-pct">88 %</span></div>
-        <div class="cvp-sk-bar"><div class="cvp-sk-fill" style="width:88%"></div></div>
+        <div class="cvp-sk-row"><span>Visual Studio</span><span class="cvp-sk-pct">72 %</span></div>
+        <div class="cvp-sk-bar"><div class="cvp-sk-fill" style="width:72%"></div></div>
       </div>
       <div class="cvp-skill">
-        <div class="cvp-sk-row"><span>Git</span><span class="cvp-sk-pct">85 %</span></div>
-        <div class="cvp-sk-bar"><div class="cvp-sk-fill" style="width:85%"></div></div>
+        <div class="cvp-sk-row"><span>Git</span><span class="cvp-sk-pct">90 %</span></div>
+        <div class="cvp-sk-bar"><div class="cvp-sk-fill" style="width:90%"></div></div>
       </div>
       <div class="cvp-skill">
-        <div class="cvp-sk-row"><span>JetBrains Rider</span><span class="cvp-sk-pct">78 %</span></div>
-        <div class="cvp-sk-bar"><div class="cvp-sk-fill" style="width:78%"></div></div>
+        <div class="cvp-sk-row"><span>JetBrains Rider</span><span class="cvp-sk-pct">92 %</span></div>
+        <div class="cvp-sk-bar"><div class="cvp-sk-fill" style="width:92%"></div></div>
       </div>
 
       <div class="cvp-sk-cat">Frontend</div>
@@ -1352,6 +1367,20 @@
       <div class="cvp-skill">
         <div class="cvp-sk-row"><span>JavaScript</span><span class="cvp-sk-pct">65 %</span></div>
         <div class="cvp-sk-bar"><div class="cvp-sk-fill" style="width:65%"></div></div>
+      </div>
+
+      <div class="cvp-sk-cat">AI &amp; Vibekodning</div>
+      <div class="cvp-skill">
+        <div class="cvp-sk-row"><span>AI-promptning</span><span class="cvp-sk-pct">88 %</span></div>
+        <div class="cvp-sk-bar"><div class="cvp-sk-fill" style="width:88%"></div></div>
+      </div>
+      <div class="cvp-skill">
+        <div class="cvp-sk-row"><span>Vibekodning</span><span class="cvp-sk-pct">85 %</span></div>
+        <div class="cvp-sk-bar"><div class="cvp-sk-fill" style="width:85%"></div></div>
+      </div>
+      <div class="cvp-skill">
+        <div class="cvp-sk-row"><span>Claude / ChatGPT</span><span class="cvp-sk-pct">90 %</span></div>
+        <div class="cvp-sk-bar"><div class="cvp-sk-fill" style="width:90%"></div></div>
       </div>
 
       <div class="cvp-sec">Språk</div>
@@ -1389,12 +1418,7 @@
 
       <div class="cvp-sec">Profil</div>
       <p class="cvp-profile">
-        Passionerad mjukvaruutvecklare med över sex års erfarenhet av systemutveckling
-        inom försvars- och kommunikationsteknik hos Comrod Mission Systems. Specialiserad
-        på C# och .NET-ekosystemet med bred kompetens inom OOP, WPF och databaser.
-        Akademisk bakgrund i biomedicinsk vetenskap ger ett analytiskt och metodiskt
-        förhållningssätt till problemlösning. Certifierad Professional Scrum Master I
-        med erfarenhet av agila team och kontinuerlig leverans.
+        Mjukvaruutvecklare med 6+ års erfarenhet inom försvars- och kommunikationsteknik hos Comrod Mission Systems. Specialiserad på C# och .NET med kompetens i OOP, WPF och SQL. Akademisk bakgrund i biomedicinsk vetenskap ger analytiskt förhållningssätt. Certifierad PSM I. Arbetar aktivt med AI-verktyg och vibekodning.
       </p>
 
       <div class="cvp-sec">Arbetslivserfarenhet</div>
@@ -1406,15 +1430,7 @@
         </div>
         <div class="cvp-item-org">Comrod Mission Systems · Linköping</div>
         <div class="cvp-item-desc">
-          Systemutveckling inom försvars- och kommunikationsteknik. Bygger robusta
-          mjukvarulösningar i C# och .NET med höga krav på tillförlitlighet och prestanda.
-          Arbetar i agila team med tät kommunikation och iterativa leveranser.
-        </div>
-        <div class="cvp-item-tags">
-          <span class="cvp-tag">C#</span><span class="cvp-tag">.NET</span><span class="cvp-tag">WPF</span>
-          <span class="cvp-tag">SQL Server</span><span class="cvp-tag">Git</span>
-          <span class="cvp-tag">Visual Studio</span><span class="cvp-tag">Rider</span>
-          <span class="cvp-tag">Agile</span>
+          Systemutveckling i C# och .NET inom försvars- och kommunikationsteknik. Höga krav på tillförlitlighet och prestanda i agila team.
         </div>
       </div>
 
@@ -1425,11 +1441,7 @@
         </div>
         <div class="cvp-item-org">Academic Work · Stockholm/Linköping</div>
         <div class="cvp-item-desc">
-          Startade karriären som junior IT-konsult direkt efter intensivt
-          utbildningsprogram. Bidrog till projekt med moderna agila metoder och .NET-utveckling.
-        </div>
-        <div class="cvp-item-tags">
-          <span class="cvp-tag">C#</span><span class="cvp-tag">.NET</span><span class="cvp-tag">Scrum</span>
+          Junior IT-konsult med fokus på .NET-utveckling och agila metoder.
         </div>
       </div>
 
@@ -1440,11 +1452,7 @@
         </div>
         <div class="cvp-item-org">Eget projekt</div>
         <div class="cvp-item-desc">
-          Självstudier och praktisk webbutveckling. Bygde webbplatser och
-          fördjupade sig i HTML, CSS och JavaScript via Udemy och freeCodeCamp.
-        </div>
-        <div class="cvp-item-tags">
-          <span class="cvp-tag">HTML</span><span class="cvp-tag">CSS</span><span class="cvp-tag">JavaScript</span>
+          Webbplatsutveckling i HTML, CSS och JavaScript. Självstudier via Udemy och freeCodeCamp.
         </div>
       </div>
 
@@ -1454,10 +1462,6 @@
           <div class="cvp-item-period">2010 – 2014</div>
         </div>
         <div class="cvp-item-org">Diverse arbetsgivare</div>
-        <div class="cvp-item-desc">
-          Serviceinriktad roll som stärkte kommunikation, social förmåga och
-          förmågan att arbeta effektivt under högt tempo.
-        </div>
       </div>
 
       <div class="cvp-sec">Utbildning</div>
@@ -1469,13 +1473,7 @@
         </div>
         <div class="cvp-item-org">Academy by Academic Work</div>
         <div class="cvp-item-desc">
-          Praktiskt och intensivt utbildningsprogram med fokus på OOP, C# .NET,
-          SQL Server och agilt teamarbete. Ledde direkt till anställning som IT-konsult.
-        </div>
-        <div class="cvp-item-tags">
-          <span class="cvp-tag">OOP</span><span class="cvp-tag">C# .NET</span>
-          <span class="cvp-tag">SQL Server</span><span class="cvp-tag">Scrum</span>
-          <span class="cvp-tag">UX/UI</span>
+          Intensivt program i OOP, C# .NET, SQL Server och Scrum. Ledde direkt till anställning.
         </div>
       </div>
 
@@ -1484,15 +1482,9 @@
           <div class="cvp-item-title">Medicinsk Biologi – Kandidatexamen</div>
           <div class="cvp-item-period">2010 – 2015</div>
         </div>
-        <div class="cvp-item-org">Linnéuniversitetet</div>
+        <div class="cvp-item-org">Linköpings universitet</div>
         <div class="cvp-item-desc">
-          Gedigen universitetsutbildning inom biomedicinsk vetenskap. Tränade analytiskt
-          och vetenskapligt tänkande. Engagerad i studentliv som styrelseledamot i
-          sektionen för Medicinsk Biologi (2011–2013).
-        </div>
-        <div class="cvp-item-tags">
-          <span class="cvp-tag">Biomedicin</span><span class="cvp-tag">Vetenskap</span>
-          <span class="cvp-tag">Analytisk metodik</span>
+          Biomedicinsk vetenskap med fokus på analytiskt och vetenskapligt tänkande. Styrelseledamot i sektionen för Medicinsk Biologi (2011–2013).
         </div>
       </div>
 
