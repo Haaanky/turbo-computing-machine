@@ -553,7 +553,7 @@
       /* ═══════════════════════════════
          CV – SIDA 1
       ═══════════════════════════════ */
-      #cv-print { width: 100%; page-break-after: always; break-after: page; }
+      #cv-print { width: 100%; height: 277mm; max-height: 277mm; overflow: hidden; page-break-after: always; break-after: page; }
 
       /* Header */
       .cvp-head {
@@ -626,11 +626,11 @@
         flex-shrink: 0;
       }
 
-      .cvp-divider { height: 1.5px; background: #cbd5e1; margin-bottom: 9pt; }
+      .cvp-divider { height: 1.5px; background: #cbd5e1; margin-bottom: 10pt; }
 
       /* Two-column body */
-      .cvp-body { display: flex; gap: 14pt; align-items: flex-start; }
-      .cvp-sidebar { width: 32%; flex-shrink: 0; }
+      .cvp-body { display: flex; gap: 16pt; align-items: flex-start; }
+      .cvp-sidebar { width: 31%; flex-shrink: 0; }
       .cvp-main { flex: 1; min-width: 0; }
 
       /* Section titles */
@@ -642,8 +642,8 @@
         color: #1e3a8a;
         border-bottom: 1.5px solid #1e3a8a;
         padding-bottom: 2pt;
-        margin-bottom: 5pt;
-        margin-top: 7pt;
+        margin-bottom: 6pt;
+        margin-top: 8pt;
       }
       .cvp-sidebar .cvp-sec:first-child,
       .cvp-main .cvp-sec:first-child { margin-top: 0; }
@@ -688,12 +688,12 @@
       .cvp-profile {
         font-size: 9pt;
         color: #374151;
-        line-height: 1.6;
-        margin-bottom: 2pt;
+        line-height: 1.55;
+        margin-bottom: 4pt;
       }
 
       /* Experience & Education items */
-      .cvp-item { margin-bottom: 5pt; padding-bottom: 5pt; border-bottom: 0.75px solid #e2e8f0; page-break-inside: avoid; break-inside: avoid; }
+      .cvp-item { margin-bottom: 6pt; padding-bottom: 6pt; border-bottom: 0.75px solid #e2e8f0; page-break-inside: avoid; break-inside: avoid; }
       .cvp-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
 
       .cvp-item-hd { display: flex; justify-content: space-between; align-items: baseline; gap: 4pt; }
