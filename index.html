@@ -534,7 +534,7 @@
     @media print {
       * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; color-adjust: exact !important; box-sizing: border-box; margin: 0; padding: 0; }
 
-      @page { size: A4; margin: 10mm 14mm; }
+      @page { size: A4; margin: 8mm 12mm; }
 
       /* Hide all screen content, show only print sections */
       body > * { display: none !important; }
@@ -560,11 +560,11 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        border-top: 6px solid #1e3a8a;
-        padding-top: 8pt;
-        padding-bottom: 7pt;
-        margin-bottom: 4pt;
-        gap: 10pt;
+        border-top: 5px solid #1e3a8a;
+        padding-top: 6pt;
+        padding-bottom: 5pt;
+        margin-bottom: 3pt;
+        gap: 8pt;
       }
 
       .cvp-head-left { display: flex; align-items: center; gap: 11pt; }
@@ -572,8 +572,8 @@
       /* Profile photo */
       .cvp-photo {
         position: relative;
-        width: 68pt;
-        height: 68pt;
+        width: 58pt;
+        height: 58pt;
         border-radius: 50%;
         overflow: hidden;
         flex-shrink: 0;
@@ -604,7 +604,7 @@
       }
 
       .cvp-name {
-        font-size: 22pt;
+        font-size: 19pt;
         font-weight: 800;
         color: #0f172a;
         letter-spacing: -0.5pt;
@@ -612,92 +612,92 @@
       }
 
       .cvp-title {
-        font-size: 11pt;
+        font-size: 10pt;
         color: #1e3a8a;
         font-weight: 600;
-        margin-top: 3pt;
+        margin-top: 2pt;
       }
 
       .cvp-contacts {
         text-align: right;
-        font-size: 8.5pt;
+        font-size: 8pt;
         color: #4b5563;
-        line-height: 1.9;
+        line-height: 1.7;
         flex-shrink: 0;
       }
 
-      .cvp-divider { height: 1.5px; background: #cbd5e1; margin-bottom: 9pt; }
+      .cvp-divider { height: 1.5px; background: #cbd5e1; margin-bottom: 6pt; }
 
       /* Two-column body */
-      .cvp-body { display: flex; gap: 14pt; align-items: flex-start; }
-      .cvp-sidebar { width: 32%; flex-shrink: 0; }
+      .cvp-body { display: flex; gap: 12pt; align-items: flex-start; }
+      .cvp-sidebar { width: 31%; flex-shrink: 0; }
       .cvp-main { flex: 1; min-width: 0; }
 
       /* Section titles */
       .cvp-sec {
-        font-size: 7.5pt;
+        font-size: 7pt;
         font-weight: 700;
         text-transform: uppercase;
         letter-spacing: 1.5pt;
         color: #1e3a8a;
         border-bottom: 1.5px solid #1e3a8a;
-        padding-bottom: 2pt;
-        margin-bottom: 5pt;
-        margin-top: 7pt;
+        padding-bottom: 1.5pt;
+        margin-bottom: 4pt;
+        margin-top: 5pt;
       }
       .cvp-sidebar .cvp-sec:first-child,
       .cvp-main .cvp-sec:first-child { margin-top: 0; }
 
       /* Skills */
-      .cvp-skill { margin-bottom: 3.5pt; }
+      .cvp-skill { margin-bottom: 2.5pt; }
       .cvp-sk-row {
         display: flex;
         justify-content: space-between;
-        font-size: 8.5pt;
+        font-size: 8pt;
         font-weight: 600;
         color: #1a1a1a;
-        margin-bottom: 2pt;
+        margin-bottom: 1.5pt;
       }
-      .cvp-sk-pct { color: #6b7280; font-weight: 400; font-size: 7.5pt; }
-      .cvp-sk-bar { height: 5px; background: #e2e8f0; border-radius: 3px; overflow: hidden; }
-      .cvp-sk-fill { height: 5px; background: #1e3a8a; border-radius: 3px; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+      .cvp-sk-pct { color: #6b7280; font-weight: 400; font-size: 7pt; }
+      .cvp-sk-bar { height: 4px; background: #e2e8f0; border-radius: 3px; overflow: hidden; }
+      .cvp-sk-fill { height: 4px; background: #1e3a8a; border-radius: 3px; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
 
       /* Skill category label */
       .cvp-sk-cat {
-        font-size: 7.5pt;
+        font-size: 7pt;
         font-weight: 700;
         color: #6b7280;
         text-transform: uppercase;
         letter-spacing: 0.8pt;
-        margin-top: 4pt;
-        margin-bottom: 2pt;
+        margin-top: 3pt;
+        margin-bottom: 1.5pt;
       }
       .cvp-sk-cat:first-child { margin-top: 0; }
 
       /* Languages */
-      .cvp-lang { margin-bottom: 5pt; }
-      .cvp-lang-name { font-size: 8.5pt; font-weight: 700; color: #0f172a; }
-      .cvp-lang-lvl { font-size: 7.5pt; color: #6b7280; }
+      .cvp-lang { margin-bottom: 3pt; }
+      .cvp-lang-name { font-size: 8pt; font-weight: 700; color: #0f172a; }
+      .cvp-lang-lvl { font-size: 7pt; color: #6b7280; }
 
       /* Certifications */
-      .cvp-cert { margin-bottom: 5pt; }
-      .cvp-cert-name { font-size: 8pt; font-weight: 700; color: #0f172a; line-height: 1.35; }
-      .cvp-cert-org { font-size: 7pt; color: #6b7280; }
+      .cvp-cert { margin-bottom: 3pt; }
+      .cvp-cert-name { font-size: 7.5pt; font-weight: 700; color: #0f172a; line-height: 1.3; }
+      .cvp-cert-org { font-size: 6.5pt; color: #6b7280; }
 
       /* Profile summary */
       .cvp-profile {
-        font-size: 9pt;
+        font-size: 8.5pt;
         color: #374151;
-        line-height: 1.6;
+        line-height: 1.45;
         margin-bottom: 2pt;
       }
 
       /* Experience & Education items */
-      .cvp-item { margin-bottom: 5pt; padding-bottom: 5pt; border-bottom: 0.75px solid #e2e8f0; page-break-inside: avoid; break-inside: avoid; }
+      .cvp-item { margin-bottom: 3.5pt; padding-bottom: 3.5pt; border-bottom: 0.75px solid #e2e8f0; page-break-inside: avoid; break-inside: avoid; }
       .cvp-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
 
       .cvp-item-hd { display: flex; justify-content: space-between; align-items: baseline; gap: 4pt; }
-      .cvp-item-title { font-size: 8.5pt; font-weight: 700; color: #0f172a; line-height: 1.2; }
+      .cvp-item-title { font-size: 8pt; font-weight: 700; color: #0f172a; line-height: 1.2; }
       .cvp-item-period {
         font-size: 7pt;
         color: #6b7280;
@@ -709,8 +709,8 @@
         -webkit-print-color-adjust: exact !important;
         print-color-adjust: exact !important;
       }
-      .cvp-item-org { font-size: 7.5pt; color: #1e3a8a; font-weight: 600; margin-top: 1pt; }
-      .cvp-item-desc { font-size: 7.5pt; color: #4b5563; margin-top: 2pt; line-height: 1.4; }
+      .cvp-item-org { font-size: 7pt; color: #1e3a8a; font-weight: 600; margin-top: 1pt; }
+      .cvp-item-desc { font-size: 7pt; color: #4b5563; margin-top: 1.5pt; line-height: 1.35; }
       .cvp-tag {
         font-size: 6.5pt;
         padding: 1pt 4.5pt;
