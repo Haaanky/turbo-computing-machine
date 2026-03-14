@@ -534,7 +534,7 @@
     @media print {
       * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; color-adjust: exact !important; box-sizing: border-box; margin: 0; padding: 0; }
 
-      @page { size: A4; margin: 10mm 14mm; }
+      @page { size: A4; margin: 12mm 15mm; }
 
       /* Hide all screen content, show only print sections */
       body > * { display: none !important; }
@@ -544,7 +544,7 @@
 
       body {
         background: #ffffff !important;
-        font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
+        font-family: 'Segoe UI', system-ui, Arial, Helvetica, sans-serif;
         font-size: 9pt;
         color: #1a1a1a;
         line-height: 1.4;
@@ -553,31 +553,36 @@
       /* ═══════════════════════════════
          CV – SIDA 1
       ═══════════════════════════════ */
-      #cv-print { width: 100%; page-break-after: always; break-after: page; }
+      #cv-print {
+        width: 100%;
+        max-height: 273mm; /* A4 297mm - 24mm margins */
+        page-break-after: always;
+        break-after: page;
+      }
 
       /* Header */
       .cvp-head {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        border-top: 6px solid #1e3a8a;
-        padding-top: 8pt;
-        padding-bottom: 7pt;
-        margin-bottom: 4pt;
+        border-top: 5px solid #1e3a8a;
+        padding-top: 10pt;
+        padding-bottom: 8pt;
+        margin-bottom: 6pt;
         gap: 10pt;
       }
 
-      .cvp-head-left { display: flex; align-items: center; gap: 11pt; }
+      .cvp-head-left { display: flex; align-items: center; gap: 12pt; }
 
       /* Profile photo */
       .cvp-photo {
         position: relative;
-        width: 68pt;
-        height: 68pt;
+        width: 62pt;
+        height: 62pt;
         border-radius: 50%;
         overflow: hidden;
         flex-shrink: 0;
-        border: 3px solid #1e3a8a;
+        border: 2.5px solid #1e3a8a;
         background: #1e3a8a;
       }
 
@@ -597,22 +602,22 @@
         position: absolute;
         top: 50%; left: 50%;
         transform: translate(-50%, -50%);
-        font-size: 15pt;
+        font-size: 14pt;
         font-weight: 800;
         color: #fff;
         letter-spacing: -0.5pt;
       }
 
       .cvp-name {
-        font-size: 22pt;
+        font-size: 19pt;
         font-weight: 800;
         color: #0f172a;
         letter-spacing: -0.5pt;
-        line-height: 1;
+        line-height: 1.1;
       }
 
       .cvp-title {
-        font-size: 11pt;
+        font-size: 10pt;
         color: #1e3a8a;
         font-weight: 600;
         margin-top: 3pt;
@@ -620,86 +625,86 @@
 
       .cvp-contacts {
         text-align: right;
-        font-size: 8.5pt;
+        font-size: 7.5pt;
         color: #4b5563;
-        line-height: 1.9;
+        line-height: 1.7;
         flex-shrink: 0;
       }
 
-      .cvp-divider { height: 1.5px; background: #cbd5e1; margin-bottom: 9pt; }
+      .cvp-divider { height: 1.5px; background: #cbd5e1; margin-bottom: 8pt; }
 
       /* Two-column body */
       .cvp-body { display: flex; gap: 14pt; align-items: flex-start; }
-      .cvp-sidebar { width: 32%; flex-shrink: 0; }
+      .cvp-sidebar { width: 30%; flex-shrink: 0; }
       .cvp-main { flex: 1; min-width: 0; }
 
       /* Section titles */
       .cvp-sec {
-        font-size: 7.5pt;
+        font-size: 7pt;
         font-weight: 700;
         text-transform: uppercase;
-        letter-spacing: 1.5pt;
+        letter-spacing: 1.2pt;
         color: #1e3a8a;
         border-bottom: 1.5px solid #1e3a8a;
         padding-bottom: 2pt;
         margin-bottom: 5pt;
-        margin-top: 7pt;
+        margin-top: 8pt;
       }
       .cvp-sidebar .cvp-sec:first-child,
       .cvp-main .cvp-sec:first-child { margin-top: 0; }
 
       /* Skills */
-      .cvp-skill { margin-bottom: 3.5pt; }
+      .cvp-skill { margin-bottom: 3pt; }
       .cvp-sk-row {
         display: flex;
         justify-content: space-between;
-        font-size: 8.5pt;
+        font-size: 7.5pt;
         font-weight: 600;
         color: #1a1a1a;
-        margin-bottom: 2pt;
+        margin-bottom: 1pt;
       }
-      .cvp-sk-pct { color: #6b7280; font-weight: 400; font-size: 7.5pt; }
-      .cvp-sk-bar { height: 5px; background: #e2e8f0; border-radius: 3px; overflow: hidden; }
-      .cvp-sk-fill { height: 5px; background: #1e3a8a; border-radius: 3px; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+      .cvp-sk-pct { color: #6b7280; font-weight: 400; font-size: 6.5pt; }
+      .cvp-sk-bar { height: 3.5px; background: #e2e8f0; border-radius: 2px; overflow: hidden; }
+      .cvp-sk-fill { height: 3.5px; background: #1e3a8a; border-radius: 2px; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
 
       /* Skill category label */
       .cvp-sk-cat {
-        font-size: 7.5pt;
+        font-size: 6.5pt;
         font-weight: 700;
         color: #6b7280;
         text-transform: uppercase;
         letter-spacing: 0.8pt;
         margin-top: 4pt;
-        margin-bottom: 2pt;
+        margin-bottom: 1.5pt;
       }
       .cvp-sk-cat:first-child { margin-top: 0; }
 
       /* Languages */
-      .cvp-lang { margin-bottom: 5pt; }
-      .cvp-lang-name { font-size: 8.5pt; font-weight: 700; color: #0f172a; }
-      .cvp-lang-lvl { font-size: 7.5pt; color: #6b7280; }
+      .cvp-lang { margin-bottom: 3pt; }
+      .cvp-lang-name { font-size: 7.5pt; font-weight: 700; color: #0f172a; }
+      .cvp-lang-lvl { font-size: 6.5pt; color: #6b7280; }
 
       /* Certifications */
-      .cvp-cert { margin-bottom: 5pt; }
-      .cvp-cert-name { font-size: 8pt; font-weight: 700; color: #0f172a; line-height: 1.35; }
-      .cvp-cert-org { font-size: 7pt; color: #6b7280; }
+      .cvp-cert { margin-bottom: 3pt; }
+      .cvp-cert-name { font-size: 7pt; font-weight: 700; color: #0f172a; line-height: 1.3; }
+      .cvp-cert-org { font-size: 6.5pt; color: #6b7280; }
 
       /* Profile summary */
       .cvp-profile {
-        font-size: 9pt;
+        font-size: 8.5pt;
         color: #374151;
-        line-height: 1.6;
-        margin-bottom: 2pt;
+        line-height: 1.5;
+        margin-bottom: 4pt;
       }
 
       /* Experience & Education items */
-      .cvp-item { margin-bottom: 5pt; padding-bottom: 5pt; border-bottom: 0.75px solid #e2e8f0; page-break-inside: avoid; break-inside: avoid; }
+      .cvp-item { margin-bottom: 5pt; padding-bottom: 5pt; border-bottom: 0.5px solid #e2e8f0; page-break-inside: avoid; break-inside: avoid; }
       .cvp-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
 
       .cvp-item-hd { display: flex; justify-content: space-between; align-items: baseline; gap: 4pt; }
       .cvp-item-title { font-size: 8.5pt; font-weight: 700; color: #0f172a; line-height: 1.2; }
       .cvp-item-period {
-        font-size: 7pt;
+        font-size: 6.5pt;
         color: #6b7280;
         white-space: nowrap;
         flex-shrink: 0;
@@ -712,8 +717,8 @@
       .cvp-item-org { font-size: 7.5pt; color: #1e3a8a; font-weight: 600; margin-top: 1pt; }
       .cvp-item-desc { font-size: 7.5pt; color: #4b5563; margin-top: 2pt; line-height: 1.4; }
       .cvp-tag {
-        font-size: 6.5pt;
-        padding: 1pt 4.5pt;
+        font-size: 6pt;
+        padding: 1pt 4pt;
         background: #eff6ff;
         color: #1d4ed8;
         border-radius: 2px;
@@ -727,7 +732,7 @@
          PERSONLIGT BREV – SIDA 2
       ═══════════════════════════════ */
       #cover-print {
-        font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
+        font-family: 'Segoe UI', system-ui, Arial, Helvetica, sans-serif;
         font-size: 10pt;
         color: #1a1a1a;
         line-height: 1.65;
@@ -735,9 +740,9 @@
       }
 
       .cvr-head-bar {
-        height: 8px;
+        height: 6px;
         background: #1e3a8a;
-        margin-bottom: 16pt;
+        margin-bottom: 14pt;
         -webkit-print-color-adjust: exact !important;
         print-color-adjust: exact !important;
       }
@@ -746,7 +751,7 @@
         display: flex;
         justify-content: space-between;
         align-items: flex-start;
-        margin-bottom: 24pt;
+        margin-bottom: 16pt;
       }
 
       .cvr-sender-name {
@@ -758,57 +763,57 @@
       }
 
       .cvr-sender-title {
-        font-size: 9.5pt;
+        font-size: 9pt;
         color: #1e3a8a;
         font-weight: 600;
         margin-top: 3pt;
       }
 
       .cvr-sender-info {
-        font-size: 8.5pt;
+        font-size: 8pt;
         color: #4b5563;
-        margin-top: 5pt;
-        line-height: 1.8;
+        margin-top: 4pt;
+        line-height: 1.7;
       }
 
       .cvr-date-loc {
         text-align: right;
-        font-size: 9.5pt;
+        font-size: 9pt;
         color: #6b7280;
-        line-height: 1.7;
-        padding-top: 3pt;
+        line-height: 1.6;
+        padding-top: 2pt;
       }
 
       .cvr-subject {
-        font-size: 14pt;
+        font-size: 13pt;
         font-weight: 800;
         color: #0f172a;
-        margin-bottom: 14pt;
-        padding-bottom: 7pt;
+        margin-bottom: 12pt;
+        padding-bottom: 6pt;
         border-bottom: 2.5px solid #1e3a8a;
         letter-spacing: -0.2pt;
       }
 
       .cvr-recipient {
-        font-size: 9.5pt;
+        font-size: 9pt;
         color: #374151;
-        margin-bottom: 14pt;
-        line-height: 1.6;
+        margin-bottom: 10pt;
+        line-height: 1.5;
       }
 
       .cvr-body p {
-        font-size: 10.5pt;
+        font-size: 10pt;
         color: #1a1a1a;
-        margin-bottom: 12pt;
-        line-height: 1.7;
+        margin-bottom: 10pt;
+        line-height: 1.65;
       }
 
-      .cvr-close { margin-top: 20pt; }
-      .cvr-close-line { font-size: 10.5pt; color: #1a1a1a; margin-bottom: 24pt; }
+      .cvr-close { margin-top: 18pt; }
+      .cvr-close-line { font-size: 10pt; color: #1a1a1a; margin-bottom: 18pt; }
 
-      .cvr-sig-name { font-size: 12.5pt; font-weight: 800; color: #0f172a; }
-      .cvr-sig-title { font-size: 9.5pt; color: #4b5563; margin-top: 2pt; }
-      .cvr-sig-contact { font-size: 9.5pt; color: #1e3a8a; margin-top: 3pt; line-height: 1.7; }
+      .cvr-sig-name { font-size: 12pt; font-weight: 800; color: #0f172a; }
+      .cvr-sig-title { font-size: 9pt; color: #4b5563; margin-top: 2pt; }
+      .cvr-sig-contact { font-size: 8.5pt; color: #1e3a8a; margin-top: 3pt; line-height: 1.6; }
     }
   </style>
 </head>
