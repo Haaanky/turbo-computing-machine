@@ -1,0 +1,1413 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Henrik Norlin Frisemo – Mjukvaruutvecklare</title>
+  <meta name="description" content="Henrik Norlin Frisemo – Mjukvaruutvecklare specialiserad på C#, .NET och fullstack-utveckling. Baserad i Kiruna, Sverige.">
+  <meta name="theme-color" content="#0a0a0a">
+  <meta property="og:title" content="Henrik Norlin Frisemo – Mjukvaruutvecklare">
+  <meta property="og:description" content="Passionerad utvecklare med bakgrund inom biomedicinsk vetenskap. C#, .NET, SQL Server och agila metoder.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%230a0a0a'/%3E%3Ctext x='50' y='68' font-family='Georgia,serif' font-size='42' font-weight='700' fill='%23ffffff' text-anchor='middle'%3EHF%3C/text%3E%3C/svg%3E">
+  <style>
+    :root {
+      --bg: #0a0a0a;
+      --text: #f0ede8;
+      --muted: #666;
+      --accent: #c8f05a;
+      --border: #1e1e1e;
+      --surface: #111;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Space Grotesk', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      cursor: none;
+      overflow-x: hidden;
+    }
+
+    /* ── CUSTOM CURSOR ── */
+    .cursor {
+      position: fixed;
+      width: 10px;
+      height: 10px;
+      background: var(--accent);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: transform 0.05s, width 0.2s, height 0.2s, opacity 0.2s;
+      mix-blend-mode: difference;
+    }
+
+    .cursor-ring {
+      position: fixed;
+      width: 36px;
+      height: 36px;
+      border: 1.5px solid var(--accent);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9998;
+      transform: translate(-50%, -50%);
+      transition: transform 0.12s ease, width 0.25s, height 0.25s, opacity 0.25s;
+      mix-blend-mode: difference;
+    }
+
+    .cursor.expand { width: 18px; height: 18px; }
+    .cursor-ring.expand { width: 60px; height: 60px; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.4rem 3rem;
+      background: rgba(10,10,10,0.85);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      transition: padding 0.3s;
+    }
+
+    nav.scrolled { padding: 0.9rem 3rem; }
+
+    .nav-logo {
+      font-family: 'Space Mono', monospace;
+      font-size: 1rem;
+      color: var(--text);
+      letter-spacing: 0.1em;
+      text-decoration: none;
+    }
+
+    .nav-logo span { color: var(--accent); }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.82rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+      font-weight: 500;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: none;
+      padding: 4px;
+    }
+
+    .nav-toggle span {
+      width: 22px;
+      height: 1.5px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+
+    .nav-toggle.active span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .nav-toggle.active span:nth-child(2) { opacity: 0; }
+    .nav-toggle.active span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    @media (max-width: 720px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-toggle { display: flex; }
+      .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0; right: 0;
+        flex-direction: column;
+        background: rgba(10,10,10,0.97);
+        backdrop-filter: blur(18px);
+        padding: 0 1.5rem;
+        gap: 0;
+        border-bottom: 1px solid var(--border);
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.35s ease, padding 0.35s ease;
+      }
+      .nav-links.open { max-height: 400px; padding: 1.2rem 1.5rem; }
+      .nav-links li { padding: 0.6rem 0; border-bottom: 1px solid var(--border); }
+      .nav-links li:last-child { border-bottom: none; }
+    }
+
+    /* ── BINARY CANVAS BACKGROUND ── */
+    #binary-canvas {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.04;
+    }
+
+    /* ── HERO ── */
+    #hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: flex-end;
+      padding: 0 3rem 5rem;
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    .hero-inner { max-width: 1100px; width: 100%; }
+
+    .hero-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .hero-label::before {
+      content: '';
+      display: inline-block;
+      width: 30px;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    .hero-name {
+      font-size: clamp(4rem, 12vw, 10rem);
+      font-weight: 700;
+      line-height: 0.9;
+      letter-spacing: -0.03em;
+      color: var(--text);
+      margin-bottom: 0.2em;
+      overflow: hidden;
+    }
+
+    .hero-name .line {
+      display: block;
+      overflow: hidden;
+    }
+
+    .hero-name .line span {
+      display: block;
+      transform: translateY(100%);
+      animation: slideUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .hero-name .line:nth-child(2) span { animation-delay: 0.1s; }
+    .hero-name .line:nth-child(3) span { animation-delay: 0.2s; }
+
+    @keyframes slideUp {
+      to { transform: translateY(0); }
+    }
+
+    .hero-tagline {
+      font-family: 'Space Mono', monospace;
+      font-size: clamp(1rem, 2.5vw, 1.5rem);
+      color: var(--muted);
+      margin-top: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .hero-tagline .star { color: var(--accent); }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 3rem;
+      right: 3rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--muted);
+      font-family: 'Space Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .hero-scroll::after {
+      content: '';
+      display: block;
+      width: 1px;
+      height: 50px;
+      background: linear-gradient(to bottom, var(--muted), transparent);
+      animation: scrollLine 1.5s ease-in-out infinite;
+    }
+
+    @keyframes scrollLine {
+      0%, 100% { transform: scaleY(1); opacity: 1; }
+      50% { transform: scaleY(0.5); opacity: 0.4; }
+    }
+
+    @media (max-width: 720px) {
+      #hero { padding: 0 1.5rem 4rem; align-items: flex-end; }
+      .hero-scroll { display: none; }
+    }
+
+    /* ── SECTIONS ── */
+    section { position: relative; z-index: 1; }
+
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 3rem; }
+    @media (max-width: 720px) { .container { padding: 0 1.5rem; } }
+
+    /* ── DIVIDER ── */
+    .section-divider {
+      width: 100%;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ── SECTION HEADER ── */
+    .section-top {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 2rem;
+      padding: 5rem 0 3rem;
+      flex-wrap: wrap;
+    }
+
+    .section-number {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.68rem;
+      color: var(--muted);
+      letter-spacing: 0.15em;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1;
+    }
+
+    .section-title-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+
+    /* ── ABOUT ── */
+    #about { padding-bottom: 6rem; }
+
+    .about-text {
+      font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+      font-weight: 400;
+      line-height: 1.65;
+      max-width: 820px;
+      color: var(--text);
+    }
+
+    .about-text strong { color: var(--accent); font-weight: 600; }
+
+    .about-meta {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1px;
+      margin-top: 4rem;
+      border: 1px solid var(--border);
+    }
+
+    .about-meta-item {
+      padding: 1.5rem;
+      border-right: 1px solid var(--border);
+    }
+
+    .about-meta-item:last-child { border-right: none; }
+
+    .about-meta-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.4rem;
+    }
+
+    .about-meta-value {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    /* ── EXPERIENCE ── */
+    #experience { padding-bottom: 6rem; background: var(--surface); }
+
+    .exp-list { display: flex; flex-direction: column; }
+
+    .exp-item {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 2rem;
+      padding: 2.5rem 0;
+      border-bottom: 1px solid var(--border);
+      transition: background 0.2s;
+    }
+
+    .exp-item:first-child { border-top: 1px solid var(--border); }
+
+    @media (max-width: 720px) {
+      .exp-item { grid-template-columns: 1fr; gap: 1rem; }
+    }
+
+    .exp-period {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.78rem;
+      color: var(--muted);
+      padding-top: 0.2rem;
+      letter-spacing: 0.05em;
+    }
+
+    .exp-title {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.2rem;
+    }
+
+    .exp-org {
+      font-size: 0.85rem;
+      color: var(--accent);
+      font-weight: 500;
+      margin-bottom: 0.8rem;
+    }
+
+    .exp-desc {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 600px;
+    }
+
+    .exp-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 1rem;
+    }
+
+    .tag {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.68rem;
+      padding: 0.25rem 0.6rem;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      letter-spacing: 0.05em;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .tag:hover { border-color: var(--accent); color: var(--accent); }
+    .tag.accent { border-color: rgba(200,240,90,0.3); color: var(--accent); }
+
+    /* ── SKILLS ── */
+    #skills { padding-bottom: 6rem; }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1px;
+      border: 1px solid var(--border);
+    }
+
+    .skill-group {
+      padding: 2rem;
+      border-right: 1px solid var(--border);
+      transition: background 0.2s;
+    }
+
+    .skill-group:hover { background: var(--surface); }
+
+    .skill-group-name {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.2rem;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .skill-tag {
+      font-size: 0.82rem;
+      padding: 0.3rem 0.7rem;
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-weight: 500;
+      transition: all 0.2s;
+      cursor: default;
+    }
+
+    .skill-tag:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: rgba(200,240,90,0.05);
+    }
+
+    .skill-tag.hl {
+      border-color: rgba(200,240,90,0.4);
+      color: var(--accent);
+      background: rgba(200,240,90,0.07);
+    }
+
+    /* ── EDUCATION ── */
+    #education { padding-bottom: 6rem; background: var(--surface); }
+
+    /* ── CERTIFICATIONS ── */
+    #certifications { padding-bottom: 6rem; }
+
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1px;
+      border: 1px solid var(--border);
+    }
+
+    .cert-item {
+      padding: 2rem;
+      border-right: 1px solid var(--border);
+      transition: background 0.2s;
+    }
+
+    .cert-item:hover { background: var(--surface); }
+
+    .cert-num {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+      margin-bottom: 0.8rem;
+    }
+
+    .cert-name {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.3rem;
+    }
+
+    .cert-org {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    /* ── CONTACT ── */
+    #contact { padding-bottom: 8rem; }
+
+    .contact-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: start;
+    }
+
+    @media (max-width: 720px) {
+      .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
+    }
+
+    .contact-heading {
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1;
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-sub {
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 380px;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.4rem 0;
+      border-bottom: 1px solid var(--border);
+      text-decoration: none;
+      color: var(--text);
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: color 0.2s, padding-left 0.2s;
+      group: true;
+    }
+
+    .contact-link:first-child { border-top: 1px solid var(--border); }
+
+    .contact-link:hover {
+      color: var(--accent);
+      padding-left: 0.5rem;
+    }
+
+    .contact-link .arrow {
+      font-size: 1.1rem;
+      opacity: 0;
+      transition: opacity 0.2s, transform 0.2s;
+      transform: translateX(-6px);
+    }
+
+    .contact-link:hover .arrow {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    @media (max-width: 720px) {
+      footer {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 2rem 1.5rem;
+        text-align: center;
+      }
+    }
+
+    .footer-logo {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.8rem;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+    }
+
+    .footer-logo span { color: var(--accent); }
+
+    .footer-info {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.68rem;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+    }
+
+    /* ── PDF BUTTON ── */
+    .pdf-btn {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.65rem 1.2rem;
+      background: var(--accent);
+      color: var(--bg);
+      border: none;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      cursor: none;
+      transition: all 0.2s;
+    }
+
+    .pdf-btn:hover { background: #d8ff6a; transform: translateY(-2px); }
+    .pdf-btn svg { width: 14px; height: 14px; }
+
+    /* ── REVEAL ── */
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* ── PRINT ── */
+    #cv-print, #cover-print { display: none; }
+
+    @media print {
+      * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; box-sizing: border-box; margin: 0; padding: 0; }
+      @page { size: A4; margin: 10mm 14mm; }
+      body > * { display: none !important; }
+      #cv-print, #cover-print { display: block !important; }
+      body { background: #fff !important; font-family: 'Segoe UI', Arial, sans-serif; font-size: 9pt; color: #1a1a1a; line-height: 1.4; }
+      #cv-print { width: 100%; page-break-after: always; break-after: page; }
+      .cvp-head { display: flex; justify-content: space-between; align-items: center; border-top: 6px solid #0a0a0a; padding-top: 8pt; padding-bottom: 7pt; margin-bottom: 4pt; gap: 10pt; }
+      .cvp-head-left { display: flex; align-items: center; gap: 11pt; }
+      .cvp-photo { position: relative; width: 68pt; height: 68pt; border-radius: 50%; overflow: hidden; flex-shrink: 0; border: 3px solid #0a0a0a; background: #0a0a0a; }
+      .cvp-photo-initials { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); font-size: 15pt; font-weight: 800; color: #fff; letter-spacing: -0.5pt; }
+      .cvp-name { font-size: 22pt; font-weight: 800; color: #0f172a; letter-spacing: -0.5pt; line-height: 1; }
+      .cvp-title { font-size: 11pt; color: #0a0a0a; font-weight: 600; margin-top: 3pt; }
+      .cvp-contacts { text-align: right; font-size: 8.5pt; color: #4b5563; line-height: 1.9; flex-shrink: 0; }
+      .cvp-divider { height: 1.5px; background: #cbd5e1; margin-bottom: 9pt; }
+      .cvp-body { display: flex; gap: 14pt; align-items: flex-start; }
+      .cvp-sidebar { width: 32%; flex-shrink: 0; }
+      .cvp-main { flex: 1; min-width: 0; }
+      .cvp-sec { font-size: 7.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5pt; color: #0a0a0a; border-bottom: 1.5px solid #0a0a0a; padding-bottom: 2pt; margin-bottom: 5pt; margin-top: 7pt; }
+      .cvp-sidebar .cvp-sec:first-child, .cvp-main .cvp-sec:first-child { margin-top: 0; }
+      .cvp-skill-tags { display: flex; flex-wrap: wrap; gap: 2.5pt; margin-bottom: 3pt; }
+      .cvp-sk-cat { font-size: 7.5pt; font-weight: 700; color: #6b7280; text-transform: uppercase; letter-spacing: 0.8pt; margin-top: 4pt; margin-bottom: 2pt; }
+      .cvp-sk-cat:first-child { margin-top: 0; }
+      .cvp-lang { margin-bottom: 5pt; }
+      .cvp-lang-name { font-size: 8.5pt; font-weight: 700; color: #0f172a; }
+      .cvp-lang-lvl { font-size: 7.5pt; color: #6b7280; }
+      .cvp-cert { margin-bottom: 5pt; }
+      .cvp-cert-name { font-size: 8pt; font-weight: 700; color: #0f172a; line-height: 1.35; }
+      .cvp-cert-org { font-size: 7pt; color: #6b7280; }
+      .cvp-profile { font-size: 9pt; color: #374151; line-height: 1.6; margin-bottom: 2pt; }
+      .cvp-item { margin-bottom: 5pt; padding-bottom: 5pt; border-bottom: 0.75px solid #e2e8f0; page-break-inside: avoid; break-inside: avoid; }
+      .cvp-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+      .cvp-item-hd { display: flex; justify-content: space-between; align-items: baseline; gap: 4pt; }
+      .cvp-item-title { font-size: 8.5pt; font-weight: 700; color: #0f172a; line-height: 1.2; }
+      .cvp-item-period { font-size: 7pt; color: #6b7280; white-space: nowrap; flex-shrink: 0; background: #f1f5f9; padding: 1pt 4pt; border-radius: 2px; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+      .cvp-item-org { font-size: 7.5pt; color: #0a0a0a; font-weight: 600; margin-top: 1pt; }
+      .cvp-item-desc { font-size: 7.5pt; color: #4b5563; margin-top: 2pt; line-height: 1.4; }
+      .cvp-tag { font-size: 6.5pt; padding: 1pt 4.5pt; background: #f0f0f0; color: #0a0a0a; border-radius: 2px; font-weight: 600; border: 0.5px solid #d0d0d0; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+      #cover-print { font-family: 'Segoe UI', Arial, sans-serif; font-size: 10pt; color: #1a1a1a; line-height: 1.65; padding-top: 0; }
+      .cvr-head-bar { height: 8px; background: #0a0a0a; margin-bottom: 16pt; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+      .cvr-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 24pt; }
+      .cvr-sender-name { font-size: 15pt; font-weight: 800; color: #0f172a; letter-spacing: -0.3pt; line-height: 1; }
+      .cvr-sender-title { font-size: 9.5pt; color: #0a0a0a; font-weight: 600; margin-top: 3pt; }
+      .cvr-sender-info { font-size: 8.5pt; color: #4b5563; margin-top: 5pt; line-height: 1.8; }
+      .cvr-date-loc { text-align: right; font-size: 9.5pt; color: #6b7280; line-height: 1.7; padding-top: 3pt; }
+      .cvr-subject { font-size: 14pt; font-weight: 800; color: #0f172a; margin-bottom: 14pt; padding-bottom: 7pt; border-bottom: 2.5px solid #0a0a0a; letter-spacing: -0.2pt; }
+      .cvr-recipient { font-size: 9.5pt; color: #374151; margin-bottom: 14pt; line-height: 1.6; }
+      .cvr-body p { font-size: 10.5pt; color: #1a1a1a; margin-bottom: 12pt; line-height: 1.7; }
+      .cvr-close { margin-top: 20pt; }
+      .cvr-close-line { font-size: 10.5pt; color: #1a1a1a; margin-bottom: 24pt; }
+      .cvr-sig-name { font-size: 12.5pt; font-weight: 800; color: #0f172a; }
+      .cvr-sig-title { font-size: 9.5pt; color: #4b5563; margin-top: 2pt; }
+      .cvr-sig-contact { font-size: 9.5pt; color: #0a0a0a; margin-top: 3pt; line-height: 1.7; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Custom cursor -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- Binary canvas background -->
+<canvas id="binary-canvas"></canvas>
+
+<!-- PDF BUTTON -->
+<button class="pdf-btn" onclick="printCV()" title="Ladda ner som PDF">
+  <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M2.5 1A1.5 1.5 0 0 0 1 2.5v11A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-8L10 1H2.5z" stroke="currentColor" stroke-width="1.25" fill="none"/>
+    <path d="M9.5 1v4H14" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/>
+    <path d="M8 7v5M5.5 9.5 8 12l2.5-2.5" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+  PDF
+</button>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#hero" class="nav-logo">HNF<span>.</span></a>
+  <button class="nav-toggle" aria-label="Meny" id="navToggle">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#about">Om mig</a></li>
+    <li><a href="#experience">Erfarenhet</a></li>
+    <li><a href="#skills">Kompetenser</a></li>
+    <li><a href="#certifications">Meriter</a></li>
+    <li><a href="#contact">Kontakt</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-inner">
+    <p class="hero-label">Mjukvaruutvecklare · Kiruna, Sverige</p>
+    <h1 class="hero-name" id="heroName">
+      <span class="line"><span>Henrik</span></span>
+      <span class="line"><span>Norlin</span></span>
+      <span class="line"><span>Frisemo</span></span>
+    </h1>
+    <p class="hero-tagline">
+      C# &amp; .NET <span class="star">★</span> 6+ år hos Comrod <span class="star">★</span> Scrum Master
+    </p>
+  </div>
+  <div class="hero-scroll">Scrolla</div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="section-top">
+      <div class="section-title-group">
+        <span class="section-number">01</span>
+        <h2 class="section-title reveal">Om mig</h2>
+      </div>
+    </div>
+    <p class="about-text reveal">
+      Pluggade <strong>medicinsk biologi</strong> på LiU innan jag hittade programmering. Sedan 2019 bygger jag mjukvara inom försvar och kommunikationsteknik hos <strong>Comrod Mission Systems</strong>. Jag jobbar varje dag med <strong>C# och .NET</strong> och tror på kod som håller i längden – inte bara till nästa release.
+    </p>
+    <div class="about-meta reveal">
+      <div class="about-meta-item">
+        <div class="about-meta-label">Plats</div>
+        <div class="about-meta-value">Kiruna, Sverige</div>
+      </div>
+      <div class="about-meta-item">
+        <div class="about-meta-label">Erfarenhet</div>
+        <div class="about-meta-value">6+ år</div>
+      </div>
+      <div class="about-meta-item">
+        <div class="about-meta-label">Fokus</div>
+        <div class="about-meta-value">C# / .NET / SQL</div>
+      </div>
+      <div class="about-meta-item">
+        <div class="about-meta-label">Status</div>
+        <div class="about-meta-value">Öppen för möjligheter</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container">
+    <div class="section-top">
+      <div class="section-title-group">
+        <span class="section-number">02</span>
+        <h2 class="section-title reveal">Erfarenhet</h2>
+      </div>
+    </div>
+    <div class="exp-list">
+
+      <div class="exp-item reveal">
+        <div class="exp-period">2019 – Nu</div>
+        <div>
+          <div class="exp-title">Mjukvaruutvecklare</div>
+          <div class="exp-org">Comrod Mission Systems · Linköping</div>
+          <p class="exp-desc">Bygger mjukvara inom försvars- och kommunikationsteknik. C# och .NET varje dag, i en miljö där saker måste funka på riktigt. Agilt arbetssätt med fokus på kvalitet och långsiktig lösning.</p>
+          <div class="exp-tags">
+            <span class="tag accent">C#</span>
+            <span class="tag accent">.NET</span>
+            <span class="tag">WPF</span>
+            <span class="tag">WinForms</span>
+            <span class="tag">SQL Server</span>
+            <span class="tag">Visual Studio</span>
+            <span class="tag">Rider</span>
+            <span class="tag">Git</span>
+            <span class="tag">Agile</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="exp-item reveal">
+        <div class="exp-period">2019</div>
+        <div>
+          <div class="exp-title">Junior IT-konsult</div>
+          <div class="exp-org">Academic Work</div>
+          <p class="exp-desc">Första riktiga utvecklarjobbet. Fick foten in efter ett intensivt utbildningsprogram i C# .NET och kastades rakt in i skarpa projekt.</p>
+          <div class="exp-tags">
+            <span class="tag accent">C#</span>
+            <span class="tag accent">.NET</span>
+            <span class="tag">SCRUM</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="exp-item reveal">
+        <div class="exp-period">2017 – 2018</div>
+        <div>
+          <div class="exp-title">Webbutvecklare (Frilans)</div>
+          <div class="exp-org">Eget projekt</div>
+          <p class="exp-desc">Lärde mig webbutveckling på egen hand genom Udemy och freeCodeCamp. Byggde WordPress-sajter och insåg att detta var vägen framåt.</p>
+          <div class="exp-tags">
+            <span class="tag">HTML</span>
+            <span class="tag">CSS</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">WordPress</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="exp-item reveal">
+        <div class="exp-period">2010 – 2014</div>
+        <div>
+          <div class="exp-title">Bartender</div>
+          <div class="exp-org">Diverse arbetsgivare</div>
+          <p class="exp-desc">Jobbade i baren under studietiden. Lärde mig hantera folk, stress och att hålla humöret uppe – oväntat användbart i utvecklarvärlden också.</p>
+          <div class="exp-tags">
+            <span class="tag">Kundservice</span>
+            <span class="tag">Kommunikation</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="container">
+    <div class="section-top">
+      <div class="section-title-group">
+        <span class="section-number">03</span>
+        <h2 class="section-title reveal">Utbildning</h2>
+      </div>
+    </div>
+    <div class="exp-list">
+
+      <div class="exp-item reveal">
+        <div class="exp-period">2019</div>
+        <div>
+          <div class="exp-title">C# .NET – Intensivprogram</div>
+          <div class="exp-org">Academy by Academic Work</div>
+          <p class="exp-desc">Intensivt program som gick rakt på sak – praktisk kodning, teamarbete och Scrum. Ledde direkt till jobb som IT-konsult.</p>
+          <div class="exp-tags">
+            <span class="tag accent">OOP</span>
+            <span class="tag accent">C# .NET</span>
+            <span class="tag">SQL Server</span>
+            <span class="tag">Visual Studio</span>
+            <span class="tag">UX/UI</span>
+            <span class="tag">SCRUM</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="exp-item reveal">
+        <div class="exp-period">2010 – 2015</div>
+        <div>
+          <div class="exp-title">Medicinsk Biologi</div>
+          <div class="exp-org">Linköpings universitet</div>
+          <p class="exp-desc">Fem år av biomedicinsk vetenskap som lärde mig att tänka metodiskt och vetenskapligt. Satt i sektionsstyrelsen och var ordförande för dryckeskommittén.</p>
+          <div class="exp-tags">
+            <span class="tag">Biomedicin</span>
+            <span class="tag">Vetenskap</span>
+            <span class="tag">Analytisk metodik</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="exp-item reveal">
+        <div class="exp-period">2017 – 2018</div>
+        <div>
+          <div class="exp-title">Webbutveckling – Självstudier</div>
+          <div class="exp-org">Udemy &amp; freeCodeCamp</div>
+          <p class="exp-desc">Genomförde "The Complete Web Developer in 2018" och freeCodeCamp-certifieringar. Här började allt med kod.</p>
+          <div class="exp-tags">
+            <span class="tag">HTML</span>
+            <span class="tag">CSS</span>
+            <span class="tag">JavaScript</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <div class="section-top">
+      <div class="section-title-group">
+        <span class="section-number">04</span>
+        <h2 class="section-title reveal">Kompetenser</h2>
+      </div>
+    </div>
+    <div class="skills-grid reveal">
+
+      <div class="skill-group">
+        <div class="skill-group-name">Backend &amp; Desktop</div>
+        <div class="skill-tags">
+          <span class="skill-tag hl">C#</span>
+          <span class="skill-tag hl">.NET Framework / Core</span>
+          <span class="skill-tag">OOP-design</span>
+          <span class="skill-tag">WPF</span>
+          <span class="skill-tag">WinForms</span>
+          <span class="skill-tag">SQL Server</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-group-name">Frontend</div>
+        <div class="skill-tags">
+          <span class="skill-tag">HTML5</span>
+          <span class="skill-tag">CSS3</span>
+          <span class="skill-tag">JavaScript</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-group-name">Verktyg &amp; Metodik</div>
+        <div class="skill-tags">
+          <span class="skill-tag hl">Agile / Scrum</span>
+          <span class="skill-tag hl">JetBrains Rider</span>
+          <span class="skill-tag hl">Git</span>
+          <span class="skill-tag">Visual Studio</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-group-name">AI &amp; Övrigt</div>
+        <div class="skill-tags">
+          <span class="skill-tag hl">AI-promptning</span>
+          <span class="skill-tag">Claude / ChatGPT</span>
+          <span class="skill-tag">Biomedicin</span>
+          <span class="skill-tag">Vetenskaplig metodik</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <div class="container">
+    <div class="section-top">
+      <div class="section-title-group">
+        <span class="section-number">05</span>
+        <h2 class="section-title reveal">Meriter</h2>
+      </div>
+    </div>
+    <div class="cert-grid reveal">
+      <div class="cert-item">
+        <div class="cert-num">01 / 04</div>
+        <div class="cert-name">Professional Scrum Master I</div>
+        <div class="cert-org">Scrum.org · Mars 2019</div>
+      </div>
+      <div class="cert-item">
+        <div class="cert-num">02 / 04</div>
+        <div class="cert-name">The Complete Web Developer 2018</div>
+        <div class="cert-org">Udemy · 2017–2018</div>
+      </div>
+      <div class="cert-item">
+        <div class="cert-num">03 / 04</div>
+        <div class="cert-name">freeCodeCamp – Webbdesign &amp; JS</div>
+        <div class="cert-org">freeCodeCamp.org · 2017–2018</div>
+      </div>
+      <div class="cert-item">
+        <div class="cert-num">04 / 04</div>
+        <div class="cert-name">Styrelseledamot – Medicinsk Biologi</div>
+        <div class="cert-org">Studentsektion · 2011–2013</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="section-top">
+      <div class="section-title-group">
+        <span class="section-number">06</span>
+        <h2 class="section-title reveal">Kontakt</h2>
+      </div>
+    </div>
+    <div class="contact-inner">
+      <div class="reveal">
+        <p class="contact-heading">Låt oss prata.</p>
+        <p class="contact-sub">Intresserad av att samarbeta eller vill veta mer om min bakgrund? Hör gärna av dig – jag är alltid öppen för nya möjligheter och spännande projekt.</p>
+      </div>
+      <div class="contact-links reveal">
+        <a href="https://www.linkedin.com/in/henrik-norlin-frisemo-8826b3180" target="_blank" rel="noopener" class="contact-link">
+          LinkedIn
+          <span class="arrow">→</span>
+        </a>
+        <a href="mailto:Henriknorfri@gmail.com" class="contact-link">
+          Henriknorfri@gmail.com
+          <span class="arrow">→</span>
+        </a>
+        <a href="https://www.linkedin.com/in/henrik-norlin-frisemo-8826b3180" target="_blank" rel="noopener" class="contact-link">
+          Visa LinkedIn-profil
+          <span class="arrow">→</span>
+        </a>
+        <a href="#" onclick="printCV();return false;" class="contact-link">
+          Ladda ner CV (PDF)
+          <span class="arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">HNF<span>.</span></div>
+  <div class="footer-info">© 2025 Henrik Norlin Frisemo</div>
+</footer>
+
+<!-- ═══════════════════════════════════════════════════════
+     CV PRINT – SIDA 1
+════════════════════════════════════════════════════════ -->
+<div id="cv-print">
+  <div class="cvp-head">
+    <div class="cvp-head-left">
+      <div class="cvp-photo">
+        <div class="cvp-photo-initials">HF</div>
+      </div>
+      <div>
+        <div class="cvp-name">Henrik Norlin Frisemo</div>
+        <div class="cvp-title">Mjukvaruutvecklare</div>
+      </div>
+    </div>
+    <div class="cvp-contacts">
+      Kiruna, Sverige<br>
+      Henriknorfri@gmail.com<br>
+      linkedin.com/in/henrik-norlin-frisemo-8826b3180
+    </div>
+  </div>
+  <div class="cvp-divider"></div>
+  <div class="cvp-body">
+    <div class="cvp-sidebar">
+      <div class="cvp-sec">Kompetenser</div>
+      <div class="cvp-sk-cat">Backend &amp; Desktop</div>
+      <div class="cvp-skill-tags">
+        <span class="cvp-tag">C#</span><span class="cvp-tag">.NET</span><span class="cvp-tag">WPF</span><span class="cvp-tag">WinForms</span><span class="cvp-tag">SQL Server</span><span class="cvp-tag">OOP</span>
+      </div>
+      <div class="cvp-sk-cat">Frontend</div>
+      <div class="cvp-skill-tags">
+        <span class="cvp-tag">HTML5</span><span class="cvp-tag">CSS3</span><span class="cvp-tag">JavaScript</span>
+      </div>
+      <div class="cvp-sk-cat">Verktyg</div>
+      <div class="cvp-skill-tags">
+        <span class="cvp-tag">Git</span><span class="cvp-tag">Rider</span><span class="cvp-tag">Visual Studio</span><span class="cvp-tag">Scrum</span>
+      </div>
+      <div class="cvp-sk-cat">AI</div>
+      <div class="cvp-skill-tags">
+        <span class="cvp-tag">AI-promptning</span><span class="cvp-tag">Claude</span><span class="cvp-tag">ChatGPT</span>
+      </div>
+      <div class="cvp-sec">Certifieringar</div>
+      <div class="cvp-cert">
+        <div class="cvp-cert-name">Professional Scrum Master I (PSM I)</div>
+        <div class="cvp-cert-org">Scrum.org · Mars 2019</div>
+      </div>
+      <div class="cvp-cert">
+        <div class="cvp-cert-name">The Complete Web Developer 2018</div>
+        <div class="cvp-cert-org">Udemy</div>
+      </div>
+      <div class="cvp-cert">
+        <div class="cvp-cert-name">freeCodeCamp – Webbdesign &amp; JS</div>
+        <div class="cvp-cert-org">freeCodeCamp.org</div>
+      </div>
+      <div class="cvp-sec">Språk</div>
+      <div class="cvp-lang">
+        <div class="cvp-lang-name">Svenska</div>
+        <div class="cvp-lang-lvl">Modersmål</div>
+      </div>
+      <div class="cvp-lang">
+        <div class="cvp-lang-name">Engelska</div>
+        <div class="cvp-lang-lvl">Professionell nivå</div>
+      </div>
+    </div>
+    <div class="cvp-main">
+      <div class="cvp-sec">Profil</div>
+      <p class="cvp-profile">
+        Mjukvaruutvecklare med bakgrund inom biomedicinsk vetenskap. Specialiserad på C# och .NET med 6+ år hos Comrod Mission Systems. Metodisk problemlösare med starkt fokus på kodkvalitet och agilt arbetssätt. PSM I-certifierad och öppen för nya möjligheter.
+      </p>
+      <div class="cvp-sec">Arbetslivserfarenhet</div>
+      <div class="cvp-item">
+        <div class="cvp-item-hd">
+          <div class="cvp-item-title">Mjukvaruutvecklare</div>
+          <span class="cvp-item-period">2019 – Nuvarande</span>
+        </div>
+        <div class="cvp-item-org">Comrod Mission Systems · Linköping</div>
+        <div class="cvp-item-desc">Bygger mjukvara inom försvars- och kommunikationsteknik. C# och .NET varje dag i en miljö där tillförlitlighet är kritisk. Agilt arbetssätt med fokus på kvalitet.</div>
+        <div style="display:flex;flex-wrap:wrap;gap:2.5pt;margin-top:3pt;">
+          <span class="cvp-tag">C#</span><span class="cvp-tag">.NET</span><span class="cvp-tag">WPF</span><span class="cvp-tag">WinForms</span><span class="cvp-tag">SQL Server</span><span class="cvp-tag">Git</span><span class="cvp-tag">Rider</span><span class="cvp-tag">Agile</span>
+        </div>
+      </div>
+      <div class="cvp-item">
+        <div class="cvp-item-hd">
+          <div class="cvp-item-title">Junior IT-konsult</div>
+          <span class="cvp-item-period">2019</span>
+        </div>
+        <div class="cvp-item-org">Academic Work</div>
+        <div class="cvp-item-desc">Första riktiga utvecklarjobbet efter intensivt C# .NET-program. Skarpa projekt direkt från start.</div>
+        <div style="display:flex;flex-wrap:wrap;gap:2.5pt;margin-top:3pt;">
+          <span class="cvp-tag">C#</span><span class="cvp-tag">.NET</span><span class="cvp-tag">SCRUM</span>
+        </div>
+      </div>
+      <div class="cvp-item">
+        <div class="cvp-item-hd">
+          <div class="cvp-item-title">Webbutvecklare (Frilans)</div>
+          <span class="cvp-item-period">2017 – 2018</span>
+        </div>
+        <div class="cvp-item-org">Eget projekt</div>
+        <div class="cvp-item-desc">Självstudier i webbutveckling via Udemy och freeCodeCamp. Byggde WordPress-sajter.</div>
+        <div style="display:flex;flex-wrap:wrap;gap:2.5pt;margin-top:3pt;">
+          <span class="cvp-tag">HTML</span><span class="cvp-tag">CSS</span><span class="cvp-tag">JavaScript</span><span class="cvp-tag">WordPress</span>
+        </div>
+      </div>
+      <div class="cvp-item">
+        <div class="cvp-item-hd">
+          <div class="cvp-item-title">Bartender</div>
+          <span class="cvp-item-period">2010 – 2014</span>
+        </div>
+        <div class="cvp-item-org">Diverse arbetsgivare</div>
+        <div class="cvp-item-desc">Kundservice och stresshantering under studietiden.</div>
+      </div>
+      <div class="cvp-sec">Utbildning</div>
+      <div class="cvp-item">
+        <div class="cvp-item-hd">
+          <div class="cvp-item-title">C# .NET – Intensivprogram</div>
+          <span class="cvp-item-period">2019</span>
+        </div>
+        <div class="cvp-item-org">Academy by Academic Work</div>
+        <div class="cvp-item-desc">Praktisk kodning, teamarbete och Scrum. Ledde direkt till jobb som IT-konsult.</div>
+      </div>
+      <div class="cvp-item">
+        <div class="cvp-item-hd">
+          <div class="cvp-item-title">Medicinsk Biologi, kandidat</div>
+          <span class="cvp-item-period">2010 – 2015</span>
+        </div>
+        <div class="cvp-item-org">Linköpings universitet</div>
+        <div class="cvp-item-desc">Fem år av biomedicinsk vetenskap. Metodiskt och analytiskt tänkande. Styrelseledamot i studentsektion.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     PERSONLIGT BREV – SIDA 2
+════════════════════════════════════════════════════════ -->
+<div id="cover-print">
+  <div class="cvr-head-bar"></div>
+  <div class="cvr-top">
+    <div>
+      <div class="cvr-sender-name">Henrik Norlin Frisemo</div>
+      <div class="cvr-sender-title">Mjukvaruutvecklare</div>
+      <div class="cvr-sender-info">
+        Kiruna, Sverige<br>
+        Henriknorfri@gmail.com<br>
+        linkedin.com/in/henrik-norlin-frisemo-8826b3180
+      </div>
+    </div>
+    <div class="cvr-date-loc">
+      Kiruna, 2025<br>
+      Till rekryteringsansvarig
+    </div>
+  </div>
+  <div class="cvr-subject">Ansökan – Mjukvaruutvecklare</div>
+  <div class="cvr-recipient">Till rekryteringsansvarig,</div>
+  <div class="cvr-body">
+    <p>Jag är en mjukvaruutvecklare med 6+ år hos Comrod Mission Systems i Linköping, specialiserad på C# och .NET. Min bakgrund inom biomedicinsk vetenskap ger mig ett annorlunda perspektiv – jag förstår problemen på djupet innan jag börjar koda.</p>
+    <p>Hos Comrod har jag dagligen arbetat med WPF, WinForms och SQL Server i en miljö där tillförlitlighet är kritisk. Jag är PSM I-certifierad och van vid agila team där samarbete och kommunikation är lika viktigt som teknisk kompetens.</p>
+    <p>Jag är nu redo för nästa steg i min karriär och söker en roll där jag får växa vidare som utvecklare – gärna i ett team med höga ambitioner och en kultur där man tar kvalitet på allvar.</p>
+    <p>Jag ser fram emot ett samtal om hur min profil kan bidra till er organisation.</p>
+  </div>
+  <div class="cvr-close">
+    <div class="cvr-close-line">Med vänliga hälsningar,</div>
+    <div class="cvr-sig-name">Henrik Norlin Frisemo</div>
+    <div class="cvr-sig-title">Mjukvaruutvecklare</div>
+    <div class="cvr-sig-contact">
+      Henriknorfri@gmail.com<br>
+      linkedin.com/in/henrik-norlin-frisemo-8826b3180
+    </div>
+  </div>
+</div>
+
+<script>
+  // ── CUSTOM CURSOR ──
+  const cursor = document.getElementById('cursor');
+  const cursorRing = document.getElementById('cursorRing');
+  let mx = -100, my = -100;
+  let rx = -100, ry = -100;
+
+  document.addEventListener('mousemove', e => {
+    mx = e.clientX; my = e.clientY;
+    cursor.style.left = mx + 'px';
+    cursor.style.top = my + 'px';
+  });
+
+  function animateCursorRing() {
+    rx += (mx - rx) * 0.12;
+    ry += (my - ry) * 0.12;
+    cursorRing.style.left = rx + 'px';
+    cursorRing.style.top = ry + 'px';
+    requestAnimationFrame(animateCursorRing);
+  }
+  animateCursorRing();
+
+  document.querySelectorAll('a, button, .skill-tag, .cert-item, .exp-item').forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      cursor.classList.add('expand');
+      cursorRing.classList.add('expand');
+    });
+    el.addEventListener('mouseleave', () => {
+      cursor.classList.remove('expand');
+      cursorRing.classList.remove('expand');
+    });
+  });
+
+  document.addEventListener('mouseleave', () => {
+    cursor.style.opacity = '0';
+    cursorRing.style.opacity = '0';
+  });
+
+  document.addEventListener('mouseenter', () => {
+    cursor.style.opacity = '1';
+    cursorRing.style.opacity = '1';
+  });
+
+  // ── BINARY CANVAS ──
+  const canvas = document.getElementById('binary-canvas');
+  const ctx = canvas.getContext('2d');
+  let cols, drops;
+
+  function initCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    const fontSize = 14;
+    cols = Math.floor(canvas.width / fontSize);
+    drops = Array(cols).fill(1);
+  }
+
+  function drawBinary() {
+    ctx.fillStyle = 'rgba(10,10,10,0.05)';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = '#c8f05a';
+    ctx.font = '13px Space Mono, monospace';
+
+    for (let i = 0; i < drops.length; i++) {
+      const char = Math.random() > 0.5 ? '1' : '0';
+      ctx.fillText(char, i * 14, drops[i] * 14);
+      if (drops[i] * 14 > canvas.height && Math.random() > 0.975) drops[i] = 0;
+      drops[i]++;
+    }
+  }
+
+  initCanvas();
+  window.addEventListener('resize', initCanvas);
+  setInterval(drawBinary, 90);
+
+  // ── NAV SCROLL ──
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // ── MOBILE NAV ──
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', () => {
+    navToggle.classList.toggle('active');
+    navLinks.classList.toggle('open');
+  });
+
+  navLinks.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      navToggle.classList.remove('active');
+      navLinks.classList.remove('open');
+    });
+  });
+
+  // ── SCROLL REVEAL ──
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+  // ── TEXT SCRAMBLE on HERO NAME ──
+  const chars = '01';
+  function scrambleText(el, finalText, duration = 700) {
+    const total = finalText.length;
+    let frame = 0;
+    const framesTotal = Math.ceil(duration / 16);
+
+    const interval = setInterval(() => {
+      let output = '';
+      const progress = frame / framesTotal;
+      const revealed = Math.floor(progress * total);
+
+      for (let i = 0; i < total; i++) {
+        if (i < revealed) {
+          output += finalText[i];
+        } else if (finalText[i] === ' ') {
+          output += ' ';
+        } else {
+          output += chars[Math.floor(Math.random() * chars.length)];
+        }
+      }
+      el.textContent = output;
+      frame++;
+      if (frame >= framesTotal) {
+        el.textContent = finalText;
+        clearInterval(interval);
+      }
+    }, 16);
+  }
+
+  // Apply scramble to tagline on load
+  window.addEventListener('load', () => {
+    const tagline = document.querySelector('.hero-tagline');
+    if (tagline) {
+      const original = tagline.innerHTML;
+      setTimeout(() => {
+        // Let the slide-up animation finish first
+      }, 1200);
+    }
+  });
+
+  // ── HOVER SCRAMBLE on section titles ──
+  document.querySelectorAll('.section-title').forEach(el => {
+    const original = el.textContent;
+    el.addEventListener('mouseenter', () => {
+      scrambleText(el, original, 500);
+    });
+  });
+
+  // ── PRINT FUNCTION ──
+  function printCV() {
+    window.print();
+  }
+</script>
+</body>
+</html>
