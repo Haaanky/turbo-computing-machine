@@ -5,22 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Henrik Norlin Frisemo – Mjukvaruutvecklare</title>
   <meta name="description" content="Henrik Norlin Frisemo – Mjukvaruutvecklare specialiserad på C#, .NET och fullstack-utveckling. Baserad i Kiruna, Sverige.">
-  <meta name="theme-color" content="#0d1117">
+  <meta name="theme-color" content="#111118">
   <meta property="og:title" content="Henrik Norlin Frisemo – Mjukvaruutvecklare">
   <meta property="og:description" content="Passionerad utvecklare med bakgrund inom biomedicinsk vetenskap. C#, .NET, SQL Server och agila metoder.">
   <meta property="og:type" content="website">
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%2358a6ff'/%3E%3Cstop offset='100%25' stop-color='%233fb950'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='100' rx='20' fill='%230d1117'/%3E%3Ctext x='50' y='68' font-family='Segoe UI,system-ui,sans-serif' font-size='48' font-weight='800' fill='url(%23g)' text-anchor='middle'%3EHN%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23111118'/%3E%3Ctext x='50' y='68' font-family='Georgia,serif' font-size='48' font-weight='700' fill='%23e8c47c' text-anchor='middle'%3EHN%3C/text%3E%3C/svg%3E">
   <style>
     :root {
-      --bg: #0d1117;
-      --surface: #161b22;
-      --surface2: #21262d;
-      --accent: #58a6ff;
-      --accent2: #3fb950;
-      --text: #e6edf3;
-      --muted: #8b949e;
-      --border: #30363d;
-      --radius: 12px;
+      --bg: #111118;
+      --surface: #1a1a24;
+      --surface2: #242430;
+      --accent: #e8c47c;
+      --accent2: #7ca8e8;
+      --text: #e2e0dc;
+      --muted: #908e8a;
+      --border: #2a2a36;
+      --radius: 8px;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -28,10 +31,11 @@
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
       background: var(--bg);
       color: var(--text);
-      line-height: 1.6;
+      line-height: 1.65;
+      font-size: 15px;
     }
 
     /* ── NAV ── */
@@ -43,19 +47,17 @@
       justify-content: space-between;
       align-items: center;
       padding: 1rem 2rem;
-      background: rgba(13,17,23,.85);
+      background: rgba(17,17,24,.9);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
     }
 
     .nav-logo {
-      font-weight: 800;
-      font-size: 1.2rem;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      letter-spacing: -.5px;
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-weight: 400;
+      font-size: 1.3rem;
+      color: var(--accent);
+      letter-spacing: .5px;
     }
 
     .nav-links {
@@ -79,9 +81,8 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      text-align: center;
-      padding: 6rem 2rem 4rem;
-      background: radial-gradient(ellipse at 50% 0%, rgba(88,166,255,.12) 0%, transparent 65%);
+      text-align: left;
+      padding: 8rem 2rem 5rem;
       position: relative;
       overflow: hidden;
     }
@@ -89,89 +90,86 @@
     #hero::before {
       content: '';
       position: absolute;
-      inset: 0;
-      background: url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h60v60H0z' fill='none'/%3E%3Ccircle cx='30' cy='30' r='.5' fill='%2330363d'/%3E%3C/svg%3E");
-      opacity: .6;
+      top: -30%;
+      right: -10%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(232,196,124,.06) 0%, transparent 70%);
+      pointer-events: none;
     }
 
-    .hero-inner { position: relative; max-width: 700px; }
-
-    @keyframes avatar-glow {
-      0%, 100% { box-shadow: 0 0 40px rgba(88,166,255,.25), 0 0 0 0 rgba(88,166,255,.1); }
-      50% { box-shadow: 0 0 50px rgba(88,166,255,.35), 0 0 0 8px rgba(88,166,255,.05); }
-    }
+    .hero-inner { position: relative; max-width: 640px; margin: 0 auto; }
 
     .avatar {
-      width: 120px; height: 120px;
+      width: 80px; height: 80px;
       border-radius: 50%;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      background: var(--surface2);
       display: flex; align-items: center; justify-content: center;
-      font-size: 2.8rem;
-      font-weight: 700;
-      color: #fff;
-      margin: 0 auto 1.5rem;
-      border: 3px solid var(--border);
-      box-shadow: 0 0 40px rgba(88,166,255,.25);
-      animation: avatar-glow 4s ease-in-out infinite;
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: 1.6rem;
+      font-weight: 400;
+      color: var(--accent);
+      margin-bottom: 2rem;
+      border: 2px solid var(--border);
     }
 
     .hero-inner h1 {
-      font-size: clamp(2rem, 5vw, 3.2rem);
-      font-weight: 800;
-      letter-spacing: -1px;
-      line-height: 1.1;
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: clamp(2.2rem, 5vw, 3.4rem);
+      font-weight: 400;
+      letter-spacing: -.5px;
+      line-height: 1.15;
+      color: var(--text);
     }
 
     .hero-inner h1 span { color: var(--accent); }
 
     .hero-title {
-      margin-top: .75rem;
-      font-size: 1.15rem;
-      color: var(--muted);
-    }
-
-    .hero-sub {
       margin-top: 1rem;
       font-size: 1rem;
       color: var(--muted);
-      max-width: 520px;
-      margin-left: auto;
-      margin-right: auto;
+      letter-spacing: .5px;
+    }
+
+    .hero-sub {
+      margin-top: 1.25rem;
+      font-size: .95rem;
+      color: var(--muted);
+      max-width: 480px;
+      line-height: 1.7;
     }
 
     .hero-badges {
       display: flex;
       flex-wrap: wrap;
-      gap: .5rem;
-      justify-content: center;
+      gap: .4rem;
       margin-top: 1.5rem;
     }
 
     .badge {
-      padding: .3rem .85rem;
-      border-radius: 99px;
-      font-size: .8rem;
-      font-weight: 600;
+      padding: .25rem .7rem;
+      border-radius: 4px;
+      font-size: .78rem;
+      font-weight: 500;
       border: 1px solid var(--border);
       background: var(--surface);
       color: var(--muted);
     }
 
-    .badge.blue { border-color: var(--accent); color: var(--accent); background: rgba(88,166,255,.08); }
-    .badge.green { border-color: var(--accent2); color: var(--accent2); background: rgba(63,185,80,.08); }
+    .badge.blue { border-color: rgba(232,196,124,.3); color: var(--accent); background: rgba(232,196,124,.06); }
+    .badge.green { border-color: rgba(124,168,232,.3); color: var(--accent2); background: rgba(124,168,232,.06); }
 
     .hero-cta {
       display: flex;
-      gap: 1rem;
-      justify-content: center;
+      gap: .75rem;
       margin-top: 2rem;
       flex-wrap: wrap;
     }
 
     .btn {
-      padding: .65rem 1.5rem;
+      padding: .6rem 1.4rem;
       border-radius: var(--radius);
-      font-size: .95rem;
+      font-size: .9rem;
       font-weight: 600;
       text-decoration: none;
       transition: all .2s;
@@ -180,18 +178,18 @@
 
     .btn-primary {
       background: var(--accent);
-      color: #0d1117;
+      color: var(--bg);
     }
 
-    .btn-primary:hover { background: #79b8ff; transform: translateY(-1px); }
+    .btn-primary:hover { background: #f0d08e; }
 
     .btn-ghost {
       border: 1px solid var(--border);
       color: var(--text);
-      background: var(--surface);
+      background: transparent;
     }
 
-    .btn-ghost:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-1px); }
+    .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
 
     /* ── SECTIONS ── */
     section { padding: 5rem 2rem; }
@@ -199,23 +197,21 @@
     .container { max-width: 860px; margin: 0 auto; }
 
     .section-label {
-      font-size: .75rem;
-      font-weight: 700;
-      letter-spacing: 2px;
+      font-size: .72rem;
+      font-weight: 500;
+      letter-spacing: 1.5px;
       text-transform: uppercase;
       color: var(--accent);
       margin-bottom: .5rem;
     }
 
     .section-title {
-      font-size: clamp(1.6rem, 3vw, 2.2rem);
-      font-weight: 800;
-      letter-spacing: -.5px;
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-weight: 400;
+      letter-spacing: 0;
       margin-bottom: 2.5rem;
-      padding-bottom: .75rem;
-      border-bottom: 2px solid transparent;
-      border-image: linear-gradient(90deg, var(--accent), var(--accent2), transparent) 1;
-      display: inline-block;
+      color: var(--text);
     }
 
     /* ── ABOUT ── */
@@ -238,18 +234,15 @@
     }
 
     .about-card:hover {
-      border-color: var(--accent);
-      transform: translateY(-4px);
-      box-shadow: 0 8px 30px rgba(88,166,255,.1);
+      border-color: rgba(232,196,124,.3);
     }
 
     .about-card h3 {
-      font-size: .9rem;
-      color: var(--muted);
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: 1rem;
+      color: var(--text);
       margin-bottom: .5rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      font-weight: 600;
+      font-weight: 400;
     }
 
     .about-card p { color: var(--text); font-size: .95rem; }
@@ -277,15 +270,13 @@
     }
 
     .tl-dot {
-      width: 14px; height: 14px;
+      width: 10px; height: 10px;
       border-radius: 50%;
       background: var(--accent);
-      border: 2px solid var(--bg);
-      box-shadow: 0 0 0 2px var(--accent);
       flex-shrink: 0;
     }
 
-    .tl-dot.green { background: var(--accent2); box-shadow: 0 0 0 2px var(--accent2); }
+    .tl-dot.green { background: var(--accent2); }
 
     .tl-line {
       flex: 1;
@@ -305,11 +296,11 @@
       transition: border-color .2s, transform .2s;
     }
 
-    .tl-card:hover { border-color: var(--accent); transform: translateX(4px); }
+    .tl-card:hover { border-color: rgba(232,196,124,.3); }
 
     .tl-header { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: .5rem; }
 
-    .tl-title { font-weight: 700; font-size: 1rem; }
+    .tl-title { font-family: 'DM Serif Display', Georgia, serif; font-weight: 400; font-size: 1.05rem; }
 
     .tl-period {
       font-size: .78rem;
@@ -344,13 +335,13 @@
     .tag {
       font-size: .72rem;
       padding: .2rem .55rem;
-      border-radius: 4px;
-      background: rgba(88,166,255,.1);
+      border-radius: 3px;
+      background: rgba(232,196,124,.08);
       color: var(--accent);
-      font-weight: 600;
+      font-weight: 500;
     }
 
-    .tag.green { background: rgba(63,185,80,.1); color: var(--accent2); }
+    .tag.green { background: rgba(124,168,232,.08); color: var(--accent2); }
 
     /* ── SKILLS ── */
     #skills { background: var(--surface); }
@@ -370,55 +361,43 @@
     }
 
     .skill-group:hover {
-      border-color: var(--accent);
-      transform: translateY(-3px);
-      box-shadow: 0 6px 24px rgba(88,166,255,.08);
+      border-color: rgba(232,196,124,.3);
     }
 
     .skill-group h3 {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: .95rem;
+      color: var(--text);
+      margin-bottom: .85rem;
+      font-weight: 400;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .4rem;
+    }
+
+    .skill-tag {
       font-size: .8rem;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      color: var(--muted);
-      margin-bottom: 1rem;
-      font-weight: 700;
+      padding: .3rem .65rem;
+      border-radius: 4px;
+      background: rgba(232,196,124,.07);
+      color: var(--text);
+      font-weight: 500;
+      border: 1px solid var(--border);
+      transition: border-color .2s;
     }
 
-    .skill-item {
-      display: flex;
-      flex-direction: column;
-      gap: .3rem;
-      margin-bottom: .75rem;
+    .skill-tag:hover {
+      border-color: rgba(232,196,124,.3);
     }
 
-    .skill-item:last-child { margin-bottom: 0; }
-
-    .skill-name {
-      font-size: .88rem;
-      font-weight: 600;
-      display: flex;
-      justify-content: space-between;
+    .skill-tag.highlight {
+      background: rgba(232,196,124,.12);
+      color: var(--accent);
+      border-color: rgba(232,196,124,.25);
     }
-
-    .skill-pct { color: var(--muted); font-weight: 400; }
-
-    .skill-bar {
-      height: 4px;
-      background: var(--border);
-      border-radius: 99px;
-      overflow: hidden;
-    }
-
-    .skill-fill {
-      height: 100%;
-      border-radius: 99px;
-      background: linear-gradient(90deg, var(--accent), var(--accent2));
-      transform-origin: left;
-      transform: scaleX(0);
-      transition: transform .8s ease;
-    }
-
-    .skill-fill.animated { transform: scaleX(1); }
 
     /* ── CERTIFICATIONS ── */
     .cert-grid {
@@ -438,14 +417,14 @@
       transition: border-color .2s, transform .2s, box-shadow .2s;
     }
 
-    .cert-card:hover { border-color: var(--accent2); transform: translateY(-3px); box-shadow: 0 6px 24px rgba(63,185,80,.1); }
+    .cert-card:hover { border-color: rgba(232,196,124,.3); }
 
     .cert-icon {
       font-size: 1.8rem;
       flex-shrink: 0;
     }
 
-    .cert-info h3 { font-size: .95rem; font-weight: 700; }
+    .cert-info h3 { font-family: 'DM Serif Display', Georgia, serif; font-size: .95rem; font-weight: 400; }
     .cert-info p { font-size: .82rem; color: var(--muted); margin-top: .2rem; }
 
     /* ── LANGUAGES ── */
@@ -468,18 +447,16 @@
     }
 
     .lang-card:hover {
-      border-color: var(--accent);
-      transform: translateY(-3px);
+      border-color: rgba(232,196,124,.3);
     }
 
     .lang-flag { font-size: 2rem; margin-bottom: .5rem; }
-    .lang-name { font-weight: 700; font-size: 1rem; }
+    .lang-name { font-family: 'DM Serif Display', Georgia, serif; font-weight: 400; font-size: 1rem; }
     .lang-level { font-size: .82rem; color: var(--muted); margin-top: .2rem; }
 
     /* ── CONTACT ── */
     #contact {
       text-align: center;
-      background: radial-gradient(ellipse at 50% 100%, rgba(63,185,80,.08) 0%, transparent 65%);
     }
 
     .contact-card {
@@ -514,7 +491,7 @@
       transition: all .2s;
     }
 
-    .contact-link:hover { border-color: var(--accent); color: var(--accent); transform: translateX(4px); }
+    .contact-link:hover { border-color: rgba(232,196,124,.3); color: var(--accent); }
 
     .contact-link .icon { font-size: 1.1rem; }
 
@@ -529,8 +506,9 @@
     }
 
     .footer-logo {
+      font-family: 'DM Serif Display', Georgia, serif;
       font-size: 1.2rem;
-      font-weight: 700;
+      font-weight: 400;
       color: var(--accent);
       margin-bottom: .5rem;
     }
@@ -584,8 +562,7 @@
     .back-to-top:hover {
       background: var(--accent);
       border-color: var(--accent);
-      color: #0d1117;
-      transform: translateY(-2px);
+      color: var(--bg);
     }
 
     .back-to-top svg { width: 18px; height: 18px; }
@@ -628,7 +605,7 @@
         left: 0;
         right: 0;
         flex-direction: column;
-        background: rgba(13,17,23,.95);
+        background: rgba(17,17,24,.95);
         backdrop-filter: blur(12px);
         padding: 1rem 2rem;
         gap: 0;
@@ -655,23 +632,20 @@
       display: flex;
       align-items: center;
       gap: .55rem;
-      padding: .65rem 1.25rem;
-      background: var(--accent2);
-      color: #0d1117;
+      padding: .6rem 1.15rem;
+      background: var(--accent);
+      color: var(--bg);
       border: none;
       border-radius: var(--radius);
-      font-size: .9rem;
-      font-weight: 700;
+      font-size: .85rem;
+      font-weight: 600;
       cursor: pointer;
-      box-shadow: 0 4px 20px rgba(63,185,80,.35);
       transition: all .2s;
       font-family: inherit;
     }
 
     .pdf-btn:hover {
-      background: #56d364;
-      transform: translateY(-2px);
-      box-shadow: 0 6px 24px rgba(63,185,80,.45);
+      background: #f0d08e;
     }
 
     .pdf-btn svg { width: 16px; height: 16px; flex-shrink: 0; }
@@ -706,7 +680,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        border-top: 6px solid #1e3a8a;
+        border-top: 6px solid #2c4a6e;
         padding-top: 8pt;
         padding-bottom: 7pt;
         margin-bottom: 4pt;
@@ -723,8 +697,8 @@
         border-radius: 50%;
         overflow: hidden;
         flex-shrink: 0;
-        border: 3px solid #1e3a8a;
-        background: #1e3a8a;
+        border: 3px solid #2c4a6e;
+        background: #2c4a6e;
       }
 
       .cvp-photo img {
@@ -759,7 +733,7 @@
 
       .cvp-title {
         font-size: 11pt;
-        color: #1e3a8a;
+        color: #2c4a6e;
         font-weight: 600;
         margin-top: 3pt;
       }
@@ -785,8 +759,8 @@
         font-weight: 700;
         text-transform: uppercase;
         letter-spacing: 1.5pt;
-        color: #1e3a8a;
-        border-bottom: 1.5px solid #1e3a8a;
+        color: #2c4a6e;
+        border-bottom: 1.5px solid #2c4a6e;
         padding-bottom: 2pt;
         margin-bottom: 5pt;
         margin-top: 7pt;
@@ -794,19 +768,13 @@
       .cvp-sidebar .cvp-sec:first-child,
       .cvp-main .cvp-sec:first-child { margin-top: 0; }
 
-      /* Skills */
-      .cvp-skill { margin-bottom: 3.5pt; }
-      .cvp-sk-row {
+      /* Skills - tag layout */
+      .cvp-skill-tags {
         display: flex;
-        justify-content: space-between;
-        font-size: 8.5pt;
-        font-weight: 600;
-        color: #1a1a1a;
-        margin-bottom: 2pt;
+        flex-wrap: wrap;
+        gap: 2.5pt;
+        margin-bottom: 3pt;
       }
-      .cvp-sk-pct { color: #6b7280; font-weight: 400; font-size: 7.5pt; }
-      .cvp-sk-bar { height: 5px; background: #e2e8f0; border-radius: 3px; overflow: hidden; }
-      .cvp-sk-fill { height: 5px; background: #1e3a8a; border-radius: 3px; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
 
       /* Skill category label */
       .cvp-sk-cat {
@@ -861,7 +829,7 @@
         font-size: 6.5pt;
         padding: 1pt 4.5pt;
         background: #eff6ff;
-        color: #1d4ed8;
+        color: #2c4a6e;
         border-radius: 2px;
         font-weight: 600;
         border: 0.5px solid #bfdbfe;
@@ -882,7 +850,7 @@
 
       .cvr-head-bar {
         height: 8px;
-        background: #1e3a8a;
+        background: #2c4a6e;
         margin-bottom: 16pt;
         -webkit-print-color-adjust: exact !important;
         print-color-adjust: exact !important;
@@ -905,7 +873,7 @@
 
       .cvr-sender-title {
         font-size: 9.5pt;
-        color: #1e3a8a;
+        color: #2c4a6e;
         font-weight: 600;
         margin-top: 3pt;
       }
@@ -931,7 +899,7 @@
         color: #0f172a;
         margin-bottom: 14pt;
         padding-bottom: 7pt;
-        border-bottom: 2.5px solid #1e3a8a;
+        border-bottom: 2.5px solid #2c4a6e;
         letter-spacing: -0.2pt;
       }
 
@@ -992,9 +960,8 @@
     <h1>Henrik <span>Norlin Frisemo</span></h1>
     <p class="hero-title">Mjukvaruutvecklare · Kiruna, Sverige</p>
     <p class="hero-sub">
-      Passionerad utvecklare med bakgrund inom biomedicinsk vetenskap.
-      Kombinerar analytiskt tänkande från naturvetenskap med modern
-      mjukvaruutveckling.
+      Från biomedicinsk vetenskap till systemutveckling i C# och .NET.
+      6+ år hos Comrod Mission Systems. Gillar att bygga saker som faktiskt fungerar.
     </p>
     <div class="hero-badges">
       <span class="badge blue">C# &amp; .NET</span>
@@ -1019,24 +986,20 @@
     <h2 class="section-title reveal">Om mig</h2>
     <div class="about-grid">
       <div class="about-card reveal">
-        <div class="icon">🧬</div>
-        <h3>Vetenskaplig grund</h3>
-        <p>Akademisk utbildning i medicinsk biologi ger ett analytiskt och metodiskt förhållningssätt till problemlösning – en stark bas för mjukvaruutveckling.</p>
+        <h3>Bakgrund</h3>
+        <p>Pluggade medicinsk biologi på LiU innan jag hittade programmering. Det ger mig ett annorlunda perspektiv – jag vill alltid förstå problemet på djupet innan jag löser det.</p>
       </div>
       <div class="about-card reveal">
-        <div class="icon">💻</div>
-        <h3>Teknisk profil</h3>
-        <p>Specialiserad på C# och .NET-ekosystemet. Praktisk erfarenhet av fullstack-webbutveckling, databaser och agila arbetsmetoder.</p>
+        <h3>Det jag jobbar med</h3>
+        <p>C# och .NET är mina huvudverktyg. I vardagen handlar det om WPF-appar, SQL Server, och att skriva kod som håller i längden – inte bara till nästa release.</p>
       </div>
       <div class="about-card reveal">
-        <div class="icon">🤝</div>
-        <h3>Personlighet</h3>
-        <p>Social, nyfiken och driven med ett stort IT- och teknikintresse. Trivs i team och bidrar aktivt till en god teamdynamik.</p>
+        <h3>Hur jag funkar</h3>
+        <p>Nyfiken och initiativtagande. Gillar att sitta i team och bolla idéer, men har inga problem att gräva ner mig i ett svårt problem på egen hand heller.</p>
       </div>
       <div class="about-card reveal">
-        <div class="icon">📍</div>
-        <h3>Plats &amp; tillgänglighet</h3>
-        <p>Baserad i Kiruna, Norrbotten. Arbetar på Comrod Mission Systems i Linköping. Öppen för nya utmaningar och möjligheter.</p>
+        <h3>Var jag finns</h3>
+        <p>Bor i Kiruna, jobbar på Comrod Mission Systems i Linköping. Öppen för nya möjligheter.</p>
       </div>
     </div>
   </div>
@@ -1063,7 +1026,7 @@
             <span class="tl-period">2019 – Nuvarande</span>
           </div>
           <p class="tl-desc">
-            Systemutveckling inom försvars- och kommunikationsteknik. Arbetar med avancerade mjukvarulösningar i C# och .NET i en agil miljö med höga krav på tillförlitlighet och prestanda.
+            Bygger mjukvara inom försvars- och kommunikationsteknik. C# och .NET varje dag, i en miljö där saker måste funka på riktigt. Agilt arbetssätt med fokus på kvalitet.
           </p>
           <div class="tl-tags">
             <span class="tag">C#</span>
@@ -1092,7 +1055,7 @@
             <span class="tl-period">2019</span>
           </div>
           <p class="tl-desc">
-            Startade karriären som junior IT-konsult efter genomfört intensivt utbildningsprogram i C# .NET. Bidrog till projekt med moderna agila metoder.
+            Första riktiga utvecklarjobbet. Fick foten in efter ett intensivt utbildningsprogram i C# .NET och kastades rakt in i skarpa projekt.
           </p>
           <div class="tl-tags">
             <span class="tag">C#</span>
@@ -1116,7 +1079,7 @@
             <span class="tl-period">2017 – 2018</span>
           </div>
           <p class="tl-desc">
-            Självstudier och praktisk webbutveckling via Udemy och freeCodeCamp. Byggde WordPress-webbplatser och fördjupade sig i HTML, CSS och JavaScript.
+            Lärde mig webbutveckling på egen hand genom Udemy och freeCodeCamp. Byggde WordPress-sajter och började förstå att det här var vad jag ville jobba med.
           </p>
           <div class="tl-tags">
             <span class="tag">HTML</span>
@@ -1141,7 +1104,7 @@
             <span class="tl-period">2010 – 2014</span>
           </div>
           <p class="tl-desc">
-            Serviceinriktad roll som byggde starka kommunikativa och sociala färdigheter. Erfarenhet av kundkontakt och arbete i högt tempo.
+            Jobbade i baren under studietiden. Lärde mig hantera folk, stress och att hålla humöret uppe – oväntat användbart i utvecklarvärlden också.
           </p>
           <div class="tl-tags">
             <span class="tag green">Kundservice</span>
@@ -1175,7 +1138,7 @@
             <span class="tl-period">2019</span>
           </div>
           <p class="tl-desc">
-            Intensivt utbildningsprogram med fokus på praktisk inlärning, agilt teamarbete och kontinuerlig feedback. Ledde direkt till anställning som junior IT-konsult.
+            Intensivt program som gick rakt på sak – praktisk kodning, teamarbete och Scrum. Ledde direkt till jobb som IT-konsult.
           </p>
           <div class="tl-tags">
             <span class="tag">OOP</span>
@@ -1203,7 +1166,7 @@
             <span class="tl-period">2010 – 2015</span>
           </div>
           <p class="tl-desc">
-            Gedigen universitetsutbildning inom biomedicinsk vetenskap. Tränade analytiskt och vetenskapligt tänkande. Engagerad i studentliv som styrelseledamot i sektionen för Medicinsk Biologi samt ordförande för dryckeskommittén.
+            Fem år av biomedicinsk vetenskap som lärde mig att tänka metodiskt och vetenskapligt. Satt i sektionsstyrelsen och var ordförande för dryckeskommittén – så det var inte bara labb.
           </p>
           <div class="tl-tags">
             <span class="tag green">Biomedicin</span>
@@ -1227,7 +1190,7 @@
             <span class="tl-period">2017 – 2018</span>
           </div>
           <p class="tl-desc">
-            Fullständigt genomfört "The Complete Web Developer in 2018" samt freeCodeCamp-certifieringar. Lade grunden för webbutvecklingskompetensen.
+            Genomförde "The Complete Web Developer in 2018" och freeCodeCamp-certifieringar. Här började allt med kod.
           </p>
           <div class="tl-tags">
             <span class="tag">HTML</span>
@@ -1250,89 +1213,48 @@
 
       <div class="skill-group reveal">
         <h3>Backend &amp; Desktop</h3>
-        <div class="skill-item">
-          <span class="skill-name">C# <span class="skill-pct">99%</span></span>
-          <div class="skill-bar"><div class="skill-fill" style="--w:.99"></div></div>
-        </div>
-        <div class="skill-item">
-          <span class="skill-name">.NET Framework / Core <span class="skill-pct">88%</span></span>
-          <div class="skill-bar"><div class="skill-fill" style="--w:.88"></div></div>
-        </div>
-        <div class="skill-item">
-          <span class="skill-name">OOP-design <span class="skill-pct">85%</span></span>
-          <div class="skill-bar"><div class="skill-fill" style="--w:.85"></div></div>
-        </div>
-        <div class="skill-item">
-          <span class="skill-name">WPF <span class="skill-pct">78%</span></span>
-          <div class="skill-bar"><div class="skill-fill" style="--w:.78"></div></div>
-        </div>
-        <div class="skill-item">
-          <span class="skill-name">SQL Server <span class="skill-pct">72%</span></span>
-          <div class="skill-bar"><div class="skill-fill" style="--w:.72"></div></div>
+        <div class="skill-tags">
+          <span class="skill-tag highlight">C#</span>
+          <span class="skill-tag highlight">.NET Framework / Core</span>
+          <span class="skill-tag">OOP-design</span>
+          <span class="skill-tag">WPF</span>
+          <span class="skill-tag">SQL Server</span>
         </div>
       </div>
 
       <div class="skill-group reveal">
         <h3>Frontend</h3>
-        <div class="skill-item">
-          <span class="skill-name">HTML5 <span class="skill-pct">80%</span></span>
-          <div class="skill-bar"><div class="skill-fill" style="--w:.80"></div></div>
-        </div>
-        <div class="skill-item">
-          <span class="skill-name">CSS3 <span class="skill-pct">72%</span></span>
-          <div class="skill-bar"><div class="skill-fill" style="--w:.72"></div></div>
-        </div>
-        <div class="skill-item">
-          <span class="skill-name">JavaScript <span class="skill-pct">65%</span></span>
-          <div class="skill-bar"><div class="skill-fill" style="--w:.65"></div></div>
+        <div class="skill-tags">
+          <span class="skill-tag">HTML5</span>
+          <span class="skill-tag">CSS3</span>
+          <span class="skill-tag">JavaScript</span>
         </div>
       </div>
 
       <div class="skill-group reveal">
         <h3>Verktyg &amp; Metodik</h3>
-        <div class="skill-item">
-          <span class="skill-name">Agile / Scrum <span class="skill-pct">90%</span></span>
-          <div class="skill-bar"><div class="skill-fill" style="--w:.90"></div></div>
-        </div>
-        <div class="skill-item">
-          <span class="skill-name">JetBrains Rider <span class="skill-pct">92%</span></span>
-          <div class="skill-bar"><div class="skill-fill" style="--w:.92"></div></div>
-        </div>
-        <div class="skill-item">
-          <span class="skill-name">Git <span class="skill-pct">90%</span></span>
-          <div class="skill-bar"><div class="skill-fill" style="--w:.90"></div></div>
-        </div>
-        <div class="skill-item">
-          <span class="skill-name">Visual Studio <span class="skill-pct">72%</span></span>
-          <div class="skill-bar"><div class="skill-fill" style="--w:.72"></div></div>
+        <div class="skill-tags">
+          <span class="skill-tag highlight">Agile / Scrum</span>
+          <span class="skill-tag highlight">JetBrains Rider</span>
+          <span class="skill-tag highlight">Git</span>
+          <span class="skill-tag">Visual Studio</span>
         </div>
       </div>
 
       <div class="skill-group reveal">
         <h3>Vetenskap &amp; Analys</h3>
-        <div class="skill-item">
-          <span class="skill-name">Biomedicin <span class="skill-pct">80%</span></span>
-          <div class="skill-bar"><div class="skill-fill" style="--w:.80"></div></div>
-        </div>
-        <div class="skill-item">
-          <span class="skill-name">Vetenskaplig metodik <span class="skill-pct">85%</span></span>
-          <div class="skill-bar"><div class="skill-fill" style="--w:.85"></div></div>
+        <div class="skill-tags">
+          <span class="skill-tag">Biomedicin</span>
+          <span class="skill-tag">Vetenskaplig metodik</span>
         </div>
       </div>
 
       <div class="skill-group reveal">
         <h3>AI &amp; Vibekodning</h3>
-        <div class="skill-item">
-          <span class="skill-name">AI-promptning <span class="skill-pct">88%</span></span>
-          <div class="skill-bar"><div class="skill-fill" style="--w:.88"></div></div>
-        </div>
-        <div class="skill-item">
-          <span class="skill-name">Vibekodning <span class="skill-pct">85%</span></span>
-          <div class="skill-bar"><div class="skill-fill" style="--w:.85"></div></div>
-        </div>
-        <div class="skill-item">
-          <span class="skill-name">Claude / ChatGPT <span class="skill-pct">90%</span></span>
-          <div class="skill-bar"><div class="skill-fill" style="--w:.90"></div></div>
+        <div class="skill-tags">
+          <span class="skill-tag highlight">AI-promptning</span>
+          <span class="skill-tag">Vibekodning</span>
+          <span class="skill-tag">Claude / ChatGPT</span>
         </div>
       </div>
 
@@ -1347,35 +1269,27 @@
     <h2 class="section-title reveal">Certifieringar &amp; Volontärarbete</h2>
     <div class="cert-grid">
       <div class="cert-card reveal">
-        <div class="cert-icon">🏅</div>
         <div class="cert-info">
           <h3>Professional Scrum Master I</h3>
           <p>Scrum.org · Mars 2019</p>
-          <p>Certifierad inom agila principer och Scrum-ramverket.</p>
         </div>
       </div>
       <div class="cert-card reveal">
-        <div class="cert-icon">🎓</div>
         <div class="cert-info">
           <h3>The Complete Web Developer 2018</h3>
           <p>Udemy · 2017–2018</p>
-          <p>Fullständig webbutvecklingskurs från grunden.</p>
         </div>
       </div>
       <div class="cert-card reveal">
-        <div class="cert-icon">💻</div>
         <div class="cert-info">
-          <h3>freeCodeCamp</h3>
+          <h3>freeCodeCamp – Webbdesign &amp; JS</h3>
           <p>freeCodeCamp.org · 2017–2018</p>
-          <p>Certifieringar inom webbdesign och JavaScript.</p>
         </div>
       </div>
       <div class="cert-card reveal">
-        <div class="cert-icon">🤝</div>
         <div class="cert-info">
           <h3>Styrelseledamot – Medicinsk Biologi</h3>
           <p>Studentsektion · 2011–2013</p>
-          <p>Ledarskapserfarenhet inom studentorganisation.</p>
         </div>
       </div>
     </div>
@@ -1469,67 +1383,33 @@
       <div class="cvp-sec">Kompetenser</div>
 
       <div class="cvp-sk-cat">Backend &amp; Desktop</div>
-      <div class="cvp-skill">
-        <div class="cvp-sk-row"><span>C#</span><span class="cvp-sk-pct">99 %</span></div>
-        <div class="cvp-sk-bar"><div class="cvp-sk-fill" style="width:99%"></div></div>
-      </div>
-      <div class="cvp-skill">
-        <div class="cvp-sk-row"><span>.NET Framework / Core</span><span class="cvp-sk-pct">88 %</span></div>
-        <div class="cvp-sk-bar"><div class="cvp-sk-fill" style="width:88%"></div></div>
-      </div>
-      <div class="cvp-skill">
-        <div class="cvp-sk-row"><span>OOP-design</span><span class="cvp-sk-pct">85 %</span></div>
-        <div class="cvp-sk-bar"><div class="cvp-sk-fill" style="width:85%"></div></div>
-      </div>
-      <div class="cvp-skill">
-        <div class="cvp-sk-row"><span>WPF</span><span class="cvp-sk-pct">78 %</span></div>
-        <div class="cvp-sk-bar"><div class="cvp-sk-fill" style="width:78%"></div></div>
-      </div>
-      <div class="cvp-skill">
-        <div class="cvp-sk-row"><span>SQL Server</span><span class="cvp-sk-pct">72 %</span></div>
-        <div class="cvp-sk-bar"><div class="cvp-sk-fill" style="width:72%"></div></div>
+      <div class="cvp-skill-tags">
+        <span class="cvp-tag">C#</span>
+        <span class="cvp-tag">.NET</span>
+        <span class="cvp-tag">OOP</span>
+        <span class="cvp-tag">WPF</span>
+        <span class="cvp-tag">SQL Server</span>
       </div>
 
       <div class="cvp-sk-cat">Verktyg &amp; Metodik</div>
-      <div class="cvp-skill">
-        <div class="cvp-sk-row"><span>Agile / Scrum</span><span class="cvp-sk-pct">90 %</span></div>
-        <div class="cvp-sk-bar"><div class="cvp-sk-fill" style="width:90%"></div></div>
-      </div>
-      <div class="cvp-skill">
-        <div class="cvp-sk-row"><span>Visual Studio</span><span class="cvp-sk-pct">72 %</span></div>
-        <div class="cvp-sk-bar"><div class="cvp-sk-fill" style="width:72%"></div></div>
-      </div>
-      <div class="cvp-skill">
-        <div class="cvp-sk-row"><span>Git</span><span class="cvp-sk-pct">90 %</span></div>
-        <div class="cvp-sk-bar"><div class="cvp-sk-fill" style="width:90%"></div></div>
-      </div>
-      <div class="cvp-skill">
-        <div class="cvp-sk-row"><span>JetBrains Rider</span><span class="cvp-sk-pct">92 %</span></div>
-        <div class="cvp-sk-bar"><div class="cvp-sk-fill" style="width:92%"></div></div>
+      <div class="cvp-skill-tags">
+        <span class="cvp-tag">Agile / Scrum</span>
+        <span class="cvp-tag">Git</span>
+        <span class="cvp-tag">Rider</span>
+        <span class="cvp-tag">Visual Studio</span>
       </div>
 
       <div class="cvp-sk-cat">Frontend</div>
-      <div class="cvp-skill">
-        <div class="cvp-sk-row"><span>HTML5 / CSS3</span><span class="cvp-sk-pct">80 %</span></div>
-        <div class="cvp-sk-bar"><div class="cvp-sk-fill" style="width:80%"></div></div>
-      </div>
-      <div class="cvp-skill">
-        <div class="cvp-sk-row"><span>JavaScript</span><span class="cvp-sk-pct">65 %</span></div>
-        <div class="cvp-sk-bar"><div class="cvp-sk-fill" style="width:65%"></div></div>
+      <div class="cvp-skill-tags">
+        <span class="cvp-tag">HTML5 / CSS3</span>
+        <span class="cvp-tag">JavaScript</span>
       </div>
 
       <div class="cvp-sk-cat">AI &amp; Vibekodning</div>
-      <div class="cvp-skill">
-        <div class="cvp-sk-row"><span>AI-promptning</span><span class="cvp-sk-pct">88 %</span></div>
-        <div class="cvp-sk-bar"><div class="cvp-sk-fill" style="width:88%"></div></div>
-      </div>
-      <div class="cvp-skill">
-        <div class="cvp-sk-row"><span>Vibekodning</span><span class="cvp-sk-pct">85 %</span></div>
-        <div class="cvp-sk-bar"><div class="cvp-sk-fill" style="width:85%"></div></div>
-      </div>
-      <div class="cvp-skill">
-        <div class="cvp-sk-row"><span>Claude / ChatGPT</span><span class="cvp-sk-pct">90 %</span></div>
-        <div class="cvp-sk-bar"><div class="cvp-sk-fill" style="width:90%"></div></div>
+      <div class="cvp-skill-tags">
+        <span class="cvp-tag">AI-promptning</span>
+        <span class="cvp-tag">Vibekodning</span>
+        <span class="cvp-tag">Claude / ChatGPT</span>
       </div>
 
       <div class="cvp-sec">Språk</div>
@@ -1567,7 +1447,7 @@
 
       <div class="cvp-sec">Profil</div>
       <p class="cvp-profile">
-        Mjukvaruutvecklare med 6+ års erfarenhet inom försvars- och kommunikationsteknik hos Comrod Mission Systems. Specialiserad på C# och .NET med kompetens i OOP, WPF och SQL. Akademisk bakgrund i biomedicinsk vetenskap ger analytiskt förhållningssätt. Certifierad PSM I. Arbetar aktivt med AI-verktyg och vibekodning.
+        Utvecklare med 6+ år på Comrod Mission Systems. Jobbar med C# och .NET i försvars- och kommunikationsteknik – WPF, SQL Server, OOP. Bakgrund i biomedicinsk vetenskap ger ett metodiskt angreppssätt. PSM I-certifierad. Använder AI-verktyg aktivt i arbetet.
       </p>
 
       <div class="cvp-sec">Arbetslivserfarenhet</div>
@@ -1672,43 +1552,37 @@
 
   <div class="cvr-body">
     <p>
-      Med stor entusiasm skickar jag in min ansökan till er organisation.
-      Jag är en passionerad mjukvaruutvecklare med över sex års erfarenhet
-      av professionell systemutveckling, och jag ser fram emot möjligheten
-      att bidra med min kompetens och mitt engagemang till ert team.
+      Jag skickar in min ansökan för att jag tror att jag skulle passa bra hos er.
+      Kort och gott: jag har jobbat med C# och .NET i drygt sex år, trivs
+      bäst när problemen är kniviga, och gillar att bygga saker som faktiskt fungerar.
     </p>
 
     <p>
-      Sedan 2019 arbetar jag som mjukvaruutvecklare hos Comrod Mission Systems
-      i Linköping, där jag dagligen arbetar med avancerade lösningar i C# och
-      .NET Framework/Core. Jag har bred erfarenhet av WPF-applikationer, SQL
-      Server-databaser och objektorienterad design – alltid i en agil miljö
-      med höga krav på tillförlitlighet och prestanda. Jag är certifierad
-      Professional Scrum Master I och trivs i täta, tvärfunktionella team
-      där kommunikation och iterativa förbättringar är centrala.
+      Sedan 2019 sitter jag på Comrod Mission Systems i Linköping och bygger
+      mjukvara inom försvars- och kommunikationsteknik. Det innebär WPF-appar,
+      SQL Server-databaser och en hel del objektorienterad design – i en miljö
+      där saker helt enkelt måste funka. Jag har PSM I-certifiering och jobbar
+      agilt, men det viktigaste är att teamet levererar bra grejer ihop.
     </p>
 
     <p>
-      Min ovanliga bakgrund inom biomedicinsk vetenskap är något jag bär med
-      stolthet. En kandidatexamen i medicinsk biologi har format mitt sätt att
-      tänka: systematiskt, noggrant och med fokus på att förstå problemet på
-      djupet innan jag söker lösningen. Dessa egenskaper är direkt överförbara
-      till mjukvaruutveckling och har gång på gång visat sig värdefulla i
-      komplexa tekniska projekt.
+      Min väg hit är inte den vanligaste. Jag pluggade medicinsk biologi på
+      Linköpings universitet innan jag hittade till programmering. Det låter
+      kanske som ett sidospår, men det har gett mig ett sätt att tänka som
+      jag har stor nytta av varje dag – att verkligen förstå problemet innan
+      man kastar sig på lösningen.
     </p>
 
     <p>
-      Jag är nyfiken, initiativrik och motiveras av att lösa utmanande
-      problem tillsammans med kompetenta kollegor. Jag skriver gärna ren,
-      välstrukturerad kod och strävar alltid efter att leverera lösningar
-      som är robusta på lång sikt. Utöver det tekniska bidrar jag gärna med
-      en positiv attityd och ett genuint engagemang för teamets gemensamma mål.
+      Utöver kodningen är jag genuint nyfiken på teknik, snabb att hoppa in
+      i nya områden, och den som gärna tar initiativ när något behöver lösas.
+      Jag bryr mig om att skriva kod som går att underhålla, inte bara kod
+      som klarar nästa deadline.
     </p>
 
     <p>
-      Jag ser fram emot möjligheten att berätta mer om mig själv och hur jag
-      kan bidra till er verksamhet. Tveka inte att höra av er via e-post
-      eller LinkedIn – jag är alltid öppen för ett samtal.
+      Hör gärna av er om ni vill veta mer – jag berättar gärna mer om vad
+      jag har gjort och vad jag kan tillföra.
     </p>
   </div>
 
@@ -1753,24 +1627,6 @@
   );
   reveals.forEach(el => observer.observe(el));
 
-  // Skill bars animate on visibility
-  const fills = document.querySelectorAll('.skill-fill');
-  const barObserver = new IntersectionObserver(
-    (entries) => entries.forEach(e => {
-      if (e.isIntersecting) {
-        const el = e.target;
-        el.style.width = (parseFloat(el.style.getPropertyValue('--w')) * 100) + '%';
-        el.classList.add('animated');
-        barObserver.unobserve(el);
-      }
-    }),
-    { threshold: 0.3 }
-  );
-  fills.forEach(f => {
-    f.style.width = '0%';
-    barObserver.observe(f);
-  });
-
   // Smooth active nav highlight + back-to-top + nav shadow
   const sections = document.querySelectorAll('section[id]');
   const navLinks = document.querySelectorAll('.nav-links a');
@@ -1809,12 +1665,7 @@
       }
     }
 
-    // Force all skill bar fills to be explicitly styled for print
-    document.querySelectorAll('.cvp-sk-fill').forEach(fill => {
-      fill.style.backgroundColor = '#1e3a8a';
-    });
-
-    // Force tag backgrounds
+    // Force tag backgrounds for print
     document.querySelectorAll('.cvp-tag').forEach(tag => {
       tag.style.backgroundColor = '#eff6ff';
     });
@@ -1824,9 +1675,6 @@
 
   // Restore dynamic styles after printing
   window.addEventListener('afterprint', () => {
-    document.querySelectorAll('.cvp-sk-fill').forEach(fill => {
-      fill.style.backgroundColor = '';
-    });
     document.querySelectorAll('.cvp-tag').forEach(tag => {
       tag.style.backgroundColor = '';
     });
