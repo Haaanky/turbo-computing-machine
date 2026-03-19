@@ -1,1 +1,4 @@
 node_modules/
+gsap.min.js
+three.min.js
+test_page.js
