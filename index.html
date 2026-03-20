@@ -104,7 +104,10 @@
         body {
             background-color: #020105;
             overflow: hidden;
-            cursor: none;
+            cursor: none !important;
+        }
+        * {
+            cursor: none !important;
         }
         .singularity-core {
             background: radial-gradient(circle at center, #000 30%, #4B00FF 60%, transparent 100%);
@@ -130,17 +133,57 @@
         .spark {
             pointer-events: none;
             mix-blend-mode: screen;
-            box-shadow: 0 0 20px 8px rgba(188, 255, 95, 0.9);
-            z-index: 1000;
+            background: #bcff5f;
+            box-shadow: 0 0 15px 5px #bcff5f, 0 0 30px 10px rgba(188, 255, 95, 0.4);
+            z-index: 9999;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.3s, height 0.3s, background 0.3s;
+        }
+        .spark-trail {
+            pointer-events: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: rgba(188, 255, 95, 0.1);
+            filter: blur(8px);
+            transform: translate(-50%, -50%);
+            z-index: 9998;
+            transition: transform 0.15s ease-out;
+        }
+        .ripple {
+            position: fixed;
+            border-radius: 50%;
+            background: rgba(0, 251, 251, 0.3);
+            transform: translate(-50%, -50%) scale(0);
+            animation: ripple-effect 1s ease-out forwards;
+            pointer-events: none;
+            z-index: 9997;
+        }
+        @keyframes ripple-effect {
+            to {
+                transform: translate(-50%, -50%) scale(4);
+                opacity: 0;
+            }
         }
         .satellite-content {
             opacity: 0;
             transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
             transform: translateY(10px);
+            pointer-events: none;
         }
         .satellite-node:hover .satellite-content {
             opacity: 1;
             transform: translateY(0);
+            pointer-events: auto;
         }
         .text-weave {
             font-feature-settings: "ss01", "ss02";
@@ -156,7 +199,7 @@
 <!-- Background Elements -->
 <div class="fixed inset-0 nebula-mesh z-0 pointer-events-none"></div>
 <!-- Custom Mouse Follower -->
-<div class="spark fixed w-3 h-3 rounded-full bg-tertiary z-[100] transition-transform duration-75 ease-out" id="cursor-spark"></div>
+<div class="spark fixed w-3 h-3 rounded-full bg-tertiary z-[100] transition-transform duration-75 ease-out" id="cursor-spark"></div><div class="spark-trail" id="cursor-trail"></div>
 <!-- THE NEURAL SINGULARITY (Core Eye) -->
 <div class="relative z-20 group">
 <div class="singularity-core w-[320px] h-[320px] md:w-[480px] md:h-[480px] rounded-full flex items-center justify-center relative animate-singularity-pulse overflow-hidden">
@@ -175,7 +218,7 @@
             </p>
 <div class="mt-8 overflow-hidden h-6">
 <p class="font-body text-[9px] text-secondary opacity-40 animate-pulse uppercase tracking-widest" id="data-stream">
-                    SYNCING_VOID_DATA... PROCESSING_CREDENTIALS...
+                    PARSING_CSHARP_MODULES...
                 </p>
 </div>
 </div>
@@ -259,7 +302,9 @@
 <!-- Interaction Script -->
 <script>
     const spark = document.getElementById('cursor-spark');
+    const trail = document.getElementById('cursor-trail');
     const dataStream = document.getElementById('data-stream');
+
     const messages = [
         "PARSING_CSHARP_MODULES...",
         "ANALYZING_DOTNET_ARCHITECTURE...",
@@ -269,37 +314,77 @@
         "CORE_PULSE_STABLE..."
     ];
     let msgIndex = 0;
+
     // Data stream rotator
     setInterval(() => {
         msgIndex = (msgIndex + 1) % messages.length;
         dataStream.textContent = messages[msgIndex];
     }, 4000);
+
+    let mouseX = 0, mouseY = 0;
+    let currentX = 0, currentY = 0;
+
     document.addEventListener('mousemove', (e) => {
-        const x = e.clientX;
-        const y = e.clientY;
+        mouseX = e.clientX;
+        mouseY = e.clientY;
 
-        // Spark follow
-        spark.style.transform = `translate3d(${x}px, ${y}px, 0)`;
-
-        // Parallax and "Pull" Effect
-        const centerX = window.innerWidth / 2;
-        const centerY = window.innerHeight / 2;
+        // Spark follow (instant)
+        spark.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
+        // Trail follows with transition (handled in CSS)
+        trail.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
 
         const nodes = document.querySelectorAll('.satellite-node');
-        nodes.forEach((node, index) => {
+        nodes.forEach((node) => {
             const rect = node.getBoundingClientRect();
             const nodeX = rect.left + rect.width / 2;
             const nodeY = rect.top + rect.height / 2;
 
-            // Calculate distance to center
-            const dx = centerX - nodeX;
-            const dy = centerY - nodeY;
+            const dist = Math.hypot(mouseX - nodeX, mouseY - nodeY);
+            const threshold = 150;
 
-            // Subtle pull towards mouse/center
-            const mouseDx = (x - centerX) * 0.02;
-            const mouseDy = (y - centerY) * 0.02;
+            if (dist < threshold) {
+                // Magnetic pull effect
+                const power = (threshold - dist) / threshold;
+                const pullX = (mouseX - nodeX) * power * 0.3;
+                const pullY = (mouseY - nodeY) * power * 0.3;
+                node.style.transform = `translate3d(${pullX}px, ${pullY}px, 0)`;
 
-            node.style.transform = `translate3d(${mouseDx}px, ${mouseDy}px, 0)`;
+                // Cursor reacts to interactive elements
+                spark.style.width = '12px';
+                spark.style.height = '12px';
+                spark.style.background = '#00fbfb';
+                spark.style.boxShadow = '0 0 20px 8px #00fbfb';
+            } else {
+                node.style.transform = `translate3d(0, 0, 0)`;
+                spark.style.width = '8px';
+                spark.style.height = '8px';
+                spark.style.background = '#bcff5f';
+                spark.style.boxShadow = '0 0 15px 5px #bcff5f';
+            }
+        });
+    });
+
+    // Ripple effect on click
+    document.addEventListener('mousedown', (e) => {
+        const ripple = document.createElement('div');
+        ripple.className = 'ripple';
+        ripple.style.width = '20px';
+        ripple.style.height = '20px';
+        ripple.style.left = `${e.clientX}px`;
+        ripple.style.top = `${e.clientY}px`;
+        document.body.appendChild(ripple);
+
+        setTimeout(() => ripple.remove(), 1000);
+    });
+
+    // Ensure clicks on satellites work properly by checking pointer events and propagation
+    document.querySelectorAll('.satellite-node').forEach(node => {
+        node.addEventListener('click', (e) => {
+            // If it's the contact node, find the link
+            const link = node.querySelector('a');
+            if (link && !e.target.closest('a')) {
+                 window.open(link.href, link.target || '_blank');
+            }
         });
     });
 </script>
