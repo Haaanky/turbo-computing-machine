@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="sv"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Erfarenhet – Henrik Norlin Frisemo</title>
+<meta name="description" content="Henrik Norlin Frisemos arbetslivserfarenhet – Comrod Mission Systems, Academic Work och mer.">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@300;400;500;700;800;900&amp;family=Be+Vietnam+Pro:wght@300;400;500;600&amp;family=Space+Grotesk:wght@300;400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "secondary": "#00fbfb",
+            "on-tertiary": "#3d6100",
+            "on-tertiary-container": "#365700",
+            "secondary-fixed": "#00fbfb",
+            "surface-container-lowest": "#000000",
+            "on-primary-fixed-variant": "#270092",
+            "on-primary-container": "#1e0079",
+            "on-error-container": "#ffb2b9",
+            "on-primary": "#290099",
+            "surface-variant": "#2b2234",
+            "surface-container-low": "#17101e",
+            "on-secondary": "#005c5c",
+            "primary-dim": "#7058ff",
+            "surface-container-highest": "#2b2234",
+            "surface-container": "#1e1626",
+            "secondary-fixed-dim": "#00ecec",
+            "primary-container": "#9f92ff",
+            "surface-dim": "#120c18",
+            "tertiary": "#bcff5f",
+            "on-error": "#490013",
+            "on-primary-fixed": "#000000",
+            "on-secondary-container": "#d9fffe",
+            "on-secondary-fixed": "#004747",
+            "outline": "#7c7282",
+            "tertiary-fixed": "#a2f31f",
+            "primary-fixed-dim": "#9182ff",
+            "surface-container-high": "#251c2d",
+            "inverse-on-surface": "#5b5261",
+            "on-tertiary-fixed": "#294300",
+            "tertiary-dim": "#95e400",
+            "on-secondary-fixed-variant": "#006666",
+            "error": "#ff6e84",
+            "background": "#120c18",
+            "surface-tint": "#ada3ff",
+            "primary-fixed": "#9f92ff",
+            "secondary-container": "#006a6a",
+            "primary": "#ada3ff",
+            "on-tertiary-fixed-variant": "#3d6200",
+            "surface": "#120c18",
+            "error-container": "#a70138",
+            "error-dim": "#d73357",
+            "inverse-primary": "#4d0bff",
+            "on-surface-variant": "#b2a7b9",
+            "on-background": "#f4e7f9",
+            "on-surface": "#f4e7f9",
+            "tertiary-fixed-dim": "#95e400",
+            "outline-variant": "#4d4553",
+            "tertiary-container": "#a2f31f",
+            "inverse-surface": "#fff7fe",
+            "secondary-dim": "#00ecec",
+            "surface-bright": "#32283c"
+          },
+          fontFamily: {
+            "headline": ["Spline Sans"],
+            "body": ["Be Vietnam Pro"],
+            "label": ["Space Grotesk"]
+          },
+          borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+        },
+      },
+    }
+  </script>
+<style>
+    body {
+      background-color: #0c0812;
+      overflow: hidden;
+      cursor: grab;
+      user-select: none;
+    }
+    body:active { cursor: grabbing; }
+
+    .axon-path {
+      stroke-dasharray: 2000;
+      stroke-dashoffset: 2000;
+      animation: write 15s ease-out forwards;
+      filter: drop-shadow(0 0 8px currentColor);
+    }
+    @keyframes write {
+      to { stroke-dashoffset: 0; }
+    }
+
+    .nebula-canvas {
+      transition: background-color 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .synaptic-burst {
+      transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .synaptic-burst:hover {
+      transform: scale(2.5);
+      filter: brightness(1.5) drop-shadow(0 0 40px currentColor);
+    }
+
+    .burst-overlay {
+      transition: opacity 0.8s, transform 0.8s;
+      pointer-events: none;
+    }
+
+    .extreme-text {
+      font-size: clamp(4rem, 15vw, 22rem);
+      line-height: 0.8;
+      letter-spacing: -0.05em;
+    }
+
+    .momentum-container {
+      width: 300vw;
+      height: 300vh;
+      position: absolute;
+      top: -100vh;
+      left: -100vw;
+    }
+
+    .nav-link-node {
+        transition: all 0.3s;
+        opacity: 0.5;
+    }
+    .nav-link-node:hover { opacity: 1; }
+    .nav-link-node.active { opacity: 1; color: #00fbfb; }
+
+    ::-webkit-scrollbar { display: none; }
+    * { -ms-overflow-style: none; scrollbar-width: none; }
+  </style>
+</head>
+<body class="font-body text-on-background bg-background nebula-canvas">
+<!-- GLOBAL AMBIENT SHIFT OVERLAY -->
+<div class="fixed inset-0 pointer-events-none opacity-0 transition-all duration-1000 z-0" id="ambient-overlay"></div>
+<!-- TOP APP BAR -->
+<header class="fixed top-0 w-full z-50 bg-transparent flex justify-between items-center px-12 py-10">
+<a href="index.html" class="text-xl font-black tracking-tighter text-indigo-400 mix-blend-difference font-headline">
+      HNF_OS.v2
+    </a>
+<nav class="hidden md:flex gap-10 font-label tracking-[0.3em] uppercase text-[10px]">
+    <a href="index.html" class="nav-link-node text-on-surface-variant">[ KÄRNA ]</a>
+    <a href="experience.html" class="nav-link-node active">[ ERFARENHET ]</a>
+    <a href="skills.html" class="nav-link-node text-on-surface-variant">[ KOMPETENSER ]</a>
+    <a href="contact.html" class="nav-link-node text-on-surface-variant">[ KONTAKT ]</a>
+</nav>
+</header>
+<!-- MOMENTUM WRAPPER (Draggable simulation base) -->
+<main class="momentum-container" id="nebula-wrapper">
+<!-- NEURAL PATHWAY CANVAS (AXONS) -->
+<svg class="absolute inset-0 w-full h-full opacity-60 pointer-events-none" viewbox="0 0 3000 3000" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<lineargradient id="axon1" x1="0%" x2="100%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="#ada3ff"></stop>
+<stop offset="100%" stop-color="#00fbfb"></stop>
+</lineargradient>
+<lineargradient id="axon2" x1="0%" x2="100%" y1="100%" y2="0%">
+<stop offset="0%" stop-color="#00fbfb"></stop>
+<stop offset="100%" stop-color="#bcff5f"></stop>
+</lineargradient>
+</defs>
+<path class="axon-path" d="M500,1500 C800,1500 1000,1200 1200,1500 S1600,1800 2000,1500 S2500,1200 2800,1500" fill="none" stroke="url(#axon1)" stroke-width="2"></path>
+<path class="axon-path" d="M1200,1500 C1300,1300 1500,1100 1800,1000" fill="none" opacity="0.4" stroke="#ada3ff" stroke-width="1"></path>
+<path class="axon-path" d="M2000,1500 C2100,1700 2300,1900 2600,2000" fill="none" opacity="0.4" stroke="#bcff5f" stroke-width="1"></path>
+<path class="axon-path" d="M800,1500 C700,1700 400,1900 200,2000" fill="none" opacity="0.4" stroke="#00fbfb" stroke-width="1"></path>
+</svg>
+<!-- CONTENT LAYERS -->
+<div class="relative w-full h-full">
+<!-- MASSIVE BACKGROUND TYPOGRAPHY -->
+<div class="absolute inset-0 flex items-center justify-center opacity-[0.03] pointer-events-none select-none z-0">
+<h1 class="extreme-text font-black font-headline text-white overflow-hidden whitespace-nowrap">
+                SYNAPTIC_OVERLOAD
+            </h1>
+</div>
+
+<!-- SYNAPTIC BURSTS (INTERACTIVE NODES) -->
+
+<!-- NODE 01: COMROD -->
+<div class="absolute top-[1480px] left-[1080px] group">
+<div class="synaptic-burst w-10 h-10 rounded-full bg-secondary flex items-center justify-center cursor-pointer shadow-[0_0_20px_#00fbfb]" onmouseenter="shiftAmbient('#00fbfb', 'COMROD_ERA')" onmouseleave="resetAmbient()">
+<span class="material-symbols-outlined text-black text-sm">bolt</span>
+</div>
+<div class="absolute top-14 left-0 w-max pointer-events-none opacity-40 group-hover:opacity-100 transition-opacity">
+<div class="font-label text-[8px] text-secondary tracking-widest mb-1">TX_ID: 2019 – NUVARANDE</div>
+<h2 class="font-headline text-3xl font-black text-white hover:text-secondary transition-colors">MJUKVARUUTVECKLARE</h2>
+<div class="font-label text-[11px] text-secondary/70 mt-1">Comrod Mission Systems · Linköping</div>
+<p class="text-[10px] text-on-surface-variant max-w-[280px] mt-2 leading-relaxed">Bygger mjukvara inom försvars- och kommunikationsteknik. C# och .NET varje dag.</p>
+<div class="flex flex-wrap gap-2 mt-3">
+    <span class="font-label text-[8px] text-secondary/60 border border-secondary/20 px-2 py-0.5">C#</span>
+    <span class="font-label text-[8px] text-secondary/60 border border-secondary/20 px-2 py-0.5">.NET</span>
+    <span class="font-label text-[8px] text-secondary/60 border border-secondary/20 px-2 py-0.5">WPF</span>
+    <span class="font-label text-[8px] text-secondary/60 border border-secondary/20 px-2 py-0.5">WinForms</span>
+    <span class="font-label text-[8px] text-secondary/60 border border-secondary/20 px-2 py-0.5">SQL Server</span>
+    <span class="font-label text-[8px] text-secondary/60 border border-secondary/20 px-2 py-0.5">Git</span>
+</div>
+</div>
+</div>
+
+<!-- NODE 02: ACADEMIC WORK -->
+<div class="absolute top-[1450px] left-[1920px] group">
+<div class="synaptic-burst w-12 h-12 rounded-full bg-tertiary flex items-center justify-center cursor-pointer shadow-[0_0_30px_#bcff5f]" onmouseenter="shiftAmbient('#bcff5f', 'KONSULT_ERA')" onmouseleave="resetAmbient()">
+<span class="material-symbols-outlined text-black text-sm">hub</span>
+</div>
+<div class="absolute -top-40 left-0 w-max pointer-events-none opacity-40 group-hover:opacity-100 transition-opacity">
+<div class="font-label text-[8px] text-tertiary tracking-widest mb-1">TX_ID: 2019</div>
+<h2 class="font-headline text-3xl font-black text-white hover:text-tertiary transition-colors">JUNIOR IT-KONSULT</h2>
+<div class="font-label text-[11px] text-tertiary/70 mt-1">Academic Work</div>
+<p class="text-[10px] text-on-surface-variant max-w-[240px] mt-2 italic">Första riktiga utvecklarjobbet. Kastad rakt in i skarpa projekt efter intensivprogram.</p>
+<div class="flex flex-wrap gap-2 mt-3">
+    <span class="font-label text-[8px] text-tertiary/60 border border-tertiary/20 px-2 py-0.5">C#</span>
+    <span class="font-label text-[8px] text-tertiary/60 border border-tertiary/20 px-2 py-0.5">.NET</span>
+    <span class="font-label text-[8px] text-tertiary/60 border border-tertiary/20 px-2 py-0.5">SCRUM</span>
+</div>
+</div>
+</div>
+
+<!-- NODE 03: WEBDEV FREELANCE -->
+<div class="absolute top-[960px] left-[1680px] group">
+<div class="synaptic-burst w-6 h-6 rounded-full bg-primary flex items-center justify-center cursor-pointer shadow-[0_0_15px_#ada3ff]" onmouseenter="shiftAmbient('#ada3ff', 'WEB_ERA')" onmouseleave="resetAmbient()">
+<span class="material-symbols-outlined text-black text-[10px]">flare</span>
+</div>
+<div class="absolute -top-12 left-8 w-max pointer-events-none opacity-40 group-hover:opacity-100 transition-opacity">
+<div class="font-label text-[8px] text-primary tracking-widest mb-1">TX_ID: 2017 – 2018</div>
+<h2 class="font-headline text-2xl font-bold text-white hover:text-primary transition-colors">WEBBUTVECKLARE_FRILANS</h2>
+<div class="font-label text-[10px] text-primary/60 mt-1">Eget projekt</div>
+<p class="text-[9px] text-on-surface-variant max-w-[220px] mt-2">Självlärd via Udemy och freeCodeCamp. Byggde WordPress-sajter.</p>
+<div class="flex flex-wrap gap-2 mt-3">
+    <span class="font-label text-[8px] text-primary/60 border border-primary/20 px-2 py-0.5">HTML</span>
+    <span class="font-label text-[8px] text-primary/60 border border-primary/20 px-2 py-0.5">CSS</span>
+    <span class="font-label text-[8px] text-primary/60 border border-primary/20 px-2 py-0.5">JavaScript</span>
+    <span class="font-label text-[8px] text-primary/60 border border-primary/20 px-2 py-0.5">WordPress</span>
+</div>
+</div>
+</div>
+
+<!-- NODE 04: BARTENDER / ORIGINS -->
+<div class="absolute top-[1600px] left-[800px] group">
+<div class="synaptic-burst w-5 h-5 rounded-full bg-error/70 flex items-center justify-center cursor-pointer shadow-[0_0_10px_#ff6e84]" onmouseenter="shiftAmbient('#ff6e84', 'ORIGIN_ERA')" onmouseleave="resetAmbient()">
+<span class="material-symbols-outlined text-black text-[9px]">schedule</span>
+</div>
+<div class="absolute top-8 left-6 w-max pointer-events-none opacity-40 group-hover:opacity-100 transition-opacity">
+<div class="font-label text-[8px] text-error/60 tracking-widest mb-1">TX_ID: 2010 – 2014</div>
+<h2 class="font-headline text-xl font-bold text-white/60 hover:text-white transition-colors">BARTENDER_ORIGIN</h2>
+<div class="font-label text-[10px] text-white/30 mt-1">Diverse arbetsgivare</div>
+<p class="text-[9px] text-on-surface-variant/60 max-w-[200px] mt-2 italic">Lärde mig hantera folk, stress – oväntat användbart i dev-världen.</p>
+</div>
+</div>
+
+</div>
+</main>
+<!-- HUD ELEMENTS -->
+<div class="fixed right-12 bottom-12 z-50 pointer-events-none text-right">
+<div class="font-headline font-black text-7xl text-white/5 tracking-tighter mb-4" id="era-indicator">NEURAL_IDLE</div>
+<div class="flex flex-col gap-2 font-label text-[10px] text-indigo-200/40 tracking-[0.3em]">
+<div>ERFARENHET: <span id="pulse-val">6+</span> ÅR</div>
+<div>FÖRETAG: <span id="flow-val">COMROD</span></div>
+</div>
+</div>
+<!-- SIDE NAV (Desktop Only) -->
+<nav class="hidden md:flex fixed left-8 top-1/2 -translate-y-1/2 flex-col gap-8 z-50">
+<div class="w-px h-24 bg-gradient-to-b from-transparent via-indigo-500/50 to-transparent mx-auto"></div>
+<div class="flex flex-col gap-6">
+<span class="material-symbols-outlined text-secondary cursor-pointer hover:scale-125 transition-transform">memory</span>
+<span class="material-symbols-outlined text-indigo-500/40 cursor-pointer hover:text-white transition-colors">settings_input_antenna</span>
+<span class="material-symbols-outlined text-indigo-500/40 cursor-pointer hover:text-white transition-colors">terminal</span>
+</div>
+<div class="w-px h-24 bg-gradient-to-b from-transparent via-indigo-500/50 to-transparent mx-auto"></div>
+</nav>
+<!-- DRAG HINT -->
+<div class="fixed bottom-12 left-1/2 -translate-x-1/2 font-label text-[9px] text-white/20 tracking-[0.3em] uppercase pointer-events-none">
+    Dra för att navigera · Hover på noder för detaljer
+</div>
+<script>
+    const wrapper = document.getElementById('nebula-wrapper');
+    const ambient = document.getElementById('ambient-overlay');
+    const eraText = document.getElementById('era-indicator');
+
+    let isDragging = false;
+    let startX, startY, scrollLeft, scrollTop;
+
+    document.body.addEventListener('mousedown', (e) => {
+        isDragging = true;
+        startX = e.pageX;
+        startY = e.pageY;
+        scrollLeft = window.scrollX;
+        scrollTop = window.scrollY;
+    });
+
+    document.body.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+        e.preventDefault();
+        const x = e.pageX - startX;
+        const y = e.pageY - startY;
+        window.scrollTo(scrollLeft - x, scrollTop - y);
+    });
+
+    document.body.addEventListener('mouseup', () => isDragging = false);
+
+    window.scrollTo(window.innerWidth, window.innerHeight);
+
+    function shiftAmbient(color, eraName) {
+        ambient.style.backgroundColor = color;
+        ambient.style.opacity = '0.15';
+        ambient.style.filter = 'blur(100px)';
+        eraText.innerText = eraName;
+        eraText.style.color = color;
+        eraText.style.opacity = '0.2';
+        document.body.style.backgroundColor = '#050308';
+    }
+
+    function resetAmbient() {
+        ambient.style.opacity = '0';
+        eraText.innerText = 'NEURAL_IDLE';
+        eraText.style.color = 'white';
+        eraText.style.opacity = '0.05';
+        document.body.style.backgroundColor = '#0c0812';
+    }
+</script>
+</body></html>

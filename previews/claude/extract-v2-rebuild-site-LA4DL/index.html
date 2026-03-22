@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="sv"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Henrik Norlin Frisemo – Mjukvaruutvecklare</title>
+<meta name="description" content="Henrik Norlin Frisemo – Mjukvaruutvecklare specialiserad på C#, .NET och fullstack-utveckling. Baserad i Kiruna, Sverige.">
+<meta name="theme-color" content="#120c18">
+<meta property="og:title" content="Henrik Norlin Frisemo – Mjukvaruutvecklare">
+<meta property="og:description" content="Passionerad utvecklare med bakgrund inom biomedicinsk vetenskap. C#, .NET, SQL Server och agila metoder.">
+<meta property="og:type" content="website">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@300;400;700;800&amp;family=Be+Vietnam+Pro:wght@300;400;600&amp;family=Space+Grotesk:wght@300;400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "secondary": "#00fbfb",
+                        "on-tertiary": "#3d6100",
+                        "on-tertiary-container": "#365700",
+                        "secondary-fixed": "#00fbfb",
+                        "surface-container-lowest": "#000000",
+                        "on-primary-fixed-variant": "#270092",
+                        "on-primary-container": "#1e0079",
+                        "on-error-container": "#ffb2b9",
+                        "on-primary": "#290099",
+                        "surface-variant": "#2b2234",
+                        "surface-container-low": "#17101e",
+                        "on-secondary": "#005c5c",
+                        "primary-dim": "#7058ff",
+                        "surface-container-highest": "#2b2234",
+                        "surface-container": "#1e1626",
+                        "secondary-fixed-dim": "#00ecec",
+                        "primary-container": "#9f92ff",
+                        "surface-dim": "#120c18",
+                        "tertiary": "#bcff5f",
+                        "on-error": "#490013",
+                        "on-primary-fixed": "#000000",
+                        "on-secondary-container": "#d9fffe",
+                        "on-secondary-fixed": "#004747",
+                        "outline": "#7c7282",
+                        "tertiary-fixed": "#a2f31f",
+                        "primary-fixed-dim": "#9182ff",
+                        "surface-container-high": "#251c2d",
+                        "inverse-on-surface": "#5b5261",
+                        "on-tertiary-fixed": "#294300",
+                        "tertiary-dim": "#95e400",
+                        "on-secondary-fixed-variant": "#006666",
+                        "error": "#ff6e84",
+                        "background": "#120c18",
+                        "surface-tint": "#ada3ff",
+                        "primary-fixed": "#9f92ff",
+                        "secondary-container": "#006a6a",
+                        "primary": "#ada3ff",
+                        "on-tertiary-fixed-variant": "#3d6200",
+                        "surface": "#120c18",
+                        "error-container": "#a70138",
+                        "error-dim": "#d73357",
+                        "inverse-primary": "#4d0bff",
+                        "on-surface-variant": "#b2a7b9",
+                        "on-background": "#f4e7f9",
+                        "on-surface": "#f4e7f9",
+                        "tertiary-fixed-dim": "#95e400",
+                        "outline-variant": "#4d4553",
+                        "tertiary-container": "#a2f31f",
+                        "inverse-surface": "#fff7fe",
+                        "secondary-dim": "#00ecec",
+                        "surface-bright": "#32283c"
+                    },
+                    fontFamily: {
+                        "headline": ["Spline Sans"],
+                        "body": ["Be Vietnam Pro"],
+                        "label": ["Space Grotesk"]
+                    },
+                    borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background: radial-gradient(circle at 50% 100%, #1e1626, #000000 70%);
+            overflow: hidden;
+            cursor: none;
+        }
+        .deep-sea-supernova {
+            background-image:
+                radial-gradient(circle at 10% 20%, rgba(0, 236, 236, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(159, 146, 255, 0.1) 0%, transparent 40%),
+                conic-gradient(from 180deg at 50% 50%, #120c18, #000000, #120c18);
+            filter: contrast(120%) brightness(80%);
+        }
+        .chaotic-core {
+            filter: url(#distort-chaos) drop-shadow(0 0 40px rgba(173, 163, 255, 0.4));
+            animation: core-mutation 10s infinite alternate cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        @keyframes core-mutation {
+            0% { transform: scale(1) rotate(0deg); filter: url(#distort-chaos) hue-rotate(0deg); }
+            50% { transform: scale(1.15) rotate(5deg); filter: url(#distort-chaos) hue-rotate(45deg) saturate(1.5); }
+            100% { transform: scale(0.95) rotate(-3deg); filter: url(#distort-chaos) hue-rotate(-20deg); }
+        }
+        .satellite-fragment {
+            transition: all 1.2s cubic-bezier(0.23, 1, 0.32, 1);
+            filter: blur(2px) grayscale(0.5);
+            opacity: 0.6;
+        }
+        .satellite-fragment:hover {
+            filter: blur(0) grayscale(0);
+            opacity: 1;
+            transform: scale(1.2);
+        }
+        .awakening-data {
+            clip-path: circle(0% at 50% 50%);
+            transition: clip-path 0.8s cubic-bezier(0.19, 1, 0.22, 1), opacity 0.5s;
+            opacity: 0;
+        }
+        .satellite-fragment:hover .awakening-data {
+            clip-path: circle(100% at 50% 50%);
+            opacity: 1;
+        }
+        .warped-identity {
+            font-variation-settings: 'wght' 800;
+            letter-spacing: -0.05em;
+            text-shadow: 2px 2px 20px rgba(0, 251, 251, 0.5);
+        }
+        .custom-cursor {
+            pointer-events: none;
+            mix-blend-mode: exclusion;
+            transition: width 0.3s, height 0.3s;
+        }
+        .nav-link-node {
+            transition: all 0.3s;
+            opacity: 0.5;
+        }
+        .nav-link-node:hover {
+            opacity: 1;
+            text-shadow: 0 0 12px rgba(0, 251, 251, 0.8);
+        }
+    </style>
+</head>
+<body class="bg-black text-on-background font-body h-screen w-screen flex items-center justify-center relative select-none overflow-hidden">
+<svg class="absolute w-0 h-0">
+<defs>
+<filter id="distort-chaos">
+<feturbulence basefrequency="0.015" id="turbulence" numoctaves="4" result="noise" type="fractalNoise">
+<animate attributename="baseFrequency" dur="20s" repeatcount="indefinite" values="0.015;0.025;0.015"></animate>
+</feturbulence>
+<fedisplacementmap in="SourceGraphic" in2="noise" scale="40"></fedisplacementmap>
+<fegaussianblur stddeviation="0.5"></fegaussianblur>
+</filter>
+<filter id="liquid-node">
+<fegaussianblur in="SourceGraphic" result="blur" stddeviation="10"></fegaussianblur>
+<fecolormatrix in="blur" mode="matrix" result="liquid" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9"></fecolormatrix>
+</filter>
+</defs>
+</svg>
+<div class="fixed inset-0 deep-sea-supernova z-0 pointer-events-none"></div>
+<!-- The Custom Seed Cursor -->
+<div class="custom-cursor fixed w-6 h-6 rounded-full bg-white z-[999] -translate-x-1/2 -translate-y-1/2" id="cursor"></div>
+
+<!-- Top Navigation -->
+<nav class="fixed top-0 w-full z-50 flex justify-center gap-12 px-12 py-8 pointer-events-auto">
+    <a class="nav-link-node font-label text-[10px] tracking-[0.4em] uppercase text-secondary cursor-none" href="index.html">[ KÄRNA ]</a>
+    <a class="nav-link-node font-label text-[10px] tracking-[0.4em] uppercase text-on-surface-variant cursor-none" href="experience.html">[ ERFARENHET ]</a>
+    <a class="nav-link-node font-label text-[10px] tracking-[0.4em] uppercase text-on-surface-variant cursor-none" href="skills.html">[ KOMPETENSER ]</a>
+    <a class="nav-link-node font-label text-[10px] tracking-[0.4em] uppercase text-on-surface-variant cursor-none" href="contact.html">[ KONTAKT ]</a>
+</nav>
+
+<!-- Central Singular Consciousness -->
+<div class="relative z-50 chaotic-core group pointer-events-none">
+<div class="w-80 h-80 md:w-[500px] md:h-[500px] rounded-full flex items-center justify-center bg-gradient-to-tr from-primary/30 via-secondary/20 to-tertiary/10 backdrop-blur-3xl">
+<div class="text-center">
+<h1 class="font-headline warped-identity text-3xl md:text-5xl text-on-background/90 tracking-[-0.05em]">
+<span class="inline-block opacity-80" style="font-weight: 300;">H</span>
+<span class="inline-block" style="font-weight: 800;">E</span>
+<span class="inline-block italic" style="font-weight: 400;">N</span>
+<span class="inline-block" style="font-weight: 700;">R</span>
+<span class="inline-block" style="font-weight: 300; letter-spacing: -0.1em;">I</span>
+<span class="inline-block" style="font-weight: 800;">K</span>
+<span class="text-secondary font-black">_</span>
+<span class="text-tertiary block mt-2" style="font-weight: 300; font-size: 0.55em; letter-spacing: 0.1em;">NORLIN FRISEMO</span>
+</h1>
+<p class="font-label text-[10px] tracking-[1.2em] text-secondary mt-6 uppercase opacity-40">Mjukvaruutvecklare_v6.0</p>
+<p class="font-label text-[9px] tracking-[0.5em] text-on-surface-variant mt-2 uppercase opacity-30">Kiruna, Sverige</p>
+</div>
+</div>
+</div>
+
+<!-- Fragmentary Satellite Nodes -->
+<!-- Experience Fragment -->
+<a class="satellite-fragment absolute top-[15%] left-[20%] z-40 cursor-none pointer-events-auto" href="experience.html" id="node-exp">
+<div class="relative w-24 h-24 flex items-center justify-center border border-primary/20 rounded-full backdrop-blur-md">
+<span class="material-symbols-outlined text-primary text-3xl opacity-50">hub</span>
+<div class="awakening-data absolute top-1/2 left-full ml-8 w-72 p-8 bg-surface-container/80 border-l-2 border-primary">
+<h2 class="font-headline font-black text-2xl mb-4 text-primary tracking-tighter">ERFARENHET</h2>
+<div class="space-y-4 font-label text-[11px] leading-relaxed text-on-surface-variant">
+<p><span class="text-primary/60">01.</span> MJUKVARUUTVECKLARE // COMROD MISSION SYSTEMS</p>
+<p><span class="text-primary/60">02.</span> JUNIOR IT-KONSULT // ACADEMIC WORK</p>
+<p><span class="text-primary/60">03.</span> WEBBUTVECKLARE (FRILANS)</p>
+</div>
+</div>
+</div>
+</a>
+
+<!-- Skills Fragment -->
+<a class="satellite-fragment absolute bottom-[20%] right-[15%] z-40 cursor-none pointer-events-auto" href="skills.html" id="node-skills">
+<div class="relative w-32 h-32 flex items-center justify-center bg-tertiary/5 rounded-full border border-tertiary/20">
+<span class="material-symbols-outlined text-tertiary text-4xl">all_inclusive</span>
+<div class="awakening-data absolute bottom-full left-1/2 -translate-x-1/2 mb-8 w-64 p-6 bg-surface-container/80 text-center border-b-2 border-tertiary">
+<h2 class="font-headline font-light text-xl mb-4 text-tertiary tracking-[0.4em]">KOMPETENSER</h2>
+<div class="flex flex-wrap justify-center gap-3">
+<span class="px-3 py-1 bg-tertiary/10 text-[9px] font-label text-tertiary border border-tertiary/30">C# &amp; .NET</span>
+<span class="px-3 py-1 bg-tertiary/10 text-[9px] font-label text-tertiary border border-tertiary/30">SQL_SERVER</span>
+<span class="px-3 py-1 bg-tertiary/10 text-[9px] font-label text-tertiary border border-tertiary/30">AGILE/SCRUM</span>
+</div>
+</div>
+</div>
+</a>
+
+<!-- Biography Fragment -->
+<div class="satellite-fragment absolute top-[40%] right-[10%] z-40 cursor-none" id="node-bio">
+<div class="relative w-16 h-16 flex items-center justify-center border-b-4 border-secondary/40">
+<span class="material-symbols-outlined text-secondary text-2xl">waves</span>
+<div class="awakening-data absolute right-full top-0 mr-8 w-56 p-4 bg-surface-container/90 italic text-sm text-on-surface">
+<p class="leading-relaxed opacity-70">"Från biomedicinsk vetenskap till systemutveckling. 6+ år hos Comrod Mission Systems."</p>
+</div>
+</div>
+</div>
+
+<!-- Contact Fragment -->
+<a class="satellite-fragment absolute bottom-[10%] left-[30%] z-40 cursor-none pointer-events-auto" href="contact.html" id="node-contact">
+<div class="relative p-6 group/item">
+<div class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center group-hover/item:border-white transition-all duration-700">
+<span class="material-symbols-outlined text-white text-lg">fingerprint</span>
+</div>
+<div class="awakening-data absolute top-full left-0 mt-4 whitespace-nowrap">
+<span class="font-headline text-3xl font-black text-white hover:text-secondary transition-colors tracking-widest">INITIERA.KONTAKT</span>
+</div>
+</div>
+</a>
+
+<!-- Non-UI HUD -->
+<div class="fixed top-20 left-8 font-label text-[9px] text-primary/30 pointer-events-none space-y-1">
+<div>POS_X: <span id="val-x">0</span></div>
+<div>POS_Y: <span id="val-y">0</span></div>
+<div>ERFARENHET: 6+ ÅR</div>
+</div>
+<div class="fixed bottom-8 right-8 text-right font-label text-[9px] text-secondary/30 pointer-events-none">
+<div class="mb-2">SYSTEM_STATUS: <span class="text-tertiary">AKTIV</span></div>
+<div class="opacity-50">KOORDINATER: KIRUNA, 67.8N</div>
+</div>
+<script>
+    const cursor = document.getElementById('cursor');
+    const nodes = document.querySelectorAll('.satellite-fragment');
+    const valX = document.getElementById('val-x');
+    const valY = document.getElementById('val-y');
+
+    document.addEventListener('mousemove', (e) => {
+        const { clientX: x, clientY: y } = e;
+
+        cursor.style.left = x + 'px';
+        cursor.style.top = y + 'px';
+
+        valX.innerText = x;
+        valY.innerText = y;
+
+        nodes.forEach((node, i) => {
+            const rect = node.getBoundingClientRect();
+            const nodeX = rect.left + rect.width / 2;
+            const nodeY = rect.top + rect.height / 2;
+
+            const distX = x - nodeX;
+            const distY = y - nodeY;
+            const dist = Math.sqrt(distX * distX + distY * distY);
+
+            if (dist < 400) {
+                const moveX = (distX / 10);
+                const moveY = (distY / 10);
+                node.style.transform = `translate3d(${-moveX}px, ${-moveY}px, 0)`;
+                node.style.filter = `blur(${Math.max(0, (dist/100))}px) grayscale(${Math.max(0, (dist/400))})`;
+            } else {
+                const time = Date.now() / 2000;
+                const driftX = Math.sin(time + i) * 15;
+                const driftY = Math.cos(time + i) * 15;
+                node.style.transform = `translate3d(${driftX}px, ${driftY}px, 0)`;
+            }
+        });
+    });
+
+    document.querySelectorAll('a, .satellite-fragment').forEach(el => {
+        el.addEventListener('mouseenter', () => {
+            cursor.style.width = '80px';
+            cursor.style.height = '80px';
+            cursor.style.background = 'transparent';
+            cursor.style.border = '1px solid rgba(255,255,255,0.5)';
+        });
+        el.addEventListener('mouseleave', () => {
+            cursor.style.width = '24px';
+            cursor.style.height = '24px';
+            cursor.style.background = 'white';
+            cursor.style.border = 'none';
+        });
+    });
+</script>
+</body></html>
