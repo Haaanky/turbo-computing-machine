@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="sv"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Kontakt – Henrik Norlin Frisemo</title>
+<meta name="description" content="Kontakta Henrik Norlin Frisemo – mjukvaruutvecklare baserad i Kiruna, Sverige.">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@300;400;700;800&amp;family=Be+Vietnam+Pro:wght@300;400;600&amp;family=Space+Grotesk:wght@300;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      if (typeof tailwind !== "undefined") tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "secondary": "#00fbfb",
+              "on-tertiary": "#3d6100",
+              "on-tertiary-container": "#365700",
+              "secondary-fixed": "#00fbfb",
+              "surface-container-lowest": "#000000",
+              "on-primary-fixed-variant": "#270092",
+              "on-primary-container": "#1e0079",
+              "on-error-container": "#ffb2b9",
+              "on-primary": "#290099",
+              "surface-variant": "#2b2234",
+              "surface-container-low": "#17101e",
+              "on-secondary": "#005c5c",
+              "primary-dim": "#7058ff",
+              "surface-container-highest": "#2b2234",
+              "surface-container": "#1e1626",
+              "secondary-fixed-dim": "#00ecec",
+              "primary-container": "#9f92ff",
+              "surface-dim": "#120c18",
+              "tertiary": "#bcff5f",
+              "on-error": "#490013",
+              "on-primary-fixed": "#000000",
+              "on-secondary-container": "#d9fffe",
+              "on-secondary-fixed": "#004747",
+              "outline": "#7c7282",
+              "tertiary-fixed": "#a2f31f",
+              "primary-fixed-dim": "#9182ff",
+              "surface-container-high": "#251c2d",
+              "inverse-on-surface": "#5b5261",
+              "on-tertiary-fixed": "#294300",
+              "tertiary-dim": "#95e400",
+              "on-secondary-fixed-variant": "#006666",
+              "error": "#ff6e84",
+              "background": "#120c18",
+              "surface-tint": "#ada3ff",
+              "primary-fixed": "#9f92ff",
+              "secondary-container": "#006a6a",
+              "primary": "#ada3ff",
+              "on-tertiary-fixed-variant": "#3d6200",
+              "surface": "#120c18",
+              "error-container": "#a70138",
+              "error-dim": "#d73357",
+              "inverse-primary": "#4d0bff",
+              "on-surface-variant": "#b2a7b9",
+              "on-background": "#f4e7f9",
+              "on-surface": "#f4e7f9",
+              "tertiary-fixed-dim": "#95e400",
+              "outline-variant": "#4d4553",
+              "tertiary-container": "#a2f31f",
+              "inverse-surface": "#fff7fe",
+              "secondary-dim": "#00ecec",
+              "surface-bright": "#32283c"
+            },
+            fontFamily: {
+              "headline": ["Spline Sans"],
+              "body": ["Be Vietnam Pro"],
+              "label": ["Space Grotesk"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        body { background-color: #000; overflow: hidden; height: 100vh; width: 100vw; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+
+        .wormhole-bg {
+            background: radial-gradient(circle at center, #1e1626 0%, #000 100%);
+            animation: warp-field 15s infinite alternate ease-in-out;
+            filter: contrast(150%) hue-rotate(0deg);
+        }
+        @keyframes warp-field {
+            0% { filter: contrast(150%) hue-rotate(0deg) blur(2px); }
+            100% { filter: contrast(250%) hue-rotate(180deg) blur(0px); }
+        }
+
+        .drifter {
+            animation: drift 10s infinite alternate ease-in-out;
+            writing-mode: vertical-rl;
+            transform: rotate(180deg);
+        }
+        @keyframes drift {
+            0% { transform: translate(0, 0) rotate(180deg); opacity: 0.3; }
+            100% { transform: translate(20px, -40px) rotate(175deg); opacity: 0.1; }
+        }
+
+        .fragment {
+            position: absolute;
+            transition: transform 0.2s cubic-bezier(0.1, 0.7, 1.0, 0.1), filter 0.5s;
+            mix-blend-mode: screen;
+            user-select: none;
+            pointer-events: none;
+        }
+
+        .singularity {
+            width: 80px;
+            height: 80px;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 0 40px #fff, 0 0 80px #ada3ff, 0 0 120px #00fbfb;
+            filter: blur(1px);
+            cursor: pointer;
+            transition: all 0.5s;
+        }
+        .singularity:hover {
+            transform: scale(1.5);
+            filter: blur(0px) contrast(200%);
+            box-shadow: 0 0 60px #fff, 0 0 120px #bcff5f, 0 0 200px #ff6e84;
+        }
+
+        .nav-link-node {
+            transition: all 0.3s;
+            opacity: 0.5;
+        }
+        .nav-link-node:hover { opacity: 1; }
+        .nav-link-node.active { opacity: 1; color: #bcff5f; }
+    </style>
+</head>
+<body class="font-body text-on-background selection:bg-primary/30">
+<!-- Peripheral Drift Navigation -->
+<nav class="fixed top-0 w-full z-50 flex justify-between items-center px-12 py-8 opacity-60 hover:opacity-100 transition-opacity">
+<a href="index.html" class="text-2xl font-black tracking-tighter text-white font-headline mix-blend-difference">
+        HNF_SIGNAL
+    </a>
+<div class="flex gap-8 items-center text-[10px] font-label tracking-widest uppercase">
+    <a class="nav-link-node text-on-surface-variant" href="index.html">KÄRNA</a>
+    <a class="nav-link-node text-on-surface-variant" href="experience.html">ERF</a>
+    <a class="nav-link-node text-on-surface-variant" href="skills.html">KOMP</a>
+    <a class="nav-link-node active text-tertiary" href="contact.html">SIGNAL_0x</a>
+</div>
+</nav>
+<!-- Vertical Drift Info -->
+<div class="fixed left-8 top-1/4 drifter text-[8px] font-label text-white/20 uppercase tracking-[0.5em]">
+    Henriknorfri@gmail.com · Kiruna, Sverige
+</div>
+<div class="fixed right-8 bottom-1/4 drifter text-[8px] font-label text-white/20 uppercase tracking-[0.5em] scale-x-[-1]">
+    linkedin.com/in/henrik-norlin-frisemo-8826b3180
+</div>
+<!-- Main Void Field -->
+<main class="relative w-screen h-screen flex items-center justify-center wormhole-bg overflow-hidden" id="signal-field">
+<!-- Scattered letters of KONTAKT -->
+<div class="fragment text-9xl font-black opacity-20 font-headline text-primary" data-depth="0.8" style="top: 20%; left: 15%;">K</div>
+<div class="fragment text-9xl font-black opacity-15 font-headline text-secondary" data-depth="0.4" style="top: 60%; left: 80%;">O</div>
+<div class="fragment text-9xl font-black opacity-25 font-headline text-tertiary" data-depth="0.9" style="top: 10%; left: 70%;">N</div>
+<div class="fragment text-9xl font-black opacity-10 font-headline text-error" data-depth="0.2" style="top: 80%; left: 10%;">T</div>
+<div class="fragment text-9xl font-black opacity-20 font-headline text-white" data-depth="0.6" style="top: 45%; left: 25%;">A</div>
+<div class="fragment text-9xl font-black opacity-30 font-headline text-primary-fixed" data-depth="1.1" style="top: 75%; left: 55%;">K</div>
+<div class="fragment text-9xl font-black opacity-15 font-headline text-secondary-dim" data-depth="0.5" style="top: 30%; left: 85%;">T</div>
+<!-- The Singularity: The actual interaction point -->
+<div class="relative z-50 flex flex-col items-center gap-12 group">
+<div class="text-[10px] font-label tracking-[1em] text-white/40 uppercase mb-4 group-hover:text-tertiary transition-colors">
+            Etablera Signal / Initiera Kontakt
+        </div>
+<a class="singularity flex items-center justify-center" href="mailto:Henriknorfri@gmail.com">
+<span class="material-symbols-outlined text-black">leak_add</span>
+</a>
+<div class="opacity-0 group-hover:opacity-100 transition-all duration-1000 translate-y-4 group-hover:translate-y-0 text-center">
+<p class="font-headline text-2xl font-bold text-white tracking-widest">ETABLERA_SIGNAL</p>
+<p class="font-label text-[10px] text-secondary mt-2">Henriknorfri@gmail.com</p>
+<div class="mt-4 flex flex-col gap-3 items-center">
+    <a href="https://www.linkedin.com/in/henrik-norlin-frisemo-8826b3180" target="_blank" rel="noopener"
+       class="font-label text-[10px] text-tertiary tracking-widest hover:text-white transition-colors uppercase border border-tertiary/20 px-4 py-2 hover:border-tertiary/60">
+        LinkedIn → Henrik Norlin Frisemo
+    </a>
+</div>
+</div>
+</div>
+<!-- Background Distortion Layers -->
+<div class="absolute inset-0 pointer-events-none">
+<div class="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,transparent_0%,rgba(0,0,0,0.8)_100%)]"></div>
+<div class="absolute w-[200%] h-[200%] -top-1/2 -left-1/2 opacity-20 animate-[spin_60s_linear_infinite] bg-[conic-gradient(from_0deg,#ada3ff,#00fbfb,#bcff5f,#ff6e84,#ada3ff)] blur-[100px]"></div>
+</div>
+</main>
+<!-- Interaction Prompt -->
+<div class="fixed bottom-12 right-12 flex flex-col items-end gap-2 pointer-events-none">
+<div class="flex items-center gap-4">
+<span class="font-label text-[10px] text-white/30 tracking-[0.3em] uppercase">Signal_Styrka: 94%</span>
+<div class="w-24 h-[1px] bg-white/10 relative overflow-hidden">
+<div class="absolute inset-0 bg-tertiary" style="width: 94%"></div>
+</div>
+</div>
+<span class="font-label text-[8px] text-white/20">KIRUNA, 67.8°N · ÖPPEN FÖR MÖJLIGHETER</span>
+</div>
+<script>
+    const field = document.getElementById('signal-field');
+    const fragments = document.querySelectorAll('.fragment');
+
+    window.addEventListener('mousemove', (e) => {
+        const { clientX, clientY } = e;
+        const centerX = window.innerWidth / 2;
+        const centerY = window.innerHeight / 2;
+
+        fragments.forEach(frag => {
+            const depth = parseFloat(frag.getAttribute('data-depth'));
+            const moveX = (clientX - centerX) * depth * 0.1;
+            const moveY = (clientY - centerY) * depth * 0.1;
+
+            const dist = Math.sqrt(Math.pow(clientX - centerX, 2) + Math.pow(clientY - centerY, 2));
+            const blurVal = Math.max(0, 10 - (dist / 100));
+            const hueVal = dist / 5;
+
+            frag.style.transform = `translate(${moveX}px, ${moveY}px) rotate(${moveX * 0.1}deg)`;
+            frag.style.filter = `blur(${blurVal}px) hue-rotate(${hueVal}deg) contrast(200%)`;
+        });
+
+        const bgX = (clientX - centerX) * 0.02;
+        const bgY = (clientY - centerY) * 0.02;
+        field.style.backgroundPosition = `${50 + bgX}% ${50 + bgY}%`;
+    });
+</script>
+</body></html>
