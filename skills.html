@@ -1,0 +1,268 @@
+<!-- The Cognitive Lattice (Skills) -->
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@300;400;500;700;800&amp;family=Be+Vietnam+Pro:wght@300;400;500;600&amp;family=Space+Grotesk:wght@300;400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "secondary": "#00fbfb",
+              "on-tertiary": "#3d6100",
+              "on-tertiary-container": "#365700",
+              "secondary-fixed": "#00fbfb",
+              "surface-container-lowest": "#000000",
+              "on-primary-fixed-variant": "#270092",
+              "on-primary-container": "#1e0079",
+              "on-error-container": "#ffb2b9",
+              "on-primary": "#290099",
+              "surface-variant": "#2b2234",
+              "surface-container-low": "#17101e",
+              "on-secondary": "#005c5c",
+              "primary-dim": "#7058ff",
+              "surface-container-highest": "#2b2234",
+              "surface-container": "#1e1626",
+              "secondary-fixed-dim": "#00ecec",
+              "primary-container": "#9f92ff",
+              "surface-dim": "#120c18",
+              "tertiary": "#bcff5f",
+              "on-error": "#490013",
+              "on-primary-fixed": "#000000",
+              "on-secondary-container": "#d9fffe",
+              "on-secondary-fixed": "#004747",
+              "outline": "#7c7282",
+              "tertiary-fixed": "#a2f31f",
+              "primary-fixed-dim": "#9182ff",
+              "surface-container-high": "#251c2d",
+              "inverse-on-surface": "#5b5261",
+              "on-tertiary-fixed": "#294300",
+              "tertiary-dim": "#95e400",
+              "on-secondary-fixed-variant": "#006666",
+              "error": "#ff6e84",
+              "background": "#120c18",
+              "surface-tint": "#ada3ff",
+              "primary-fixed": "#9f92ff",
+              "secondary-container": "#006a6a",
+              "primary": "#ada3ff",
+              "on-tertiary-fixed-variant": "#3d6200",
+              "surface": "#120c18",
+              "error-container": "#a70138",
+              "error-dim": "#d73357",
+              "inverse-primary": "#4d0bff",
+              "on-surface-variant": "#b2a7b9",
+              "on-background": "#f4e7f9",
+              "on-surface": "#f4e7f9",
+              "tertiary-fixed-dim": "#95e400",
+              "outline-variant": "#4d4553",
+              "tertiary-container": "#a2f31f",
+              "inverse-surface": "#fff7fe",
+              "secondary-dim": "#00ecec",
+              "surface-bright": "#32283c"
+            },
+            fontFamily: {
+              "headline": ["Spline Sans"],
+              "body": ["Be Vietnam Pro"],
+              "label": ["Space Grotesk"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .nebula-mesh {
+            background-image:
+                radial-gradient(circle at 20% 30%, rgba(173, 163, 255, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(0, 251, 251, 0.05) 0%, transparent 40%);
+        }
+        .glass-panel {
+            backdrop-filter: blur(40px);
+            background: linear-gradient(135deg, rgba(173, 163, 255, 0.08), rgba(0, 251, 251, 0.03));
+        }
+        .pulse-line {
+            stroke-dasharray: 10, 200;
+            stroke-dashoffset: 0;
+            animation: dash 5s linear infinite;
+        }
+        @keyframes dash {
+            to { stroke-dashoffset: -210; }
+        }
+        .synaptic-float {
+            animation: floating 8s ease-in-out infinite;
+        }
+        @keyframes floating {
+            0%, 100% { transform: translateY(0) translateX(0); }
+            50% { transform: translateY(-15px) translateX(10px); }
+        }
+        .glow-hub {
+            filter: drop-shadow(0 0 20px currentColor);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body selection:bg-secondary/30 min-h-screen overflow-hidden">
+<header class="fixed top-0 w-full z-50 bg-transparent text-violet-300 font-headline tracking-widest uppercase shadow-[0_0_20px_rgba(173,163,255,0.15)] flex justify-between items-center px-12 py-8 mix-blend-screen backdrop-blur-3xl">
+<div class="text-2xl font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-cyan-400 animate-pulse">NEBULA_CV</div>
+<nav class="hidden md:flex gap-12 items-center">
+<a class="text-indigo-200/50 hover:scale-110 hover:text-cyan-300 transition-all duration-500 ease-out" href="index.html">CORE</a>
+<a class="text-indigo-200/50 hover:scale-110 hover:text-cyan-300 transition-all duration-500 ease-out" href="experience.html">EVOLUTION</a>
+<a class="text-cyan-400 drop-shadow-[0_0_8px_rgba(0,251,251,0.8)] hover:scale-110 hover:text-cyan-300 transition-all duration-500 ease-out" href="skills.html">LATTICE</a>
+<a class="text-indigo-200/50 hover:scale-110 hover:text-cyan-300 transition-all duration-500 ease-out" href="contact.html">SIGNAL</a>
+</nav>
+<div class="flex items-center gap-6">
+<span class="material-symbols-outlined hover:scale-110 hover:text-cyan-300 transition-all duration-500 ease-out cursor-pointer" data-icon="auto_awesome">auto_awesome</span>
+</div>
+</header>
+<aside class="fixed left-8 top-1/2 -translate-y-1/2 rounded-full py-12 px-4 bg-black/10 text-indigo-400 font-label font-light tracking-widest shadow-[0_0_40px_rgba(173,163,255,0.1)] backdrop-blur-2xl transition-all duration-1000 cubic-bezier(0.4,0,0.2,1) z-50 flex flex-col gap-12 items-center justify-center">
+<div class="flex flex-col items-center gap-2 mb-4">
+<div class="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-secondary p-0.5">
+<div class="w-full h-full rounded-full bg-surface-container overflow-hidden">
+<img alt="Henrik Norlin Frisemo" class="w-full h-full object-cover opacity-80" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBErJCxhCSNoklZYWGUFwbQng4LOGTew6PNxMdnzrcF79BL7TdIpQa01RhmVCZ17D-1_VSPSEQa14A0FKraklKoJYvn2DAvuDS_O_5gUzhJt5jo6TwOiAXcYc2-aNWIyC9EC3obLjCZML38O4B4js7VufplZP0OeIzEc82FBoY0aEqzVFtjTo3UMIMPBjxNsSgEO6-M4xjO5r2UbXjt0mi3im9BJJxFHy0hlxJ3v0OvAuaiGRaMMd-jHIfRvmAg1KhzVXDd2HFUmxcJ"/>
+</div>
+</div>
+<span class="text-[8px] opacity-40 uppercase tracking-tighter">Henrik_NF</span>
+</div>
+<div class="flex flex-col gap-8">
+<button class="text-indigo-300/40 hover:rotate-12 hover:text-cyan-400 transition-transform duration-700">
+<span class="material-symbols-outlined" data-icon="blur_on">blur_on</span>
+</button>
+<button class="text-cyan-400 scale-125 drop-shadow-[0_0_12px_rgba(0,251,251,0.6)] hover:rotate-12 hover:text-lime-400 transition-transform duration-700">
+<span class="material-symbols-outlined" data-icon="psychology">psychology</span>
+</button>
+<button class="text-indigo-300/40 hover:rotate-12 hover:text-lime-400 transition-transform duration-700">
+<span class="material-symbols-outlined" data-icon="alternate_email">alternate_email</span>
+</button>
+</div>
+</aside>
+<main class="relative w-screen h-screen nebula-mesh flex items-center justify-center overflow-hidden">
+<div class="absolute top-24 left-1/2 -translate-x-1/2 text-center z-20">
+<h2 class="font-headline font-bold text-4xl tracking-[0.2em] text-transparent bg-clip-text bg-gradient-to-b from-white to-white/20 uppercase">The Cognitive Lattice</h2>
+<p class="font-label text-xs text-secondary tracking-[0.5em] mt-2 opacity-60">MAPPING NEURAL PROFICIENCIES</p>
+</div>
+<!-- The Cognitive Lattice Web -->
+<div class="relative w-full h-full max-w-7xl">
+<svg class="absolute inset-0 w-full h-full pointer-events-none" preserveaspectratio="xMidYMid slice" viewbox="0 0 1000 800">
+<defs>
+<lineargradient id="grad-p-s" x1="0%" x2="100%" y1="0%" y2="0%">
+<stop offset="0%" stop-color="#ada3ff" stop-opacity="0.3"></stop>
+<stop offset="100%" stop-color="#00fbfb" stop-opacity="0.3"></stop>
+</lineargradient>
+</defs>
+<!-- Neural Connection Web -->
+<path class="pulse-line" d="M 500 400 L 250 250" fill="none" stroke="url(#grad-p-s)" stroke-width="1.5"></path>
+<path class="pulse-line" d="M 500 400 L 750 250" fill="none" stroke="url(#grad-p-s)" stroke-width="1.5"></path>
+<path class="pulse-line" d="M 500 400 L 500 650" fill="none" stroke="url(#grad-p-s)" stroke-width="1.5"></path>
+<path class="pulse-line" d="M 250 250 L 150 400" fill="none" stroke="rgba(0,251,251,0.2)" stroke-width="1"></path>
+<path class="pulse-line" d="M 250 250 L 350 150" fill="none" stroke="rgba(173,163,255,0.2)" stroke-width="1"></path>
+<path class="pulse-line" d="M 750 250 L 850 400" fill="none" stroke="rgba(188,255,95,0.2)" stroke-width="1"></path>
+<path class="pulse-line" d="M 750 250 L 650 150" fill="none" stroke="rgba(0,251,251,0.2)" stroke-width="1"></path>
+<path class="pulse-line" d="M 500 650 L 350 700" fill="none" stroke="rgba(173,163,255,0.2)" stroke-width="1"></path>
+<path class="pulse-line" d="M 500 650 L 650 700" fill="none" stroke="rgba(0,251,251,0.2)" stroke-width="1"></path>
+</svg>
+<!-- MAJOR HUBS -->
+<!-- C# / .NET (CORE) -->
+<div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 group synaptic-float" style="animation-delay: -1s">
+<div class="w-48 h-48 rounded-full bg-primary/20 flex items-center justify-center border border-primary shadow-[0_0_50px_rgba(173,163,255,0.4)] backdrop-blur-xl relative cursor-help">
+<div class="absolute inset-0 rounded-full border border-primary/40 animate-ping opacity-20"></div>
+<div class="text-center p-4">
+<span class="font-headline font-extrabold text-xl leading-none">C# / .NET</span>
+<div class="w-12 h-1 bg-primary mx-auto mt-2"></div>
+</div>
+<div class="absolute -bottom-8 opacity-40 group-hover:opacity-100 transition-opacity font-label text-[10px] tracking-widest text-primary">CORE_DRIVE</div>
+</div>
+</div>
+<!-- SQL Server Hub -->
+<div class="absolute left-[20%] top-[25%] group synaptic-float" style="animation-delay: -3s">
+<div class="w-36 h-36 rounded-full bg-secondary/20 flex items-center justify-center border border-secondary shadow-[0_0_40px_rgba(0,251,251,0.3)] backdrop-blur-lg relative cursor-help">
+<div class="text-center p-4 text-secondary">
+<span class="font-headline font-bold text-lg leading-none">SQL SERVER</span>
+<div class="font-label text-[9px] mt-1 opacity-60">DATA_LAYER</div>
+</div>
+</div>
+</div>
+<!-- Agile / SCRUM Hub -->
+<div class="absolute right-[20%] top-[25%] group synaptic-float" style="animation-delay: -5s">
+<div class="w-40 h-40 rounded-full bg-tertiary/20 flex items-center justify-center border border-tertiary shadow-[0_0_40px_rgba(188,255,95,0.3)] backdrop-blur-lg relative cursor-help">
+<div class="text-center p-4 text-tertiary">
+<span class="font-headline font-bold text-lg leading-none">AGILE /<br/>SCRUM</span>
+</div>
+</div>
+</div>
+<!-- Tools Hub -->
+<div class="absolute left-1/2 bottom-[15%] -translate-x-1/2 group synaptic-float" style="animation-delay: -2s">
+<div class="w-32 h-32 rounded-full bg-white/5 flex items-center justify-center border border-white/20 shadow-[0_0_30px_rgba(255,255,255,0.1)] backdrop-blur-xl relative cursor-help">
+<div class="text-center p-4">
+<span class="font-headline font-medium text-sm leading-none opacity-80">GIT /<br/>TOOLS</span>
+</div>
+</div>
+</div>
+<!-- SATELLITE NODES (Minor Skills) -->
+<div class="absolute left-[10%] top-[45%] synaptic-float" style="animation-delay: -0.5s">
+<div class="px-4 py-2 rounded-full border border-secondary/30 bg-secondary/5 backdrop-blur-sm text-xs font-label text-secondary glow-hub">WPF / WinForms</div>
+</div>
+<div class="absolute left-[30%] top-[15%] synaptic-float" style="animation-delay: -4.5s">
+<div class="px-4 py-2 rounded-full border border-primary/30 bg-primary/5 backdrop-blur-sm text-xs font-label text-primary">OOP-design</div>
+</div>
+<div class="absolute right-[10%] top-[45%] synaptic-float" style="animation-delay: -2.5s">
+<div class="px-4 py-2 rounded-full border border-tertiary/30 bg-tertiary/5 backdrop-blur-sm text-xs font-label text-tertiary">PSM I – Scrum.org</div>
+</div>
+<div class="absolute right-[30%] top-[15%] synaptic-float" style="animation-delay: -6.5s">
+<div class="px-4 py-2 rounded-full border border-white/30 bg-white/5 backdrop-blur-sm text-xs font-label text-white/70">HTML / CSS / JS</div>
+</div>
+<div class="absolute left-[30%] bottom-[25%] synaptic-float" style="animation-delay: -1.5s">
+<div class="px-4 py-2 rounded-full border border-primary/30 bg-primary/5 backdrop-blur-sm text-xs font-label text-primary">AI-promptning</div>
+</div>
+<div class="absolute right-[30%] bottom-[25%] synaptic-float" style="animation-delay: -3.5s">
+<div class="px-4 py-2 rounded-full border border-secondary/30 bg-secondary/5 backdrop-blur-sm text-xs font-label text-secondary">JetBrains Rider</div>
+</div>
+</div>
+<!-- Right-side Insight Fragment -->
+<div class="fixed bottom-24 right-12 w-80 glass-panel rounded-xl p-8 border border-white/5 opacity-80 hover:opacity-100 transition-opacity z-50">
+<h3 class="font-headline text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary mb-4 uppercase tracking-tighter">SYNAPTIC_OVERVIEW</h3>
+<p class="font-body text-sm text-on-surface-variant leading-relaxed mb-6">
+            Henrik's cognitive architecture shows peak synchronization between <span class="text-secondary">C# / .NET</span> and <span class="text-tertiary">Agile / SCRUM</span>. The current lattice suggests a high capacity for multi-node system scaling with biomedicinal analytical precision.
+        </p>
+<div class="flex flex-col gap-2">
+<div class="flex justify-between text-[10px] font-label text-primary uppercase"><span>6+ Years C#/.NET</span><span>CORE</span></div>
+<div class="w-full bg-white/5 h-1 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[98%] animate-pulse"></div>
+</div>
+</div>
+<a href="contact.html" class="w-full mt-6 py-3 rounded-full bg-gradient-to-r from-primary to-primary-dim text-on-primary-fixed font-label text-xs tracking-widest uppercase hover:scale-105 transition-transform block text-center">
+            REQUEST_FULL_SYNC
+        </a>
+</div>
+</main>
+<!-- Navigation -->
+<nav class="fixed bottom-8 left-1/2 -translate-x-1/2 w-max flex gap-16 items-center px-10 py-4 bg-transparent rounded-full shadow-[0_0_50px_rgba(0,251,251,0.1)] backdrop-blur-xl z-50">
+<a class="flex flex-col items-center gap-1 group text-white/20 hover:text-white transition-all" href="index.html">
+<span class="material-symbols-outlined transition-all group-hover:scale-110" data-icon="hub">hub</span>
+<span class="font-label text-[10px] tracking-widest">CORE</span>
+</a>
+<a class="flex flex-col items-center gap-1 group text-white/20 hover:text-white transition-all" href="experience.html">
+<span class="material-symbols-outlined transition-all group-hover:scale-110" data-icon="waves">waves</span>
+<span class="font-label text-[10px] tracking-widest">EVOLUTION</span>
+</a>
+<a class="bg-cyan-400/20 text-cyan-400 rounded-full scale-110 shadow-[0_0_20px_rgba(0,251,251,0.4)] px-6 py-2 flex flex-col items-center gap-1 transition-all" href="skills.html">
+<span class="material-symbols-outlined" data-icon="psychology" style="font-variation-settings: 'FILL' 1;">psychology</span>
+<span class="font-label text-[10px] tracking-widest font-bold">LATTICE</span>
+</a>
+<a class="flex flex-col items-center gap-1 group text-white/20 hover:text-white transition-all" href="contact.html">
+<span class="material-symbols-outlined transition-all group-hover:scale-110" data-icon="flare">flare</span>
+<span class="font-label text-[10px] tracking-widest">SIGNAL</span>
+</a>
+</nav>
+<!-- Background Particles -->
+<div class="fixed inset-0 pointer-events-none z-10">
+<div class="absolute top-[15%] left-[12%] w-1 h-1 bg-secondary rounded-full animate-ping"></div>
+<div class="absolute bottom-[20%] right-[18%] w-1 h-1 bg-primary rounded-full animate-pulse"></div>
+<div class="absolute top-[60%] right-[5%] w-0.5 h-0.5 bg-tertiary rounded-full opacity-50"></div>
+</div>
+</body></html>

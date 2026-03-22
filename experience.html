@@ -1,0 +1,260 @@
+<!-- The Kinetic Timeline (Experience) -->
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@300;400;500;700;800&amp;family=Be+Vietnam+Pro:wght@300;400;500;600&amp;family=Space+Grotesk:wght@300;400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "secondary": "#00fbfb",
+            "on-tertiary": "#3d6100",
+            "on-tertiary-container": "#365700",
+            "secondary-fixed": "#00fbfb",
+            "surface-container-lowest": "#000000",
+            "on-primary-fixed-variant": "#270092",
+            "on-primary-container": "#1e0079",
+            "on-error-container": "#ffb2b9",
+            "on-primary": "#290099",
+            "surface-variant": "#2b2234",
+            "surface-container-low": "#17101e",
+            "on-secondary": "#005c5c",
+            "primary-dim": "#7058ff",
+            "surface-container-highest": "#2b2234",
+            "surface-container": "#1e1626",
+            "secondary-fixed-dim": "#00ecec",
+            "primary-container": "#9f92ff",
+            "surface-dim": "#120c18",
+            "tertiary": "#bcff5f",
+            "on-error": "#490013",
+            "on-primary-fixed": "#000000",
+            "on-secondary-container": "#d9fffe",
+            "on-secondary-fixed": "#004747",
+            "outline": "#7c7282",
+            "tertiary-fixed": "#a2f31f",
+            "primary-fixed-dim": "#9182ff",
+            "surface-container-high": "#251c2d",
+            "inverse-on-surface": "#5b5261",
+            "on-tertiary-fixed": "#294300",
+            "tertiary-dim": "#95e400",
+            "on-secondary-fixed-variant": "#006666",
+            "error": "#ff6e84",
+            "background": "#05020a",
+            "surface-tint": "#ada3ff",
+            "primary-fixed": "#9f92ff",
+            "secondary-container": "#006a6a",
+            "primary": "#ada3ff",
+            "on-tertiary-fixed-variant": "#3d6200",
+            "surface": "#120c18",
+            "error-container": "#a70138",
+            "error-dim": "#d73357",
+            "inverse-primary": "#4d0bff",
+            "on-surface-variant": "#b2a7b9",
+            "on-background": "#f4e7f9",
+            "on-surface": "#f4e7f9",
+            "tertiary-fixed-dim": "#95e400",
+            "outline-variant": "#4d4553",
+            "tertiary-container": "#a2f31f",
+            "inverse-surface": "#fff7fe",
+            "secondary-dim": "#00ecec",
+            "surface-bright": "#32283c"
+          },
+          fontFamily: {
+            "headline": ["Spline Sans"],
+            "body": ["Be Vietnam Pro"],
+            "label": ["Space Grotesk"]
+          },
+          borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+        },
+      },
+    }
+  </script>
+<style>
+    body {
+      background-color: #05020a;
+      overflow-x: hidden;
+      cursor: crosshair;
+    }
+    .energy-wave {
+      stroke-dasharray: 2000;
+      stroke-dashoffset: 2000;
+      animation: surge 15s linear infinite;
+      filter: drop-shadow(0 0 12px currentColor);
+      transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .wave-container:hover .energy-wave {
+      stroke-width: 6;
+      filter: drop-shadow(0 0 25px currentColor);
+      stroke-dashoffset: 1000;
+    }
+    @keyframes surge {
+      to { stroke-dashoffset: 0; }
+    }
+    .nebula-glow {
+      filter: blur(140px);
+      opacity: 0.15;
+      animation: float 20s ease-in-out infinite alternate;
+    }
+    @keyframes float {
+      from { transform: translate(0, 0) scale(1); }
+      to { transform: translate(5%, 5%) scale(1.1); }
+    }
+    .resonate-card {
+      clip-path: polygon(10% 0%, 100% 0%, 90% 100%, 0% 100%);
+      transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+    }
+  </style>
+</head>
+<body class="font-body text-on-background selection:bg-primary/30">
+<!-- TOP APP BAR -->
+<header class="fixed top-0 w-full z-50 bg-transparent backdrop-blur-md flex justify-between items-center px-12 py-8">
+<div class="text-2xl font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary animate-pulse font-headline">
+      NEBULA_CV
+    </div>
+<div class="hidden md:flex gap-12 font-label tracking-widest uppercase text-on-surface-variant/50">
+<a class="hover:scale-110 hover:text-primary transition-all duration-500 ease-out" href="index.html">CORE</a>
+<a class="hover:scale-110 hover:text-secondary transition-all duration-500 ease-out text-secondary drop-shadow-[0_0_8px_rgba(0,251,251,0.5)]" href="experience.html">EVOLUTION</a>
+<a class="hover:scale-110 hover:text-tertiary transition-all duration-500 ease-out" href="skills.html">SYNAPSES</a>
+<a class="hover:scale-110 hover:text-primary transition-all duration-500 ease-out" href="contact.html">SIGNAL</a>
+</div>
+<div class="flex items-center gap-6">
+<span class="material-symbols-outlined text-primary">auto_awesome</span>
+</div>
+</header>
+<!-- SIDE NAVIGATION -->
+<nav class="hidden md:flex fixed left-8 top-1/2 -translate-y-1/2 rounded-full py-12 px-4 bg-surface-container/20 backdrop-blur-2xl transition-all duration-1000 flex-col gap-12 items-center justify-center z-40 border border-white/5">
+<div class="group relative">
+<span class="material-symbols-outlined text-on-surface-variant/40 hover:text-primary transition-colors cursor-pointer">blur_on</span>
+<span class="absolute left-full ml-4 px-2 py-1 bg-surface-container text-[10px] opacity-0 group-hover:opacity-100 transition-opacity font-label">CORE</span>
+</div>
+<div class="group relative">
+<span class="material-symbols-outlined text-secondary scale-125 drop-shadow-[0_0_12px_rgba(0,251,251,0.6)] cursor-pointer">waves</span>
+<span class="absolute left-full ml-4 px-2 py-1 bg-surface-container text-[10px] opacity-0 group-hover:opacity-100 transition-opacity font-label">EVOLUTION</span>
+</div>
+<div class="group relative">
+<span class="material-symbols-outlined text-on-surface-variant/40 hover:text-tertiary transition-colors cursor-pointer">psychology</span>
+<span class="absolute left-full ml-4 px-2 py-1 bg-surface-container text-[10px] opacity-0 group-hover:opacity-100 transition-opacity font-label">SYNAPSES</span>
+</div>
+</nav>
+<!-- KINETIC TIMELINE MAIN -->
+<main class="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-background">
+<!-- Deep Space Nebulae -->
+<div class="absolute inset-0 z-0">
+<div class="nebula-glow absolute top-[-20%] left-[-10%] w-[1000px] h-[1000px] bg-primary/20 rounded-full"></div>
+<div class="nebula-glow absolute bottom-[-30%] right-[-10%] w-[1200px] h-[1200px] bg-secondary/15 rounded-full" style="animation-delay: -5s;"></div>
+<div class="nebula-glow absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-tertiary/10 rounded-full" style="animation-delay: -10s;"></div>
+</div>
+<!-- Kinetic Timeline Content -->
+<div class="relative z-10 w-full h-screen flex flex-col items-center justify-center">
+<div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+<svg class="w-full h-full opacity-60" viewbox="0 0 1600 800" xmlns="http://www.w3.org/2000/svg">
+<!-- Wave 01: Comrod -->
+<path class="energy-wave text-secondary" d="M-100 600C200 600 400 200 800 400C1200 600 1400 200 1700 300" fill="none" stroke="currentColor" stroke-width="2"></path>
+<!-- Wave 02: Academic Work -->
+<path class="energy-wave text-primary" d="M-100 200C300 100 600 700 900 300C1200 -100 1500 500 1700 400" fill="none" stroke="currentColor" stroke-width="2" style="animation-delay: -4s;"></path>
+<!-- Wave 03: Frilans -->
+<path class="energy-wave text-tertiary" d="M-100 400C200 100 500 800 1000 400C1400 100 1500 600 1700 200" fill="none" stroke="currentColor" stroke-width="2" style="animation-delay: -8s;"></path>
+</svg>
+</div>
+<!-- Interaction Layer -->
+<div class="relative w-full max-w-6xl px-8 flex flex-col gap-32">
+<!-- Role 01: Comrod Mission Systems -->
+<div class="wave-container relative self-start group">
+<div class="flex items-center gap-6 cursor-pointer group-hover:scale-105 transition-transform duration-500">
+<div class="w-12 h-12 rounded-full border-2 border-secondary flex items-center justify-center bg-secondary/10 group-hover:bg-secondary/30 transition-all shadow-[0_0_20px_rgba(0,251,251,0.2)]">
+<span class="material-symbols-outlined text-secondary">insights</span>
+</div>
+<div class="font-headline text-3xl font-bold tracking-tight text-on-background group-hover:text-secondary transition-colors">COMROD</div>
+</div>
+<div class="resonate-card absolute top-16 left-0 w-96 bg-surface-container/60 backdrop-blur-xl border-l-4 border-secondary p-8 opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all pointer-events-none z-20">
+<span class="font-label text-[10px] uppercase tracking-[0.4em] text-secondary mb-2 block">Mjukvaruutvecklare · 2019 – Nu</span>
+<p class="text-sm text-on-surface-variant leading-relaxed">C# och .NET i försvars- och kommunikationsteknik. WPF, WinForms, SQL Server och OOP-design för kritiska system. PSM I-certifierad och agil arbetsmiljö.</p>
+<div class="mt-4 flex gap-2 flex-wrap">
+<span class="text-[9px] font-label px-2 py-1 bg-secondary/10 text-secondary border border-secondary/20 rounded-full">C#</span>
+<span class="text-[9px] font-label px-2 py-1 bg-secondary/10 text-secondary border border-secondary/20 rounded-full">.NET</span>
+<span class="text-[9px] font-label px-2 py-1 bg-secondary/10 text-secondary border border-secondary/20 rounded-full">WPF</span>
+<span class="text-[9px] font-label px-2 py-1 bg-secondary/10 text-secondary border border-secondary/20 rounded-full">SQL_SERVER</span>
+</div>
+</div>
+</div>
+<!-- Role 02: Academic Work -->
+<div class="wave-container relative self-center group ml-32">
+<div class="flex items-center gap-6 cursor-pointer group-hover:scale-105 transition-transform duration-500">
+<div class="w-12 h-12 rounded-full border-2 border-primary flex items-center justify-center bg-primary/10 group-hover:bg-primary/30 transition-all shadow-[0_0_20px_rgba(173,163,255,0.2)]">
+<span class="material-symbols-outlined text-primary">hub</span>
+</div>
+<div class="font-headline text-3xl font-bold tracking-tight text-on-background group-hover:text-primary transition-colors">ACADEMIC WORK</div>
+</div>
+<div class="resonate-card absolute top-[-180%] left-[-20%] w-96 bg-surface-container/60 backdrop-blur-xl border-l-4 border-primary p-8 opacity-0 -translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all pointer-events-none z-20">
+<span class="font-label text-[10px] uppercase tracking-[0.4em] text-primary mb-2 block">Junior IT-konsult · 2019</span>
+<p class="text-sm text-on-surface-variant leading-relaxed">Första utvecklingsrollen efter intensivprogrammet. C# och .NET i konsultuppdrag med agila metoder och SCRUM-ramverket.</p>
+<div class="mt-4 flex gap-2">
+<span class="text-[9px] font-label px-2 py-1 bg-primary/10 text-primary border border-primary/20 rounded-full">C#</span>
+<span class="text-[9px] font-label px-2 py-1 bg-primary/10 text-primary border border-primary/20 rounded-full">SCRUM</span>
+</div>
+</div>
+</div>
+<!-- Role 03: Webbutvecklare Frilans -->
+<div class="wave-container relative self-end group mr-24">
+<div class="flex items-center gap-6 cursor-pointer group-hover:scale-105 transition-transform duration-500">
+<div class="w-12 h-12 rounded-full border-2 border-tertiary flex items-center justify-center bg-tertiary/10 group-hover:bg-tertiary/30 transition-all shadow-[0_0_20px_rgba(188,255,95,0.2)]">
+<span class="material-symbols-outlined text-tertiary">rocket_launch</span>
+</div>
+<div class="font-headline text-3xl font-bold tracking-tight text-on-background group-hover:text-tertiary transition-colors">WEBBUTVECKLARE</div>
+</div>
+<div class="resonate-card absolute top-16 right-0 w-80 bg-surface-container/60 backdrop-blur-xl border-l-4 border-tertiary p-8 opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all pointer-events-none z-20">
+<span class="font-label text-[10px] uppercase tracking-[0.4em] text-tertiary mb-2 block">Frilans · 2017 – 2018</span>
+<p class="text-sm text-on-surface-variant leading-relaxed">Självlärd webbutveckling. Byggt webbprojekt med HTML, CSS och JavaScript. Kurs via Udemy och certifikat från freeCodeCamp.</p>
+<div class="mt-4 flex gap-2">
+<span class="text-[9px] font-label px-2 py-1 bg-tertiary/10 text-tertiary border border-tertiary/20 rounded-full">HTML</span>
+<span class="text-[9px] font-label px-2 py-1 bg-tertiary/10 text-tertiary border border-tertiary/20 rounded-full">CSS</span>
+<span class="text-[9px] font-label px-2 py-1 bg-tertiary/10 text-tertiary border border-tertiary/20 rounded-full">JS</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- UNIVERSAL NAVIGATION -->
+<footer class="fixed bottom-12 left-1/2 -translate-x-1/2 rounded-full px-10 py-4 bg-surface-container-high/10 backdrop-blur-xl border border-white/5 shadow-[0_0_50px_rgba(0,0,0,0.5)] w-max flex gap-16 items-center z-50">
+<a href="index.html" class="flex flex-col items-center gap-1 group text-on-surface-variant/40 hover:text-primary transition-all">
+<span class="material-symbols-outlined">blur_on</span>
+<span class="font-label text-[10px] tracking-widest">CORE</span>
+</a>
+<a href="experience.html" class="flex flex-col items-center gap-1 group bg-secondary/20 text-secondary rounded-full px-4 py-2 scale-110 shadow-[0_0_20px_rgba(0,251,251,0.3)] transition-all">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">waves</span>
+<span class="font-label text-[10px] tracking-widest">EVOLUTION</span>
+</a>
+<a href="skills.html" class="flex flex-col items-center gap-1 group text-on-surface-variant/40 hover:text-tertiary transition-all">
+<span class="material-symbols-outlined">psychology</span>
+<span class="font-label text-[10px] tracking-widest">SYNAPSES</span>
+</a>
+<a href="contact.html" class="flex flex-col items-center gap-1 group text-on-surface-variant/40 hover:text-primary transition-all">
+<span class="material-symbols-outlined">flare</span>
+<span class="font-label text-[10px] tracking-widest">SIGNAL</span>
+</a>
+</footer>
+<!-- Spatial Telemetry -->
+<aside class="fixed right-12 bottom-32 hidden lg:flex flex-col gap-8 text-right font-label mix-blend-screen opacity-30 pointer-events-none">
+<div class="space-y-1">
+<div class="text-[10px] text-secondary">CAREER_TRAJECTORY</div>
+<div class="text-xl text-on-surface">ASCENDING</div>
+</div>
+<div class="space-y-1">
+<div class="text-[10px] text-primary">NODES_SYNCED</div>
+<div class="text-xl text-on-surface">2019 – NOW</div>
+</div>
+<div class="space-y-1">
+<div class="text-[10px] text-tertiary">RESONANCE</div>
+<div class="text-xl text-on-surface">OPTIMAL</div>
+</div>
+</aside>
+</body></html>
